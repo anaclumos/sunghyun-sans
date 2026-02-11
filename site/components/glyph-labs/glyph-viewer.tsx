@@ -108,7 +108,7 @@ function GlyphViewerCanvas({
               cx={cmd.x1}
               cy={cmd.y1}
               r={2}
-              fill="white"
+              style={{ fill: 'var(--surface)' }}
               stroke={color}
               strokeWidth={1}
             />
@@ -131,7 +131,7 @@ function GlyphViewerCanvas({
               cx={cmd.x2}
               cy={cmd.y2}
               r={2}
-              fill="white"
+              style={{ fill: 'var(--surface)' }}
               stroke={color}
               strokeWidth={1}
             />
@@ -172,7 +172,7 @@ function GlyphViewerCanvas({
               cx={cmd.x1}
               cy={cmd.y1}
               r={2}
-              fill="white"
+              style={{ fill: 'var(--surface)' }}
               stroke={color}
               strokeWidth={1}
             />
@@ -219,12 +219,12 @@ function GlyphViewerCanvas({
         <line 
             x1={center.x - VIEW_SIZE} y1={center.y} 
             x2={center.x + VIEW_SIZE} y2={center.y} 
-            stroke="rgba(9,9,11,0.06)" strokeWidth={1} 
+            style={{ stroke: 'var(--line)' }} strokeWidth={1} 
         />
         <line 
             x1={center.x} y1={center.y - VIEW_SIZE} 
             x2={center.x} y2={center.y + VIEW_SIZE} 
-            stroke="rgba(9,9,11,0.06)" strokeWidth={1} 
+            style={{ stroke: 'var(--line)' }} strokeWidth={1} 
         />
 
         <path d={pathData} fill="none" stroke={color} strokeWidth={1.5} />

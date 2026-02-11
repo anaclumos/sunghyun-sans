@@ -332,7 +332,7 @@ export function PreviewSection() {
         </div>
 
         <div className="w-full lg:w-3/4">
-          <div className="bg-white border border-line-strong rounded-3xl p-6 md:p-8 flex flex-col min-h-panel">
+          <div className="bg-surface border border-line-strong rounded-3xl p-6 md:p-8 flex flex-col min-h-panel">
 
             <PreviewControls
               size={size}
