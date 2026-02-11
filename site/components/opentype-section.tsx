@@ -6,8 +6,14 @@ import { SectionWrapper } from "@/components/section-wrapper";
 import { SectionHeader } from "@/components/section-header";
 import { OT_FEATURES, OT_REFERENCE_FEATURES } from "@/lib/constants";
 import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import { staggerContainer, staggerItem } from "@/lib/animations";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 
 export function OpenTypeSection() {
   const t = useTranslations("OpenType");
@@ -34,25 +40,30 @@ export function OpenTypeSection() {
           variants={staggerItem}
           className="bg-surface border border-line-strong rounded-3xl p-6 md:p-8"
         >
-          <div className="flex flex-wrap gap-2 pb-6 border-b border-line">
+          <ToggleGroup
+            type="single"
+            value={activeFeature}
+            onValueChange={(v) => {
+              if (v) setActiveFeature(v);
+            }}
+            className="flex flex-wrap gap-2 pb-6 border-b border-line justify-start"
+          >
             {OT_FEATURES.map(({ code }) => (
-              <button
+              <ToggleGroupItem
                 key={code}
-                type="button"
-                onClick={() => setActiveFeature(code)}
-                aria-pressed={activeFeature === code}
+                value={code}
                 className={cn(
-                  "focus-ring flex items-center gap-2 rounded-full px-4 py-2 text-sm transition-[color,background-color,border-color,box-shadow]",
-                  activeFeature === code
-                    ? "bg-ink text-paper border border-transparent shadow-sm"
-                    : "bg-transparent text-warm-muted border border-line-strong hover:border-ink hover:text-ink"
+                  "bg-transparent shadow-none border-none", // Reset base styles
+                  "focus-ring rounded-full px-4 py-2 text-sm transition-[color,background-color,border-color,box-shadow] h-auto min-w-0",
+                  "data-[state=on]:bg-ink data-[state=on]:text-paper data-[state=on]:border-transparent data-[state=on]:shadow-sm",
+                  "data-[state=off]:bg-transparent data-[state=off]:text-warm-muted data-[state=off]:border data-[state=off]:border-line-strong data-[state=off]:hover:border-ink data-[state=off]:hover:text-ink"
                 )}
               >
                 <span className="font-mono font-bold text-xs">{code}</span>
                 <span>{t(`feature_${code}_name`)}</span>
-              </button>
+              </ToggleGroupItem>
             ))}
-          </div>
+          </ToggleGroup>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 pt-6">
             <div className="flex flex-col gap-3">
@@ -87,46 +98,38 @@ export function OpenTypeSection() {
           </div>
         </motion.div>
 
-        <div className="flex flex-col items-start">
-          <button
-            type="button"
-            onClick={() => setIsReferenceExpanded((prev) => !prev)}
-            aria-expanded={isReferenceExpanded}
-            aria-controls={referencePanelId}
-            className="focus-ring flex items-center gap-2 rounded-md py-2 text-sm text-warm-muted transition-colors hover:text-ink"
-          >
-            {isReferenceExpanded ? t("hideAll") : t("showAll")}
-          </button>
+        <Collapsible
+          open={isReferenceExpanded}
+          onOpenChange={setIsReferenceExpanded}
+          className="flex flex-col items-start"
+        >
+          <CollapsibleTrigger asChild>
+            <button
+              type="button"
+              className="focus-ring flex items-center gap-2 rounded-md py-2 text-sm text-warm-muted transition-colors hover:text-ink"
+            >
+              {isReferenceExpanded ? t("hideAll") : t("showAll")}
+            </button>
+          </CollapsibleTrigger>
 
-          <AnimatePresence>
-            {isReferenceExpanded && (
-              <motion.div
-                initial={{ opacity: 0, height: 0, overflow: "hidden" }}
-                animate={{
-                  opacity: 1,
-                  height: "auto",
-                  transitionEnd: { overflow: "visible" },
-                }}
-                exit={{ opacity: 0, height: 0, overflow: "hidden" }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-                id={referencePanelId}
-                className="w-full overflow-hidden"
-              >
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 pt-6">
-                  {OT_REFERENCE_FEATURES.map(({ code, name }) => (
-                    <div
-                      key={code}
-                      className="flex items-center gap-2 border border-line rounded-full px-3 py-1.5"
-                    >
-                      <span className="font-mono text-xs font-bold text-ink">{code}</span>
-                      <span className="text-xs text-warm-muted truncate" title={name}>{name}</span>
-                    </div>
-                  ))}
+          <CollapsibleContent className="w-full overflow-hidden data-[state=open]:animate-collapsible-down data-[state=closed]:animate-collapsible-up">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 pt-6">
+              {OT_REFERENCE_FEATURES.map(({ code, name }) => (
+                <div
+                  key={code}
+                  className="flex items-center gap-2 border border-line rounded-full px-3 py-1.5"
+                >
+                  <span className="font-mono text-xs font-bold text-ink">
+                    {code}
+                  </span>
+                  <span className="text-xs text-warm-muted truncate" title={name}>
+                    {name}
+                  </span>
                 </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
+              ))}
+            </div>
+          </CollapsibleContent>
+        </Collapsible>
       </motion.div>
     </SectionWrapper>
   );

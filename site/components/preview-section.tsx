@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils"
 import { SectionWrapper } from "@/components/section-wrapper"
 import { SectionHeader } from "@/components/section-header"
 import { Slider } from "@/components/ui/slider"
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 
 /** Headline text is displayed ~2.67x larger than body to mimic a typical heading/body ratio */
@@ -26,7 +27,7 @@ interface PreviewControlsProps {
   visibleFonts: Set<string>
   setSize: (size: number) => void
   setWeight: (weight: number) => void
-  toggleFont: (name: string) => void
+  setVisibleFonts: (fonts: Set<string>) => void
   t: TranslationFn
 }
 
@@ -134,7 +135,7 @@ function PreviewControls({
   visibleFonts,
   setSize,
   setWeight,
-  toggleFont,
+  setVisibleFonts,
   t,
 }: PreviewControlsProps) {
   return (
@@ -187,18 +188,20 @@ function PreviewControls({
             {t("compareLabel")}
           </span>
         </div>
-        <div className="flex items-center gap-2 flex-wrap">
+        <ToggleGroup
+          type="multiple"
+          value={Array.from(visibleFonts)}
+          onValueChange={(v) => setVisibleFonts(new Set(v))}
+          className="flex items-center gap-2 flex-wrap"
+        >
           {comparisonFonts.map((f) => (
-            <button
-              type="button"
+            <ToggleGroupItem
               key={f.name}
-              onClick={() => toggleFont(f.name)}
-              aria-pressed={visibleFonts.has(f.name)}
+              value={f.name}
               className={cn(
-                "focus-ring flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium transition-[color,background-color,border-color,box-shadow]",
-                visibleFonts.has(f.name)
-                  ? "bg-ink text-white shadow-sm"
-                  : "border border-line-strong bg-transparent text-warm-muted hover:border-ink hover:text-ink"
+                "focus-ring rounded-full px-3 py-1 text-xs font-medium transition-[color,background-color,border-color,box-shadow] h-auto min-w-0 bg-transparent shadow-none border-none gap-1.5",
+                "data-[state=on]:bg-ink data-[state=on]:text-white data-[state=on]:shadow-sm",
+                "data-[state=off]:border data-[state=off]:border-line-strong data-[state=off]:bg-transparent data-[state=off]:text-warm-muted data-[state=off]:hover:border-ink data-[state=off]:hover:text-ink"
               )}
             >
               <span
@@ -206,9 +209,9 @@ function PreviewControls({
                 aria-hidden="true"
               />
               {f.name}
-            </button>
+            </ToggleGroupItem>
           ))}
-        </div>
+        </ToggleGroup>
       </div>
     </div>
   )
@@ -299,18 +302,6 @@ export function PreviewSection() {
   const autoResizeHeadline = useAutoResizeTextarea(headlineRef, resizeDeps)
   const autoResizeBody = useAutoResizeTextarea(bodyRef, resizeDeps)
 
-  const toggleFont = (name: string) => {
-    setVisibleFonts((prev) => {
-      const next = new Set(prev)
-      if (next.has(name)) {
-        next.delete(name)
-      } else {
-        next.add(name)
-      }
-      return next
-    })
-  }
-
   const activeFonts = useMemo(
     () => comparisonFonts.filter((f) => visibleFonts.has(f.name)),
     [comparisonFonts, visibleFonts]
@@ -341,7 +332,7 @@ export function PreviewSection() {
               visibleFonts={visibleFonts}
               setSize={setSize}
               setWeight={setWeight}
-              toggleFont={toggleFont}
+              setVisibleFonts={setVisibleFonts}
               t={t}
             />
 
