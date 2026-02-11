@@ -44,7 +44,7 @@ export function OpenTypeSection() {
                 className={cn(
                   "focus-ring flex items-center gap-2 rounded-full px-4 py-2 text-sm transition-[color,background-color,border-color,box-shadow]",
                   activeFeature === code
-                    ? "bg-ink text-white border border-transparent shadow-sm"
+                    ? "bg-ink text-paper border border-transparent shadow-sm"
                     : "bg-transparent text-warm-muted border border-line-strong hover:border-ink hover:text-ink"
                 )}
               >

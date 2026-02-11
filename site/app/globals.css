@@ -37,10 +37,49 @@
 @font-face { font-family: 'Sunghyun Sans Disambiguated'; src: url('/fonts/SunghyunSansDisambiguated-ExtraBold.woff2') format('woff2'), url('/fonts/SunghyunSansDisambiguated-ExtraBold.woff') format('woff'); font-weight: 800; font-style: normal; font-display: swap; }
 @font-face { font-family: 'Sunghyun Sans Disambiguated'; src: url('/fonts/SunghyunSansDisambiguated-Black.woff2') format('woff2'), url('/fonts/SunghyunSansDisambiguated-Black.woff') format('woff'); font-weight: 900; font-style: normal; font-display: swap; }
 @font-face { font-family: 'Open Runde'; src: url('/fonts/OpenRunde-Regular.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Open Runde'; src: url('/fonts/OpenRunde-Medium.otf') format('opentype'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Open Runde'; src: url('/fonts/OpenRunde-SemiBold.otf') format('opentype'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Open Runde'; src: url('/fonts/OpenRunde-Bold.otf') format('opentype'); font-weight: 700; font-style: normal; font-display: swap; }
+
+@font-face { font-family: 'Inter'; src: url('/fonts/Inter-Thin.otf') format('opentype'); font-weight: 100; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Inter'; src: url('/fonts/Inter-ExtraLight.otf') format('opentype'); font-weight: 200; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Inter'; src: url('/fonts/Inter-Light.otf') format('opentype'); font-weight: 300; font-style: normal; font-display: swap; }
 @font-face { font-family: 'Inter'; src: url('/fonts/Inter-Regular.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Inter'; src: url('/fonts/Inter-Medium.otf') format('opentype'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Inter'; src: url('/fonts/Inter-SemiBold.otf') format('opentype'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Inter'; src: url('/fonts/Inter-Bold.otf') format('opentype'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Inter'; src: url('/fonts/Inter-ExtraBold.otf') format('opentype'); font-weight: 800; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Inter'; src: url('/fonts/Inter-Black.otf') format('opentype'); font-weight: 900; font-style: normal; font-display: swap; }
+
+@font-face { font-family: 'Pretendard Std'; src: url('/fonts/PretendardStd-Thin.otf') format('opentype'); font-weight: 100; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Pretendard Std'; src: url('/fonts/PretendardStd-ExtraLight.otf') format('opentype'); font-weight: 200; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Pretendard Std'; src: url('/fonts/PretendardStd-Light.otf') format('opentype'); font-weight: 300; font-style: normal; font-display: swap; }
 @font-face { font-family: 'Pretendard Std'; src: url('/fonts/PretendardStd-Regular.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
-@font-face { font-family: 'Pretendard'; src: url('/fonts/Pretendard-Regular.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
-@font-face { font-family: 'Pretendard JP'; src: url('/fonts/PretendardJP-Regular.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Pretendard Std'; src: url('/fonts/PretendardStd-Medium.otf') format('opentype'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Pretendard Std'; src: url('/fonts/PretendardStd-SemiBold.otf') format('opentype'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Pretendard Std'; src: url('/fonts/PretendardStd-Bold.otf') format('opentype'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Pretendard Std'; src: url('/fonts/PretendardStd-ExtraBold.otf') format('opentype'); font-weight: 800; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Pretendard Std'; src: url('/fonts/PretendardStd-Black.otf') format('opentype'); font-weight: 900; font-style: normal; font-display: swap; }
+
+@font-face { font-family: 'Pretendard'; src: url('/fonts/Pretendard-Thin.otf') format('opentype'); font-weight: 100; font-style: normal; font-display: swap; unicode-range: U+AC00-D7AF, U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF; }
+@font-face { font-family: 'Pretendard'; src: url('/fonts/Pretendard-ExtraLight.otf') format('opentype'); font-weight: 200; font-style: normal; font-display: swap; unicode-range: U+AC00-D7AF, U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF; }
+@font-face { font-family: 'Pretendard'; src: url('/fonts/Pretendard-Light.otf') format('opentype'); font-weight: 300; font-style: normal; font-display: swap; unicode-range: U+AC00-D7AF, U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF; }
+@font-face { font-family: 'Pretendard'; src: url('/fonts/Pretendard-Regular.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; unicode-range: U+AC00-D7AF, U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF; }
+@font-face { font-family: 'Pretendard'; src: url('/fonts/Pretendard-Medium.otf') format('opentype'); font-weight: 500; font-style: normal; font-display: swap; unicode-range: U+AC00-D7AF, U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF; }
+@font-face { font-family: 'Pretendard'; src: url('/fonts/Pretendard-SemiBold.otf') format('opentype'); font-weight: 600; font-style: normal; font-display: swap; unicode-range: U+AC00-D7AF, U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF; }
+@font-face { font-family: 'Pretendard'; src: url('/fonts/Pretendard-Bold.otf') format('opentype'); font-weight: 700; font-style: normal; font-display: swap; unicode-range: U+AC00-D7AF, U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF; }
+@font-face { font-family: 'Pretendard'; src: url('/fonts/Pretendard-ExtraBold.otf') format('opentype'); font-weight: 800; font-style: normal; font-display: swap; unicode-range: U+AC00-D7AF, U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF; }
+@font-face { font-family: 'Pretendard'; src: url('/fonts/Pretendard-Black.otf') format('opentype'); font-weight: 900; font-style: normal; font-display: swap; unicode-range: U+AC00-D7AF, U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF; }
+
+@font-face { font-family: 'Pretendard JP'; src: url('/fonts/PretendardJP-Thin.otf') format('opentype'); font-weight: 100; font-style: normal; font-display: swap; unicode-range: U+3000-303F, U+3040-309F, U+30A0-30FF, U+4E00-9FFF, U+FF00-FFEF; }
+@font-face { font-family: 'Pretendard JP'; src: url('/fonts/PretendardJP-ExtraLight.otf') format('opentype'); font-weight: 200; font-style: normal; font-display: swap; unicode-range: U+3000-303F, U+3040-309F, U+30A0-30FF, U+4E00-9FFF, U+FF00-FFEF; }
+@font-face { font-family: 'Pretendard JP'; src: url('/fonts/PretendardJP-Light.otf') format('opentype'); font-weight: 300; font-style: normal; font-display: swap; unicode-range: U+3000-303F, U+3040-309F, U+30A0-30FF, U+4E00-9FFF, U+FF00-FFEF; }
+@font-face { font-family: 'Pretendard JP'; src: url('/fonts/PretendardJP-Regular.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; unicode-range: U+3000-303F, U+3040-309F, U+30A0-30FF, U+4E00-9FFF, U+FF00-FFEF; }
+@font-face { font-family: 'Pretendard JP'; src: url('/fonts/PretendardJP-Medium.otf') format('opentype'); font-weight: 500; font-style: normal; font-display: swap; unicode-range: U+3000-303F, U+3040-309F, U+30A0-30FF, U+4E00-9FFF, U+FF00-FFEF; }
+@font-face { font-family: 'Pretendard JP'; src: url('/fonts/PretendardJP-SemiBold.otf') format('opentype'); font-weight: 600; font-style: normal; font-display: swap; unicode-range: U+3000-303F, U+3040-309F, U+30A0-30FF, U+4E00-9FFF, U+FF00-FFEF; }
+@font-face { font-family: 'Pretendard JP'; src: url('/fonts/PretendardJP-Bold.otf') format('opentype'); font-weight: 700; font-style: normal; font-display: swap; unicode-range: U+3000-303F, U+3040-309F, U+30A0-30FF, U+4E00-9FFF, U+FF00-FFEF; }
+@font-face { font-family: 'Pretendard JP'; src: url('/fonts/PretendardJP-ExtraBold.otf') format('opentype'); font-weight: 800; font-style: normal; font-display: swap; unicode-range: U+3000-303F, U+3040-309F, U+30A0-30FF, U+4E00-9FFF, U+FF00-FFEF; }
+@font-face { font-family: 'Pretendard JP'; src: url('/fonts/PretendardJP-Black.otf') format('opentype'); font-weight: 900; font-style: normal; font-display: swap; unicode-range: U+3000-303F, U+3040-309F, U+30A0-30FF, U+4E00-9FFF, U+FF00-FFEF; }
 
 @import "tailwindcss";
 @import "tw-animate-css";
@@ -89,7 +128,7 @@
   --color-ring: var(--ring);
 
   /* Navigation glass */
-  --color-nav-glass: rgba(255, 255, 255, 0.85);
+  --color-nav-glass: var(--nav-glass);
 
   /* Spacing */
   --spacing-section-y: var(--section-y);
@@ -132,6 +171,8 @@
   --line: rgba(9, 9, 11, 0.08);
   --line-strong: rgba(9, 9, 11, 0.15);
 
+  --nav-glass: rgba(255, 255, 255, 0.85);
+
   --background: #ffffff;
   --foreground: #09090b;
 
@@ -161,7 +202,52 @@
   --ring: #10b981;
 
   --radius: 0.5rem;
+}
 
+.dark {
+  --paper: #09090b;
+  --paper-2: #111113;
+  --surface: #18181b;
+  --surface-warm: #052e16;
+  --ink: #fafafa;
+  --ink-2: #e4e4e7;
+  --warm-muted: #a1a1aa;
+  --fg-1: #71717a;
+
+  --signal: #059669;
+
+  --line: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.15);
+
+  --nav-glass: rgba(9, 9, 11, 0.85);
+
+  --background: #09090b;
+  --foreground: #fafafa;
+
+  --card: #18181b;
+  --card-foreground: #fafafa;
+
+  --popover: #18181b;
+  --popover-foreground: #fafafa;
+
+  --primary: #059669;
+  --primary-foreground: #ffffff;
+
+  --secondary: #27272a;
+  --secondary-foreground: #fafafa;
+
+  --muted: #27272a;
+  --muted-foreground: #a1a1aa;
+
+  --accent: #27272a;
+  --accent-foreground: #fafafa;
+
+  --destructive: #ef4444;
+  --destructive-foreground: #fafafa;
+
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.1);
+  --ring: #059669;
 }
 
 @layer base {
@@ -186,7 +272,7 @@
 
 @layer utilities {
   .skip-link {
-    @apply absolute left-4 top-2 z-[60] rounded-md bg-ink px-4 py-2 text-sm font-medium text-white;
+    @apply absolute left-4 top-2 z-[60] rounded-md bg-ink px-4 py-2 text-sm font-medium text-paper;
     transform: translateY(-140%);
     transition: transform 0.2s ease;
   }
@@ -203,8 +289,8 @@
 
   .bg-grid {
     background-image:
-      linear-gradient(rgba(9, 9, 11, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(9, 9, 11, 0.04) 1px, transparent 1px);
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
     background-size: 24px 24px;
   }
 

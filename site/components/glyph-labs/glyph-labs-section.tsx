@@ -17,9 +17,9 @@ import {
 
 const FONT_CONFIGS = [
   { name: "Sunghyun Sans", url: "/fonts/SunghyunSans-Regular.otf", color: "#10b981", dotClass: "bg-emerald-500", latinOnly: false, hasWeights: true },
-  { name: "Open Runde", url: "/fonts/OpenRunde-Regular.otf", color: "#f59e0b", dotClass: "bg-amber-500", latinOnly: true, hasWeights: false },
-  { name: "Inter", url: "/fonts/Inter-Regular.otf", color: "#8b5cf6", dotClass: "bg-violet-500", latinOnly: true, hasWeights: false },
-  { name: "Pretendard", url: "/fonts/PretendardStd-Regular.otf", color: "#3b82f6", dotClass: "bg-blue-500", latinOnly: false, hasWeights: false },
+  { name: "Open Runde", url: "/fonts/OpenRunde-Regular.otf", color: "#f59e0b", dotClass: "bg-amber-500", latinOnly: true, hasWeights: true },
+  { name: "Inter", url: "/fonts/Inter-Regular.otf", color: "#8b5cf6", dotClass: "bg-violet-500", latinOnly: true, hasWeights: true },
+  { name: "Pretendard", url: "/fonts/PretendardStd-Regular.otf", color: "#3b82f6", dotClass: "bg-blue-500", latinOnly: false, hasWeights: true },
 ];
 
 const NON_LATIN_RE = /[\u3000-\u9FFF\uAC00-\uD7AF\uF900-\uFAFF]/;
@@ -46,7 +46,24 @@ const WEIGHTED_FAMILIES: Record<string, string> = {
   "Sunghyun Sans": "/fonts/SunghyunSans",
   "Sunghyun Sans KR": "/fonts/SunghyunSansKR",
   "Sunghyun Sans JP": "/fonts/SunghyunSansJP",
+  "Open Runde": "/fonts/OpenRunde",
+  "Inter": "/fonts/Inter",
+  "Pretendard": "/fonts/PretendardStd",
+  "Pretendard KR": "/fonts/Pretendard",
+  "Pretendard JP": "/fonts/PretendardJP",
 };
+
+const FONT_AVAILABLE_WEIGHTS: Record<string, readonly WeightValue[]> = {
+  "Open Runde": [400, 500, 600, 700],
+};
+
+function nearestWeight(name: string, target: WeightValue): WeightValue {
+  const available = FONT_AVAILABLE_WEIGHTS[name];
+  if (!available) return target;
+  return available.reduce((prev, curr) =>
+    Math.abs(curr - target) < Math.abs(prev - target) ? curr : prev
+  );
+}
 
 const EXTRA_FONTS: Array<{ name: string; url: string }> = [
   { name: "Sunghyun Sans KR", url: "/fonts/SunghyunSansKR-Regular.otf" },
@@ -223,7 +240,6 @@ function GlyphLabsControls({
             onValueChange={(v) => setFontWeight(v[0] as WeightValue)}
             className="w-full cursor-pointer"
           />
-          <p className="text-xs text-fg-1">{t("weightNotice")}</p>
         </div>
 
         <div className="flex items-center justify-between gap-4">
@@ -402,7 +418,9 @@ export function GlyphLabsSection() {
     const seen = new Set<string>();
     for (const font of activeFonts) {
       const resolved = getScriptVariant(font.name, selectedChar);
-      const weight: WeightValue = WEIGHTED_FAMILIES[resolved] ? fontWeight : 400;
+      const weight: WeightValue = WEIGHTED_FAMILIES[resolved]
+        ? nearestWeight(resolved, fontWeight)
+        : 400;
       const key = fontCacheKey(resolved, weight);
       if (!seen.has(key)) {
         seen.add(key);
@@ -419,7 +437,9 @@ export function GlyphLabsSection() {
 
   const resolveFontCacheKey = (name: string) => {
     const resolved = getScriptVariant(name, selectedChar);
-    const weight: WeightValue = WEIGHTED_FAMILIES[resolved] ? fontWeight : 400;
+    const weight: WeightValue = WEIGHTED_FAMILIES[resolved]
+      ? nearestWeight(resolved, fontWeight)
+      : 400;
     return fontCacheKey(resolved, weight);
   };
 

@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { useRouter, usePathname } from "@/i18n/navigation";
+import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -10,11 +11,155 @@ import { RELEASES_URL } from "@/lib/constants";
 
 const LOCALES = ["en", "kr", "jp"] as const;
 
-export function Navigation() {
+const LOCALE_LABELS: Record<string, string> = {
+  en: "EN",
+  kr: "KR",
+  jp: "JP",
+};
+
+const THEME_CYCLE = ["light", "dark", "system"] as const;
+
+const THEME_ICONS: Record<string, React.ReactNode> = {
+  light: (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <circle cx="8" cy="8" r="3.5" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M8 1.5v1M8 13.5v1M13.5 8h1M1.5 8h1M11.89 4.11l.7-.7M3.41 12.59l.7-.7M11.89 11.89l.7.7M3.41 3.41l.7.7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  ),
+  dark: (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path d="M13.36 10.06A6 6 0 0 1 5.94 2.64 6 6 0 1 0 13.36 10.06Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+    </svg>
+  ),
+  system: (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <rect x="2" y="3" width="12" height="8" rx="1.5" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M5.5 14h5M8 11v3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  ),
+};
+
+const THEME_LABELS: Record<string, string> = {
+  light: "Light mode",
+  dark: "Dark mode",
+  system: "System theme",
+};
+
+function ThemeToggle() {
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) {
+    return <div className="size-9 rounded-full" aria-hidden="true" />;
+  }
+
+  const current = theme ?? "system";
+  const nextIndex = (THEME_CYCLE.indexOf(current as typeof THEME_CYCLE[number]) + 1) % THEME_CYCLE.length;
+  const next = THEME_CYCLE[nextIndex];
+
+  return (
+    <button
+      type="button"
+      onClick={() => setTheme(next)}
+      className="focus-ring flex size-9 items-center justify-center rounded-full border border-line text-warm-muted transition-colors hover:border-line-strong hover:text-ink"
+      aria-label={THEME_LABELS[current]}
+      title={THEME_LABELS[current]}
+    >
+      {THEME_ICONS[current]}
+    </button>
+  );
+}
+
+function LocaleDropdown() {
   const t = useTranslations("Nav");
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const handleLocaleChange = useCallback(
+    (newLocale: string) => {
+      router.replace(pathname, { locale: newLocale });
+      setOpen(false);
+    },
+    [router, pathname]
+  );
+
+  useEffect(() => {
+    if (!open) return;
+    const handleClickOutside = (e: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleEscape);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [open]);
+
+  return (
+    <div ref={containerRef} className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen((prev) => !prev)}
+        aria-expanded={open}
+        aria-haspopup="listbox"
+        aria-label={t("language")}
+        className="focus-ring flex h-9 items-center gap-1.5 rounded-full border border-line px-3 text-xs font-medium text-warm-muted transition-colors hover:border-line-strong hover:text-ink"
+      >
+        {LOCALE_LABELS[locale] ?? locale.toUpperCase()}
+        <svg
+          width="10"
+          height="10"
+          viewBox="0 0 10 10"
+          fill="none"
+          aria-hidden="true"
+          className={cn("transition-transform duration-150", open && "rotate-180")}
+        >
+          <path d="M2.5 3.75L5 6.25L7.5 3.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </button>
+
+      {open && (
+        <div
+          role="listbox"
+          aria-label={t("language")}
+          className="absolute right-0 top-full mt-2 min-w-[5rem] overflow-hidden rounded-xl border border-line bg-paper shadow-lg backdrop-blur-xl"
+        >
+          {LOCALES.map((l) => (
+            <button
+              key={l}
+              type="button"
+              role="option"
+              aria-selected={locale === l}
+              onClick={() => handleLocaleChange(l)}
+              className={cn(
+                "flex w-full items-center gap-2 px-3 py-2 text-xs font-medium transition-colors",
+                locale === l
+                  ? "bg-signal/10 text-signal"
+                  : "text-warm-muted hover:bg-paper-2 hover:text-ink"
+              )}
+            >
+              {LOCALE_LABELS[l]}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export function Navigation() {
+  const t = useTranslations("Nav");
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -39,10 +184,6 @@ export function Navigation() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  const handleLocaleChange = (newLocale: string) => {
-    router.replace(pathname, { locale: newLocale });
-  };
 
   const scrollToTop = () => {
     const prefersReducedMotion = window.matchMedia(
@@ -72,34 +213,13 @@ export function Navigation() {
             {t("brand")}
           </button>
 
-          <div className="flex items-center gap-4">
-            <div
-              className="flex items-center rounded-full border border-line bg-surface-warm p-1"
-              role="group"
-              aria-label={t("language")}
-            >
-              {LOCALES.map((l) => (
-                <button
-                  type="button"
-                  key={l}
-                  onClick={() => handleLocaleChange(l)}
-                  aria-pressed={locale === l}
-                  aria-label={`${t("language")} ${l.toUpperCase()}`}
-                  className={cn(
-                    "focus-ring rounded-full px-3 py-1 text-xs font-medium transition-[color,background-color,border-color,box-shadow]",
-                    locale === l
-                      ? "bg-ink text-white shadow-sm"
-                      : "text-warm-muted hover:bg-paper hover:text-ink"
-                  )}
-                >
-                  {l.toUpperCase()}
-                </button>
-              ))}
-            </div>
+          <div className="flex items-center gap-3">
+            <LocaleDropdown />
+            <ThemeToggle />
 
             <Button
               asChild
-              className="btn-signal focus-ring rounded-full bg-signal text-white shadow-sm hover:border-emerald-600 hover:bg-emerald-600"
+              className="btn-signal focus-ring rounded-full bg-signal text-white shadow-sm hover:border-emerald-600 hover:bg-emerald-600 dark:hover:border-emerald-700 dark:hover:bg-emerald-700"
             >
               <a href={RELEASES_URL} target="_blank" rel="noopener noreferrer">
                 {t("download")}

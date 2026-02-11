@@ -10,7 +10,7 @@ export function CTASection() {
   const t = useTranslations("CTA");
 
   return (
-    <section className="bg-gradient-to-br from-emerald-500 to-emerald-700 py-section-y">
+    <section className="bg-gradient-to-br from-emerald-500 to-emerald-700 dark:from-emerald-900 dark:to-emerald-950 py-section-y">
       <motion.div
         variants={fadeInUp}
         initial="hidden"
@@ -32,14 +32,14 @@ export function CTASection() {
               href={RELEASES_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="focus-ring inline-flex items-center gap-2 rounded-full border border-transparent bg-white px-8 py-4 text-lg font-semibold text-emerald-700 shadow-lg transition-[background-color,color,border-color,box-shadow] hover:bg-emerald-50"
+              className="focus-ring inline-flex items-center gap-2 rounded-full border border-transparent bg-white px-8 py-4 text-lg font-semibold text-emerald-700 shadow-lg transition-[background-color,color,border-color,box-shadow] hover:bg-emerald-50 dark:bg-emerald-400 dark:text-emerald-950 dark:hover:bg-emerald-300"
             >
               {t("ctaDownload")}
             </a>
             
             <a
               href="#preview"
-              className="focus-ring inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-8 py-4 text-lg font-semibold text-white transition-[background-color,border-color,color] hover:border-white hover:bg-white/10"
+              className="focus-ring inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-8 py-4 text-lg font-semibold text-white transition-[background-color,border-color,color] hover:border-white hover:bg-white/10 dark:border-emerald-400/30 dark:text-emerald-100 dark:hover:border-emerald-400 dark:hover:bg-emerald-400/10"
             >
               {t("ctaSpecimens")}
             </a>

@@ -5,6 +5,7 @@ import {hasLocale} from 'next-intl';
 import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import {SITE_URL} from '@/lib/constants';
+import {ThemeProvider} from '@/components/theme-provider';
 import {Navigation} from '@/components/navigation';
 import {Footer} from '@/components/footer';
 import {MotionProvider} from '@/components/motion-provider';
@@ -68,17 +69,19 @@ export default async function LocaleLayout({children, params}: Props) {
   const navT = await getTranslations({locale, namespace: 'Nav'});
 
   return (
-    <html lang={locale} className="scroll-smooth">
-      <body className="font-sans antialiased bg-white text-ink overflow-x-hidden">
+    <html lang={locale} className="scroll-smooth" suppressHydrationWarning>
+      <body className="font-sans antialiased bg-paper text-ink overflow-x-hidden">
         <NextIntlClientProvider>
-          <MotionProvider>
-            <a href="#main-content" className="skip-link">
-              {navT('skipToContent')}
-            </a>
-            <Navigation />
-            {children}
-            <Footer />
-          </MotionProvider>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+            <MotionProvider>
+              <a href="#main-content" className="skip-link">
+                {navT('skipToContent')}
+              </a>
+              <Navigation />
+              {children}
+              <Footer />
+            </MotionProvider>
+          </ThemeProvider>
         </NextIntlClientProvider>
       </body>
     </html>

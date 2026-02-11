@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <main
       id="main-content"
-      className="min-h-screen bg-background selection:bg-emerald-500/20 selection:text-emerald-900"
+      className="min-h-screen bg-background selection:bg-emerald-500/20 selection:text-emerald-900 dark:selection:text-emerald-100"
     >
       <HeroSection />
       <WeightShowcase />
