@@ -149,10 +149,36 @@
   /* Transitions */
   --transition-property-input: color, box-shadow;
 
-  --radius-lg: var(--radius);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-sm: calc(var(--radius) - 4px);
+   --radius-lg: var(--radius);
+   --radius-md: calc(var(--radius) - 2px);
+   --radius-sm: calc(var(--radius) - 4px);
 
+   /* Animations */
+   --animate-collapsible-down: collapsible-down 0.3s ease-in-out;
+   --animate-collapsible-up: collapsible-up 0.3s ease-in-out;
+
+}
+
+@keyframes collapsible-down {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: var(--radix-collapsible-content-height);
+    opacity: 1;
+  }
+}
+
+@keyframes collapsible-up {
+  from {
+    height: var(--radix-collapsible-content-height);
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
 }
 
 :root {

@@ -1,11 +1,17 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { useRouter, usePathname } from "@/i18n/navigation";
 import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 import { RELEASES_URL } from "@/lib/constants";
 
@@ -77,84 +83,59 @@ function LocaleDropdown() {
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
 
-  const handleLocaleChange = useCallback(
-    (newLocale: string) => {
-      router.replace(pathname, { locale: newLocale });
-      setOpen(false);
-    },
-    [router, pathname]
-  );
-
-  useEffect(() => {
-    if (!open) return;
-    const handleClickOutside = (e: MouseEvent) => {
-      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
-        setOpen(false);
-      }
-    };
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("keydown", handleEscape);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("keydown", handleEscape);
-    };
-  }, [open]);
+  const handleLocaleChange = (newLocale: string) => {
+    router.replace(pathname, { locale: newLocale });
+  };
 
   return (
-    <div ref={containerRef} className="relative">
-      <button
-        type="button"
-        onClick={() => setOpen((prev) => !prev)}
-        aria-expanded={open}
-        aria-haspopup="listbox"
-        aria-label={t("language")}
-        className="focus-ring flex h-9 items-center gap-1.5 rounded-full border border-line px-3 text-xs font-medium text-warm-muted transition-colors hover:border-line-strong hover:text-ink"
-      >
-        {LOCALE_LABELS[locale] ?? locale.toUpperCase()}
-        <svg
-          width="10"
-          height="10"
-          viewBox="0 0 10 10"
-          fill="none"
-          aria-hidden="true"
-          className={cn("transition-transform duration-150", open && "rotate-180")}
-        >
-          <path d="M2.5 3.75L5 6.25L7.5 3.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </button>
-
-      {open && (
-        <div
-          role="listbox"
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <button
+          type="button"
           aria-label={t("language")}
-          className="absolute right-0 top-full mt-2 min-w-[5rem] overflow-hidden rounded-xl border border-line bg-paper shadow-lg backdrop-blur-xl"
+          className="focus-ring group flex h-9 items-center gap-1.5 rounded-full border border-line px-3 text-xs font-medium text-warm-muted transition-colors hover:border-line-strong hover:text-ink"
         >
-          {LOCALES.map((l) => (
-            <button
-              key={l}
-              type="button"
-              role="option"
-              aria-selected={locale === l}
-              onClick={() => handleLocaleChange(l)}
-              className={cn(
-                "flex w-full items-center gap-2 px-3 py-2 text-xs font-medium transition-colors",
-                locale === l
-                  ? "bg-signal/10 text-signal"
-                  : "text-warm-muted hover:bg-paper-2 hover:text-ink"
-              )}
-            >
-              {LOCALE_LABELS[l]}
-            </button>
-          ))}
-        </div>
-      )}
-    </div>
+          {LOCALE_LABELS[locale] ?? locale.toUpperCase()}
+          <svg
+            width="10"
+            height="10"
+            viewBox="0 0 10 10"
+            fill="none"
+            aria-hidden="true"
+            className="transition-transform duration-150 group-data-[state=open]:rotate-180"
+          >
+            <path
+              d="M2.5 3.75L5 6.25L7.5 3.75"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent
+        align="end"
+        sideOffset={8}
+        className="min-w-[5rem] overflow-hidden rounded-xl border-line bg-paper p-0 shadow-lg backdrop-blur-xl"
+      >
+        {LOCALES.map((l) => (
+          <DropdownMenuItem
+            key={l}
+            onClick={() => handleLocaleChange(l)}
+            className={cn(
+              "flex w-full items-center gap-2 px-3 py-2 text-xs font-medium transition-colors cursor-pointer",
+              locale === l
+                ? "bg-signal/10 text-signal focus:bg-signal/10 focus:text-signal"
+                : "text-warm-muted hover:bg-paper-2 hover:text-ink focus:bg-paper-2 focus:text-ink"
+            )}
+          >
+            {LOCALE_LABELS[l]}
+          </DropdownMenuItem>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }
 
