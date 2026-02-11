@@ -1,0 +1,284 @@
+@font-face { font-family: 'Sunghyun Sans'; src: url('/fonts/SunghyunSans-Thin.woff2') format('woff2'), url('/fonts/SunghyunSans-Thin.woff') format('woff'); font-weight: 100; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Sunghyun Sans'; src: url('/fonts/SunghyunSans-ExtraLight.woff2') format('woff2'), url('/fonts/SunghyunSans-ExtraLight.woff') format('woff'); font-weight: 200; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Sunghyun Sans'; src: url('/fonts/SunghyunSans-Light.woff2') format('woff2'), url('/fonts/SunghyunSans-Light.woff') format('woff'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Sunghyun Sans'; src: url('/fonts/SunghyunSans-Regular.woff2') format('woff2'), url('/fonts/SunghyunSans-Regular.woff') format('woff'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Sunghyun Sans'; src: url('/fonts/SunghyunSans-Medium.woff2') format('woff2'), url('/fonts/SunghyunSans-Medium.woff') format('woff'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Sunghyun Sans'; src: url('/fonts/SunghyunSans-SemiBold.woff2') format('woff2'), url('/fonts/SunghyunSans-SemiBold.woff') format('woff'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Sunghyun Sans'; src: url('/fonts/SunghyunSans-Bold.woff2') format('woff2'), url('/fonts/SunghyunSans-Bold.woff') format('woff'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Sunghyun Sans'; src: url('/fonts/SunghyunSans-ExtraBold.woff2') format('woff2'), url('/fonts/SunghyunSans-ExtraBold.woff') format('woff'); font-weight: 800; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Sunghyun Sans'; src: url('/fonts/SunghyunSans-Black.woff2') format('woff2'), url('/fonts/SunghyunSans-Black.woff') format('woff'); font-weight: 900; font-style: normal; font-display: swap; }
+
+@font-face { font-family: 'Sunghyun Sans KR'; src: url('/fonts/SunghyunSansKR-Thin.woff2') format('woff2'), url('/fonts/SunghyunSansKR-Thin.woff') format('woff'); font-weight: 100; font-style: normal; font-display: swap; unicode-range: U+AC00-D7AF, U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF; }
+@font-face { font-family: 'Sunghyun Sans KR'; src: url('/fonts/SunghyunSansKR-ExtraLight.woff2') format('woff2'), url('/fonts/SunghyunSansKR-ExtraLight.woff') format('woff'); font-weight: 200; font-style: normal; font-display: swap; unicode-range: U+AC00-D7AF, U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF; }
+@font-face { font-family: 'Sunghyun Sans KR'; src: url('/fonts/SunghyunSansKR-Light.woff2') format('woff2'), url('/fonts/SunghyunSansKR-Light.woff') format('woff'); font-weight: 300; font-style: normal; font-display: swap; unicode-range: U+AC00-D7AF, U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF; }
+@font-face { font-family: 'Sunghyun Sans KR'; src: url('/fonts/SunghyunSansKR-Regular.woff2') format('woff2'), url('/fonts/SunghyunSansKR-Regular.woff') format('woff'); font-weight: 400; font-style: normal; font-display: swap; unicode-range: U+AC00-D7AF, U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF; }
+@font-face { font-family: 'Sunghyun Sans KR'; src: url('/fonts/SunghyunSansKR-Medium.woff2') format('woff2'), url('/fonts/SunghyunSansKR-Medium.woff') format('woff'); font-weight: 500; font-style: normal; font-display: swap; unicode-range: U+AC00-D7AF, U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF; }
+@font-face { font-family: 'Sunghyun Sans KR'; src: url('/fonts/SunghyunSansKR-SemiBold.woff2') format('woff2'), url('/fonts/SunghyunSansKR-SemiBold.woff') format('woff'); font-weight: 600; font-style: normal; font-display: swap; unicode-range: U+AC00-D7AF, U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF; }
+@font-face { font-family: 'Sunghyun Sans KR'; src: url('/fonts/SunghyunSansKR-Bold.woff2') format('woff2'), url('/fonts/SunghyunSansKR-Bold.woff') format('woff'); font-weight: 700; font-style: normal; font-display: swap; unicode-range: U+AC00-D7AF, U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF; }
+@font-face { font-family: 'Sunghyun Sans KR'; src: url('/fonts/SunghyunSansKR-ExtraBold.woff2') format('woff2'), url('/fonts/SunghyunSansKR-ExtraBold.woff') format('woff'); font-weight: 800; font-style: normal; font-display: swap; unicode-range: U+AC00-D7AF, U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF; }
+@font-face { font-family: 'Sunghyun Sans KR'; src: url('/fonts/SunghyunSansKR-Black.woff2') format('woff2'), url('/fonts/SunghyunSansKR-Black.woff') format('woff'); font-weight: 900; font-style: normal; font-display: swap; unicode-range: U+AC00-D7AF, U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF; }
+
+@font-face { font-family: 'Sunghyun Sans JP'; src: url('/fonts/SunghyunSansJP-Thin.woff2') format('woff2'), url('/fonts/SunghyunSansJP-Thin.woff') format('woff'); font-weight: 100; font-style: normal; font-display: swap; unicode-range: U+3000-303F, U+3040-309F, U+30A0-30FF, U+4E00-9FFF, U+FF00-FFEF; }
+@font-face { font-family: 'Sunghyun Sans JP'; src: url('/fonts/SunghyunSansJP-ExtraLight.woff2') format('woff2'), url('/fonts/SunghyunSansJP-ExtraLight.woff') format('woff'); font-weight: 200; font-style: normal; font-display: swap; unicode-range: U+3000-303F, U+3040-309F, U+30A0-30FF, U+4E00-9FFF, U+FF00-FFEF; }
+@font-face { font-family: 'Sunghyun Sans JP'; src: url('/fonts/SunghyunSansJP-Light.woff2') format('woff2'), url('/fonts/SunghyunSansJP-Light.woff') format('woff'); font-weight: 300; font-style: normal; font-display: swap; unicode-range: U+3000-303F, U+3040-309F, U+30A0-30FF, U+4E00-9FFF, U+FF00-FFEF; }
+@font-face { font-family: 'Sunghyun Sans JP'; src: url('/fonts/SunghyunSansJP-Regular.woff2') format('woff2'), url('/fonts/SunghyunSansJP-Regular.woff') format('woff'); font-weight: 400; font-style: normal; font-display: swap; unicode-range: U+3000-303F, U+3040-309F, U+30A0-30FF, U+4E00-9FFF, U+FF00-FFEF; }
+@font-face { font-family: 'Sunghyun Sans JP'; src: url('/fonts/SunghyunSansJP-Medium.woff2') format('woff2'), url('/fonts/SunghyunSansJP-Medium.woff') format('woff'); font-weight: 500; font-style: normal; font-display: swap; unicode-range: U+3000-303F, U+3040-309F, U+30A0-30FF, U+4E00-9FFF, U+FF00-FFEF; }
+@font-face { font-family: 'Sunghyun Sans JP'; src: url('/fonts/SunghyunSansJP-SemiBold.woff2') format('woff2'), url('/fonts/SunghyunSansJP-SemiBold.woff') format('woff'); font-weight: 600; font-style: normal; font-display: swap; unicode-range: U+3000-303F, U+3040-309F, U+30A0-30FF, U+4E00-9FFF, U+FF00-FFEF; }
+@font-face { font-family: 'Sunghyun Sans JP'; src: url('/fonts/SunghyunSansJP-Bold.woff2') format('woff2'), url('/fonts/SunghyunSansJP-Bold.woff') format('woff'); font-weight: 700; font-style: normal; font-display: swap; unicode-range: U+3000-303F, U+3040-309F, U+30A0-30FF, U+4E00-9FFF, U+FF00-FFEF; }
+@font-face { font-family: 'Sunghyun Sans JP'; src: url('/fonts/SunghyunSansJP-Black.woff2') format('woff2'), url('/fonts/SunghyunSansJP-Black.woff') format('woff'); font-weight: 900; font-style: normal; font-display: swap; unicode-range: U+3000-303F, U+3040-309F, U+30A0-30FF, U+4E00-9FFF, U+FF00-FFEF; }
+
+@font-face { font-family: 'Sunghyun Sans Disambiguated'; src: url('/fonts/SunghyunSansDisambiguated-Thin.woff2') format('woff2'), url('/fonts/SunghyunSansDisambiguated-Thin.woff') format('woff'); font-weight: 100; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Sunghyun Sans Disambiguated'; src: url('/fonts/SunghyunSansDisambiguated-ExtraLight.woff2') format('woff2'), url('/fonts/SunghyunSansDisambiguated-ExtraLight.woff') format('woff'); font-weight: 200; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Sunghyun Sans Disambiguated'; src: url('/fonts/SunghyunSansDisambiguated-Light.woff2') format('woff2'), url('/fonts/SunghyunSansDisambiguated-Light.woff') format('woff'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Sunghyun Sans Disambiguated'; src: url('/fonts/SunghyunSansDisambiguated-Regular.woff2') format('woff2'), url('/fonts/SunghyunSansDisambiguated-Regular.woff') format('woff'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Sunghyun Sans Disambiguated'; src: url('/fonts/SunghyunSansDisambiguated-Medium.woff2') format('woff2'), url('/fonts/SunghyunSansDisambiguated-Medium.woff') format('woff'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Sunghyun Sans Disambiguated'; src: url('/fonts/SunghyunSansDisambiguated-SemiBold.woff2') format('woff2'), url('/fonts/SunghyunSansDisambiguated-SemiBold.woff') format('woff'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Sunghyun Sans Disambiguated'; src: url('/fonts/SunghyunSansDisambiguated-Bold.woff2') format('woff2'), url('/fonts/SunghyunSansDisambiguated-Bold.woff') format('woff'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Sunghyun Sans Disambiguated'; src: url('/fonts/SunghyunSansDisambiguated-ExtraBold.woff2') format('woff2'), url('/fonts/SunghyunSansDisambiguated-ExtraBold.woff') format('woff'); font-weight: 800; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Sunghyun Sans Disambiguated'; src: url('/fonts/SunghyunSansDisambiguated-Black.woff2') format('woff2'), url('/fonts/SunghyunSansDisambiguated-Black.woff') format('woff'); font-weight: 900; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Open Runde'; src: url('/fonts/OpenRunde-Regular.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Inter'; src: url('/fonts/Inter-Regular.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Pretendard Std'; src: url('/fonts/PretendardStd-Regular.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Pretendard'; src: url('/fonts/Pretendard-Regular.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Pretendard JP'; src: url('/fonts/PretendardJP-Regular.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
+
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: 'Sunghyun Sans', 'Sunghyun Sans KR', 'Sunghyun Sans JP', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  /* Design system */
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-surface: var(--surface);
+  --color-surface-warm: var(--surface-warm);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-warm-muted: var(--warm-muted);
+  --color-signal: var(--signal);
+
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+
+  /* Legacy compat */
+  --color-fg-1: var(--fg-1);
+  --color-nav: var(--ink);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Navigation glass */
+  --color-nav-glass: rgba(255, 255, 255, 0.85);
+
+  /* Spacing */
+  --spacing-section-y: var(--section-y);
+  --spacing-container-px: clamp(16px, 3vw, 28px);
+
+  /* Sizing */
+  --max-width-container: 1320px;
+  --spacing-panel: 600px;
+  --spacing-hero: 80vh;
+  --spacing-switch: 1.15rem;
+
+  /* Ring */
+  --ring-width-focus: 3px;
+
+  /* Grid templates */
+  --grid-template-columns-preview: 1fr 1fr 2fr;
+
+  /* Transitions */
+  --transition-property-input: color, box-shadow;
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+}
+
+:root {
+  --section-y: clamp(64px, 8vw, 120px);
+  --paper: #ffffff;
+  --paper-2: #f4f4f5;
+  --surface: #ffffff;
+  --surface-warm: #f0fdf4;
+  --ink: #09090b;
+  --ink-2: #18181b;
+  --warm-muted: #71717a;
+  --fg-1: #a1a1aa;
+
+  --signal: #10b981;
+
+  --line: rgba(9, 9, 11, 0.08);
+  --line-strong: rgba(9, 9, 11, 0.15);
+
+  --background: #ffffff;
+  --foreground: #09090b;
+
+  --card: #ffffff;
+  --card-foreground: #09090b;
+
+  --popover: #ffffff;
+  --popover-foreground: #09090b;
+
+  --primary: #10b981;
+  --primary-foreground: #ffffff;
+
+  --secondary: #f4f4f5;
+  --secondary-foreground: #09090b;
+
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+
+  --accent: #f4f4f5;
+  --accent-foreground: #09090b;
+
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+
+  --border: rgba(9, 9, 11, 0.08);
+  --input: rgba(9, 9, 11, 0.08);
+  --ring: #10b981;
+
+  --radius: 0.5rem;
+
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    scroll-padding-top: 5rem;
+  }
+  button,
+  a,
+  input,
+  textarea,
+  [role="button"] {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(16, 185, 129, 0.18);
+  }
+}
+
+@layer utilities {
+  .skip-link {
+    @apply absolute left-4 top-2 z-[60] rounded-md bg-ink px-4 py-2 text-sm font-medium text-white;
+    transform: translateY(-140%);
+    transition: transform 0.2s ease;
+  }
+
+  .skip-link:focus-visible {
+    transform: translateY(0);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.45);
+  }
+
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/45 focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(9, 9, 11, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(9, 9, 11, 0.04) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .section-container {
+    max-width: 1320px;
+    margin-inline: auto;
+    padding-inline: clamp(16px, 3vw, 28px);
+  }
+
+  .type-hero {
+    font-size: clamp(44px, 6.5vw, 96px);
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+  }
+
+  .type-display {
+    font-size: clamp(28px, 3.5vw, 56px);
+    line-height: 1.0;
+    letter-spacing: -0.015em;
+  }
+
+  .type-section {
+    font-size: clamp(24px, 3vw, 44px);
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+  }
+
+  .type-body {
+    font-size: clamp(16px, 1.1vw, 18px);
+    line-height: 1.5;
+  }
+
+  .type-micro {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .type-weight-sample {
+    font-size: clamp(24px, 4vw, 48px);
+  }
+
+  .btn-signal {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 2rem;
+    background: var(--signal);
+    color: white;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    border: 2px solid var(--signal);
+  }
+}
+
+* {
+  corner-shape: squircle;
+  word-wrap: break-word;
+  word-break: keep-all;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

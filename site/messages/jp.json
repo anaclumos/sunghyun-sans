@@ -1,0 +1,130 @@
+{
+  "Metadata": {
+    "title": "ソンヒョン サンス - すべての人のための SF Pro Rounded",
+    "description": "ラテン、キリル、ギリシャ、韓国語、日本語に対応する9ウェイトのラウンド書体。"
+  },
+  "Nav": {
+    "brand": "ソンヒョン サンス",
+    "preview": "プレビュー",
+    "features": "機能",
+    "info": "情報",
+    "labs": "Glyph Labs",
+    "download": "ダウンロード",
+    "language": "言語",
+    "skipToContent": "メインコンテンツへスキップ"
+  },
+  "Hero": {
+    "title": "すべての人のための\nSF Pro Rounded",
+    "subtitle": "ソンヒョン サンス",
+    "description": "ソンヒョン サンスは、ラテン、キリル、ギリシャ、韓国語、日本語に対応する9ウェイトのラウンド書体です。",
+    "ctaDownload": "ダウンロード",
+    "ctaGitHub": "GitHub",
+    "statWeights": "9ウェイト",
+    "statLanguages": "多言語",
+    "statFormat": "OTF",
+    "statLicense": "SIL OFL"
+  },
+  "Preview": {
+    "badge": "プレビュー",
+    "title": "文脈の中で見る",
+    "description": "見出しと本文で、ソンヒョン サンスがどう見えるか確認してみてください。",
+    "sizeLabel": "サイズ",
+    "compareLabel": "比較",
+    "latinOnlyNotice": "{fontName}は日本語グリフに対応していないため、system-uiで表示されます。",
+    "fallbackToSystemUI": "system-ui代替",
+    "weightLabel": "ウェイト",
+    "headlineInputLabel": "見出しプレビューのテキスト",
+    "bodyInputLabel": "本文プレビューのテキスト",
+    "headlineText": "良いデザインとは、できるだけ少ないデザインのことである。",
+    "bodyText": "タイポグラフィは、人の言葉に視覚的な形を与える技術です。文字を並べて、読みやすく、美しく、届きやすくする。優れたタイポグラフィは透明になります — 読む人はコンテンツだけを見て、器には気づきません。"
+  },
+  "OpenType": {
+    "badge": "OpenType機能",
+    "title": "タイポグラフィの知能",
+    "description": "正確でプロフェッショナルなタイポグラフィのための内蔵OpenType機能です。",
+    "showAll": "すべての機能を表示",
+    "hideAll": "閉じる",
+    "feature_tnum_name": "等幅数字",
+    "feature_tnum_example": "1,234,567\n8,901,234\n5,678,900",
+    "feature_zero_name": "スラッシュゼロ",
+    "feature_zero_example": "O0 Il1 Z2",
+    "feature_frac_name": "分数",
+    "feature_frac_example": "1/2 3/4 5/8 1/3",
+    "feature_subs_name": "下付き文字",
+    "feature_subs_example": "H2O CO2 N2O",
+    "feature_case_name": "大文字対応",
+    "feature_case_example": "HELLO (WORLD) [2026]",
+    "feature_salt_name": "字形代替",
+    "feature_salt_example": "a g y 1 l I",
+    "feature_ordn_name": "序数",
+    "feature_ordn_example": "No. 9o 7a 1o"
+  },
+  "Info": {
+    "badge": "情報",
+    "title": "技術仕様",
+    "description": "ソンヒョン サンスについて知っておきたいことをまとめました。",
+    "nameLabel": "名前",
+    "nameValue": "ソンヒョン サンス",
+    "familiesLabel": "ファミリー",
+    "familiesValue": "Std · KR · JP · Disambiguated",
+    "weightsLabel": "ウェイト",
+    "weightsValue": "9 (Thin 100 - Black 900)",
+    "formatsLabel": "フォーマット",
+    "formatsValue": "OTF",
+    "glyphsLabel": "グリフ数",
+    "glyphsValue": "~3,190 (Std) · ~14,716 (KR) · ~22,926 (JP) · ~23,400 (Disambiguated)",
+    "languagesLabel": "対応文字",
+    "languagesValue": "ラテン · キリル · ギリシャ · 韓国語 · 日本語 · ベトナム語",
+    "licenseLabel": "ライセンス",
+    "licenseValue": "SIL Open Font License 1.1",
+    "basedOnLabel": "ベース",
+    "basedOnValue": "Inter (Rasmus Andersson), Pretendard (キル・ヒョンジン), Source Han Sans (Adobe), M PLUS 1p (Coji Morishita)"
+  },
+  "CTA": {
+    "heading": "ソンヒョン サンスでデザインを始めてみませんか",
+    "description": "美しい多言語タイポグラフィでデザインしてみてください。",
+    "ctaDownload": "フォントをダウンロード",
+    "ctaSpecimens": "スペシメンを見る"
+  },
+  "Labs": {
+    "badge": "Glyph Labs",
+    "title": "書体間のグリフ構造を比較してみてください",
+    "description": "フォントファイルからベクターパス、制御点、ラウンディングアルゴリズムをそのまま確認できます。",
+    "character": "文字",
+    "settings": "設定",
+    "zoomSize": "ズーム / サイズ",
+    "showControlPoints": "制御点を表示",
+    "overlayMode": "オーバーレイモード",
+    "legend": "凡例",
+    "weight": "ウェイト",
+    "weightNotice": "ソンヒョン サンスにのみ適用されます",
+    "loadingFonts": "フォントを読み込み中…",
+    "latinOnlyNotice": "この文字に対応していません"
+  },
+  "GlyphViewer": {
+    "loading": "読み込み中…"
+  },
+  "Footer": {
+    "fontFamily": "フォントファミリー",
+    "std": "ソンヒョン サンス",
+    "kr": "ソンヒョン サンス KR",
+    "jp": "ソンヒョン サンス JP",
+    "gov": "ソンヒョン サンス Disambiguated",
+    "resources": "リソース",
+    "github": "GitHub",
+    "releases": "リリース",
+    "license": "ライセンス (SIL OFL)",
+    "credits": "クレジット",
+    "creditInter": "Inter - Rasmus Andersson",
+    "creditPretendard": "Pretendard - キル・ヒョンジン",
+    "creditSourceHan": "Source Han Sans - Adobe",
+    "creditMplus": "M PLUS 1p - Coji Morishita",
+    "builtWith": "ソンヒョン サンスで作りました",
+    "copyright": "SIL Open Font License 1.1"
+  },
+  "LocaleSwitcher": {
+    "en": "EN",
+    "kr": "KR",
+    "jp": "JP"
+  }
+}

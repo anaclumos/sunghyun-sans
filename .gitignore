@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv/
+.uv/
+site/node_modules/
+site/.next/
+.DS_Store
+site/public/file.svg
+site/public/globe.svg
+site/public/window.svg
+.sisyphus
+.claude

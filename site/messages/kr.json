@@ -1,0 +1,130 @@
+{
+  "Metadata": {
+    "title": "성현 산스 - 모두를 위한 SF Pro Rounded",
+    "description": "라틴, 키릴, 그리스, 한국어, 일본어를 지원하는 9개 굵기의 라운드 서체."
+  },
+  "Nav": {
+    "brand": "성현 산스",
+    "preview": "미리보기",
+    "features": "기능",
+    "info": "정보",
+    "labs": "Glyph Labs",
+    "download": "다운로드",
+    "language": "언어",
+    "skipToContent": "본문으로 건너뛰기"
+  },
+  "Hero": {
+    "title": "모두를 위한\nSF Pro Rounded",
+    "subtitle": "성현 산스",
+    "description": "성현 산스는 라틴, 키릴, 그리스, 한국어, 일본어를 지원하는 9개 굵기의 라운드 서체예요.",
+    "ctaDownload": "다운로드",
+    "ctaGitHub": "GitHub",
+    "statWeights": "9개 굵기",
+    "statLanguages": "다국어",
+    "statFormat": "OTF",
+    "statLicense": "SIL OFL"
+  },
+  "Preview": {
+    "badge": "미리보기",
+    "title": "맥락 속에서 보기",
+    "description": "제목과 본문에서 성현 산스가 어떻게 보이는지 확인해 보세요.",
+    "sizeLabel": "크기",
+    "compareLabel": "비교",
+    "latinOnlyNotice": "{fontName}는 한국어 글리프를 지원하지 않아, system-ui로 대체돼 나타나요.",
+    "fallbackToSystemUI": "system-ui 대체",
+    "weightLabel": "굵기",
+    "headlineInputLabel": "제목 미리보기 텍스트",
+    "bodyInputLabel": "본문 미리보기 텍스트",
+    "headlineText": "좋은 디자인은 가능한 한 적게 디자인하는 것이다.",
+    "bodyText": "타이포그래피는 인간의 언어에 시각적 형태를 부여하는 기술이에요. 글자를 배열해서 읽기 쉽고, 매력적이고, 접근하기 쉽게 만드는 예술이기도 해요. 훌륭한 타이포그래피는 사라져요 — 독자는 내용만 보고, 그릇은 보지 않아요."
+  },
+  "OpenType": {
+    "badge": "OpenType 기능",
+    "title": "타이포그래피 지능",
+    "description": "정밀하고 전문적인 타이포그래피를 위한 내장 OpenType 기능이에요.",
+    "showAll": "모든 기능 보기",
+    "hideAll": "접기",
+    "feature_tnum_name": "고정폭 숫자",
+    "feature_tnum_example": "1,234,567\n8,901,234\n5,678,900",
+    "feature_zero_name": "슬래시 0",
+    "feature_zero_example": "O0 Il1 Z2",
+    "feature_frac_name": "분수",
+    "feature_frac_example": "1/2 3/4 5/8 1/3",
+    "feature_subs_name": "아래 첨자",
+    "feature_subs_example": "H2O CO2 N2O",
+    "feature_case_name": "대문자 맞춤",
+    "feature_case_example": "HELLO (WORLD) [2026]",
+    "feature_salt_name": "문자 대체",
+    "feature_salt_example": "a g y 1 l I",
+    "feature_ordn_name": "서수",
+    "feature_ordn_example": "No. 9o 7a 1o"
+  },
+  "Info": {
+    "badge": "정보",
+    "title": "기술 사양",
+    "description": "성현 산스에 대해 알아야 할 것들을 모았어요.",
+    "nameLabel": "이름",
+    "nameValue": "성현 산스",
+    "familiesLabel": "패밀리",
+    "familiesValue": "Std · KR · JP · Disambiguated",
+    "weightsLabel": "굵기",
+    "weightsValue": "9개 (얇은체 100 — 블랙체 900)",
+    "formatsLabel": "포맷",
+    "formatsValue": "OTF",
+    "glyphsLabel": "글자 수",
+    "glyphsValue": "~3,190 (Std) · ~14,716 (KR) · ~22,926 (JP) · ~23,400 (Disambiguated)",
+    "languagesLabel": "지원 문자",
+    "languagesValue": "라틴 · 키릴 · 그리스 · 한국어 · 일본어 · 베트남어",
+    "licenseLabel": "라이선스",
+    "licenseValue": "SIL 오픈 폰트 라이선스 1.1",
+    "basedOnLabel": "기반",
+    "basedOnValue": "Inter (Rasmus Andersson), Pretendard (길형진), Source Han Sans (Adobe), M PLUS 1p (Coji Morishita)"
+  },
+  "CTA": {
+    "heading": "성현 산스로 디자인을 시작해 보세요",
+    "description": "아름다운 다국어 타이포그래피로 디자인해 보세요.",
+    "ctaDownload": "폰트 다운로드",
+    "ctaSpecimens": "스페시멘 보기"
+  },
+  "Labs": {
+    "badge": "Glyph Labs",
+    "title": "서체 간 글리프 구조를 비교해 보세요",
+    "description": "폰트 파일에서 벡터 패스, 제어점, 라운딩 알고리즘을 바로 확인할 수 있어요.",
+    "character": "글자",
+    "settings": "설정",
+    "zoomSize": "확대 / 크기",
+    "showControlPoints": "제어점 표시",
+    "overlayMode": "오버레이 모드",
+    "legend": "범례",
+    "weight": "굵기",
+    "weightNotice": "성현 산스에만 적용돼요",
+    "loadingFonts": "폰트 불러오는 중…",
+    "latinOnlyNotice": "이 글자를 지원하지 않아요"
+  },
+  "GlyphViewer": {
+    "loading": "불러오는 중…"
+  },
+  "Footer": {
+    "fontFamily": "글자가족",
+    "std": "성현 산스",
+    "kr": "성현 산스 KR",
+    "jp": "성현 산스 JP",
+    "gov": "성현 산스 Disambiguated",
+    "resources": "리소스",
+    "github": "GitHub",
+    "releases": "릴리스",
+    "license": "라이선스 (SIL OFL)",
+    "credits": "크레딧",
+    "creditInter": "Inter - Rasmus Andersson",
+    "creditPretendard": "Pretendard - 길형진",
+    "creditSourceHan": "Source Han Sans - Adobe",
+    "creditMplus": "M PLUS 1p - Coji Morishita",
+    "builtWith": "성현 산스로 만들었어요",
+    "copyright": "SIL 오픈 폰트 라이선스 1.1"
+  },
+  "LocaleSwitcher": {
+    "en": "EN",
+    "kr": "KR",
+    "jp": "JP"
+  }
+}
