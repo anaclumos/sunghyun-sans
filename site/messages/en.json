@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "title": "Sunghyun Sans — SF Pro Rounded for Everyone",
-    "description": "A rounded typeface supporting 9 weights across Latin, Cyrillic, Greek, Korean, and Japanese."
+    "description": "A rounded typeface supporting 9 weights across Latin, Cyrillic, Greek, Vietnamese, Korean, Japanese, and Chinese."
   },
   "Nav": {
     "brand": "Sunghyun Sans",
@@ -16,7 +16,7 @@
   "Hero": {
     "title": "SF Pro Rounded\nfor Everyone",
     "subtitle": "Sunghyun Sans",
-    "description": "Sunghyun Sans is a rounded typeface supporting 9 weights across Latin, Cyrillic, Greek, Korean, and Japanese.",
+    "description": "Sunghyun Sans is a rounded typeface supporting 9 weights across Latin, Cyrillic, Greek, Vietnamese, Korean, Japanese, and Chinese.",
     "ctaDownload": "Download",
     "ctaGitHub": "GitHub",
     "statWeights": "9 Weights",
@@ -80,7 +80,7 @@
     "glyphsLabel": "Glyphs",
     "glyphsValue": "~3,190 (Std), ~14,716 (KR), ~22,926 (JP), ~23,400 (Disambiguated)",
     "languagesLabel": "Scripts",
-    "languagesValue": "Latin, Cyrillic, Greek, Korean, Japanese, Vietnamese",
+    "languagesValue": "Latin, Cyrillic, Greek, Vietnamese, Korean, Japanese, Chinese",
     "licenseLabel": "License",
     "licenseValue": "SIL Open Font License 1.1",
     "basedOnLabel": "Based on",

@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "title": "ソンヒョン サンス - すべての人のための SF Pro Rounded",
-    "description": "ラテン、キリル、ギリシャ、韓国語、日本語に対応する9ウェイトのラウンド書体。"
+    "description": "ラテン、キリル、ギリシャ、ベトナム語、韓国語、日本語、中国語に対応する9ウェイトのラウンド書体。"
   },
   "Nav": {
     "brand": "ソンヒョン サンス",
@@ -16,7 +16,7 @@
   "Hero": {
     "title": "すべての人のための\nSF Pro Rounded",
     "subtitle": "ソンヒョン サンス",
-    "description": "ソンヒョン サンスは、ラテン、キリル、ギリシャ、韓国語、日本語に対応する9ウェイトのラウンド書体です。",
+    "description": "ソンヒョン サンスは、ラテン、キリル、ギリシャ、ベトナム語、韓国語、日本語、中国語に対応する9ウェイトのラウンド書体です。",
     "ctaDownload": "ダウンロード",
     "ctaGitHub": "GitHub",
     "statWeights": "9ウェイト",
@@ -74,7 +74,7 @@
     "glyphsLabel": "グリフ数",
     "glyphsValue": "~3,190 (Std), ~14,716 (KR), ~22,926 (JP), ~23,400 (Disambiguated)",
     "languagesLabel": "対応文字",
-    "languagesValue": "ラテン, キリル, ギリシャ, 韓国語, 日本語, ベトナム語",
+    "languagesValue": "ラテン, キリル, ギリシャ, ベトナム語, 韓国語, 日本語, 中国語",
     "licenseLabel": "ライセンス",
     "licenseValue": "SIL Open Font License 1.1",
     "basedOnLabel": "ベース",

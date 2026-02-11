@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "title": "성현 산스 - 모두를 위한 SF Pro Rounded",
-    "description": "라틴, 키릴, 그리스, 한국어, 일본어를 지원하는 9개 굵기의 라운드 서체."
+    "description": "라틴, 키릴, 그리스, 베트남어, 한국어, 일본어, 중국어를 지원하는 9개 굵기의 라운드 서체."
   },
   "Nav": {
     "brand": "성현 산스",
@@ -16,7 +16,7 @@
   "Hero": {
     "title": "모두를 위한\nSF Pro Rounded",
     "subtitle": "성현 산스",
-    "description": "성현 산스는 라틴, 키릴, 그리스, 한국어, 일본어를 지원하는 9개 굵기의 라운드 서체예요.",
+    "description": "성현 산스는 라틴, 키릴, 그리스, 베트남어, 한국어, 일본어, 중국어를 지원하는 9개 굵기의 라운드 서체예요.",
     "ctaDownload": "다운로드",
     "ctaGitHub": "GitHub",
     "statWeights": "9개 굵기",
@@ -74,7 +74,7 @@
     "glyphsLabel": "글자 수",
     "glyphsValue": "~3,190 (Std), ~14,716 (KR), ~22,926 (JP), ~23,400 (Disambiguated)",
     "languagesLabel": "지원 문자",
-    "languagesValue": "라틴, 키릴, 그리스, 한국어, 일본어, 베트남어",
+    "languagesValue": "라틴, 키릴, 그리스, 베트남어, 한국어, 일본어, 중국어",
     "licenseLabel": "라이선스",
     "licenseValue": "SIL 오픈 폰트 라이선스 1.1",
     "basedOnLabel": "기반",
