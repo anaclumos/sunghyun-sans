@@ -4,6 +4,7 @@ import {setRequestLocale, getTranslations} from 'next-intl/server';
 import {hasLocale} from 'next-intl';
 import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
+import {SITE_URL} from '@/lib/constants';
 import {Navigation} from '@/components/navigation';
 import {Footer} from '@/components/footer';
 import {MotionProvider} from '@/components/motion-provider';
@@ -21,27 +22,30 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({locale}));
 }
 
-function getMetadataBase() {
-  const base =
-    process.env.NEXT_PUBLIC_SITE_URL ||
-    process.env.VERCEL_PROJECT_PRODUCTION_URL ||
-    process.env.VERCEL_URL ||
-    'http://localhost:3000';
-
-  const normalizedBase = base.startsWith('http') ? base : `https://${base}`;
-  return new URL(normalizedBase);
-}
-
 export async function generateMetadata({params}: {params: Promise<{locale: string}>}) {
   const {locale} = await params;
   const t = await getTranslations({locale, namespace: 'Metadata'});
+  const localePath = locale === routing.defaultLocale ? '' : `/${locale}`;
+  const canonicalUrl = `${SITE_URL}${localePath}`;
+
   return {
-    metadataBase: getMetadataBase(),
+    metadataBase: new URL(SITE_URL),
     title: t('title'),
     description: t('description'),
+    alternates: {
+      canonical: canonicalUrl,
+      languages: Object.fromEntries(
+        routing.locales.map((l) => [
+          l,
+          `${SITE_URL}${l === routing.defaultLocale ? '' : `/${l}`}`,
+        ])
+      ),
+    },
     openGraph: {
       title: t('title'),
       description: t('description'),
+      url: canonicalUrl,
+      siteName: 'Sunghyun Sans',
       type: 'website',
     },
     twitter: {

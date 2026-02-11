@@ -1,6 +1,7 @@
+export const SITE_URL = "https://sans.cho.sh";
 export const GITHUB_URL = "https://github.com/anaclumos/sunghyun-sans";
 export const RELEASES_URL =
-  "https://github.com/anaclumos/sunghyun-sans/releases";
+  "https://github.com/anaclumos/sunghyun-sans/tree/main/release";
 
 export const OT_FEATURES = [
   { code: "tnum" },
