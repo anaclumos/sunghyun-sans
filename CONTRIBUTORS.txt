@@ -1,0 +1,7 @@
+# Contributors to Sunghyun Sans
+
+# Based on
+Kil Hyung-jin <https://github.com/orioncactus> (Pretendard)
+Rasmus Andersson <https://github.com/rsms> (Inter)
+Adobe <https://github.com/adobe-fonts> (Source Han Sans)
+The M+ FONTS Project Authors <https://github.com/coz-m/MPLUS_FONTS> (M PLUS 1)
