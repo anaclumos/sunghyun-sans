@@ -1,0 +1,10 @@
+[project]
+name = "sunghyun-sans"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "brotli>=1.2.0",
+    "fonttools>=4.61.1",
+]
