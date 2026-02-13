@@ -38619,7 +38619,7 @@ key = copyrights;
 values = (
 {
 language = dflt;
-value = "© 2026 Sunghyun Cho";
+value = "Copyright 2026 The Sunghyun Sans Project Authors (https://github.com/anaclumos/sunghyun-sans)";
 },
 {
 language = KOR;
@@ -38645,13 +38645,13 @@ key = licenses;
 values = (
 {
 language = dflt;
-value = "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: http://scripts.sil.org/OFL";
+value = "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://openfontlicense.org";
 }
 );
 },
 {
 key = licenseURL;
-value = "http://scripts.sil.org/OFL";
+value = "https://openfontlicense.org";
 },
 {
 key = manufacturers;
@@ -38669,15 +38669,6 @@ value = "조성현";
 {
 key = manufacturerURL;
 value = "https://cho.sh/";
-},
-{
-key = trademarks;
-values = (
-{
-language = dflt;
-value = "Sunghyun Sans is a trademark of Sunghyun Cho; Pretendard is a trademark of Kil Hyung-jin; Inter UI and Inter is a trademark of rsms; Source is a trademark of Adobe in the United States and/or other countries.";
-}
-);
 },
 {
 key = vendorID;
