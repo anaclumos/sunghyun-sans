@@ -1,0 +1,80 @@
+@font-face {
+  font-family: 'Sunghyun Sans KR';
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url('../woff2/SunghyunSansKR-Thin.woff2') format('woff2');
+  unicode-range: U+AC00-D7AF, U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF;
+}
+
+@font-face {
+  font-family: 'Sunghyun Sans KR';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url('../woff2/SunghyunSansKR-ExtraLight.woff2') format('woff2');
+  unicode-range: U+AC00-D7AF, U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF;
+}
+
+@font-face {
+  font-family: 'Sunghyun Sans KR';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('../woff2/SunghyunSansKR-Light.woff2') format('woff2');
+  unicode-range: U+AC00-D7AF, U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF;
+}
+
+@font-face {
+  font-family: 'Sunghyun Sans KR';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../woff2/SunghyunSansKR-Regular.woff2') format('woff2');
+  unicode-range: U+AC00-D7AF, U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF;
+}
+
+@font-face {
+  font-family: 'Sunghyun Sans KR';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../woff2/SunghyunSansKR-Medium.woff2') format('woff2');
+  unicode-range: U+AC00-D7AF, U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF;
+}
+
+@font-face {
+  font-family: 'Sunghyun Sans KR';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../woff2/SunghyunSansKR-SemiBold.woff2') format('woff2');
+  unicode-range: U+AC00-D7AF, U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF;
+}
+
+@font-face {
+  font-family: 'Sunghyun Sans KR';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../woff2/SunghyunSansKR-Bold.woff2') format('woff2');
+  unicode-range: U+AC00-D7AF, U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF;
+}
+
+@font-face {
+  font-family: 'Sunghyun Sans KR';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('../woff2/SunghyunSansKR-ExtraBold.woff2') format('woff2');
+  unicode-range: U+AC00-D7AF, U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF;
+}
+
+@font-face {
+  font-family: 'Sunghyun Sans KR';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('../woff2/SunghyunSansKR-Black.woff2') format('woff2');
+  unicode-range: U+AC00-D7AF, U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF;
+}
