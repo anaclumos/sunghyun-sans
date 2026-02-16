@@ -1,4 +1,7 @@
 import type {Viewport} from 'next';
+import Script from 'next/script';
+import {Analytics} from '@vercel/analytics/react';
+import {SpeedInsights} from '@vercel/speed-insights/react';
 import {NextIntlClientProvider} from 'next-intl';
 import {setRequestLocale, getTranslations} from 'next-intl/server';
 import {hasLocale} from 'next-intl';
@@ -70,6 +73,12 @@ export default async function LocaleLayout({children, params}: Props) {
 
   return (
     <html lang={locale} className="scroll-smooth" suppressHydrationWarning>
+      <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/anaclumos/sunghyun-sans@v1.0.0/dist/web/css/sunghyun-sans-dynamic-subset.min.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/anaclumos/sunghyun-sans@v1.0.0/dist/web/css/sunghyun-sans-kr-dynamic-subset.min.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/anaclumos/sunghyun-sans@v1.0.0/dist/web/css/sunghyun-sans-jp-dynamic-subset.min.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/anaclumos/sunghyun-sans@v1.0.0/dist/web/css/sunghyun-sans-disambiguated-dynamic-subset.min.css" />
+      </head>
       <body className="font-sans antialiased bg-paper text-ink overflow-x-hidden">
         <NextIntlClientProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
@@ -83,6 +92,9 @@ export default async function LocaleLayout({children, params}: Props) {
             </MotionProvider>
           </ThemeProvider>
         </NextIntlClientProvider>
+        <Analytics />
+        <SpeedInsights />
+        <Script src="https://cdn.visitors.now/v.js" data-token="850b7c05-9254-4a71-9631-32865ae1daf2" />
       </body>
     </html>
   );

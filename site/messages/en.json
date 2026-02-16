@@ -86,6 +86,25 @@
     "basedOnLabel": "Based on",
     "basedOnValue": "Inter (Rasmus Andersson), Pretendard (Kil Hyung-jin), Source Han Sans (Adobe), M PLUS 1p (Coji Morishita)"
   },
+  "LicensePricing": {
+    "badge": "License & Pricing",
+    "title": "Free and open source",
+    "description": "Sunghyun Sans is licensed under the SIL Open Font License 1.1. Use it freely in any project — personal or commercial, print or digital.",
+    "price": "$0",
+    "priceLabel": "Free forever",
+    "priceDescription": "No cost, no catch, no strings attached.",
+    "permissionsTitle": "What you can do",
+    "perm1": "Use in personal and commercial projects",
+    "perm2": "Embed on websites via CSS @font-face",
+    "perm3": "Bundle with applications and software",
+    "perm4": "Modify and create derivative fonts",
+    "perm5": "Redistribute freely",
+    "restrictionsTitle": "License terms",
+    "restrict1": "Cannot sell font files on their own",
+    "restrict2": "Derivatives must remain under OFL",
+    "restrict3": "Don't use the reserved font name for modified versions",
+    "viewLicense": "Read the full license"
+  },
   "CTA": {
     "heading": "Start designing with Sunghyun Sans",
     "description": "Start designing with beautiful multilingual typography.",

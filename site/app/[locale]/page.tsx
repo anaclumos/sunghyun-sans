@@ -3,6 +3,7 @@ import { WeightShowcase } from "@/components/weight-showcase";
 import { PreviewSection } from "@/components/preview-section";
 import { OpenTypeSection } from "@/components/opentype-section";
 import { InfoSection } from "@/components/info-section";
+import { LicensePricingSection } from "@/components/license-pricing-section";
 import { CTASection } from "@/components/cta-section";
 import dynamic from "next/dynamic";
 import { GlyphLabsLoading } from "@/components/glyph-labs/glyph-labs-loading";
@@ -29,6 +30,7 @@ export default function Home() {
       <GlyphLabsSection />
       <OpenTypeSection />
       <InfoSection />
+      <LicensePricingSection />
       <CTASection />
     </main>
   );

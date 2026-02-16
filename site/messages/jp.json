@@ -80,6 +80,25 @@
     "basedOnLabel": "ベース",
     "basedOnValue": "Inter (Rasmus Andersson), Pretendard (キル・ヒョンジン), Source Han Sans (Adobe), M PLUS 1p (Coji Morishita)"
   },
+  "LicensePricing": {
+    "badge": "ライセンスと価格",
+    "title": "無料でオープンソース",
+    "description": "ソンヒョン サンスはSIL Open Font License 1.1で提供されています。個人でも商用でも、印刷でもデジタルでも、あらゆるプロジェクトで自由にお使いいただけます。",
+    "price": "$0",
+    "priceLabel": "ずっと無料",
+    "priceDescription": "費用なし、条件なし、制限なし。",
+    "permissionsTitle": "できること",
+    "perm1": "個人および商用プロジェクトで使用",
+    "perm2": "CSS @font-faceでウェブサイトに埋め込み",
+    "perm3": "アプリやソフトウェアにバンドル",
+    "perm4": "フォントを改変・派生フォントを作成",
+    "perm5": "自由に再配布",
+    "restrictionsTitle": "ライセンス条件",
+    "restrict1": "フォントファイルのみの単独販売はできません",
+    "restrict2": "派生物はOFLライセンスを維持する必要があります",
+    "restrict3": "改変版に予約済みフォント名は使用できません",
+    "viewLicense": "ライセンス全文を読む"
+  },
   "CTA": {
     "heading": "ソンヒョン サンスでデザインを始めてみませんか",
     "description": "美しい多言語タイポグラフィでデザインしてみてください。",

@@ -80,6 +80,25 @@
     "basedOnLabel": "기반",
     "basedOnValue": "Inter (Rasmus Andersson), Pretendard (길형진), Source Han Sans (Adobe), M PLUS 1p (Coji Morishita)"
   },
+  "LicensePricing": {
+    "badge": "라이선스 및 가격",
+    "title": "무료 오픈 소스",
+    "description": "성현 산스는 SIL 오픈 폰트 라이선스 1.1로 제공돼요. 개인용이든 상업용이든, 인쇄든 디지털이든, 어떤 프로젝트에서든 자유롭게 사용할 수 있어요.",
+    "price": "$0",
+    "priceLabel": "영원히 무료",
+    "priceDescription": "비용 없이, 조건 없이, 제한 없이.",
+    "permissionsTitle": "할 수 있는 것",
+    "perm1": "개인 및 상업 프로젝트에서 사용",
+    "perm2": "CSS @font-face로 웹사이트에 임베드",
+    "perm3": "앱과 소프트웨어에 번들",
+    "perm4": "수정 및 파생 폰트 제작",
+    "perm5": "자유롭게 재배포",
+    "restrictionsTitle": "라이선스 조건",
+    "restrict1": "폰트 파일만 단독으로 판매할 수 없어요",
+    "restrict2": "파생 저작물은 OFL 라이선스를 유지해야 해요",
+    "restrict3": "수정된 버전에 예약된 폰트 이름을 사용할 수 없어요",
+    "viewLicense": "전체 라이선스 읽기"
+  },
   "CTA": {
     "heading": "성현 산스로 디자인을 시작해 보세요",
     "description": "아름다운 다국어 타이포그래피로 디자인해 보세요.",
