@@ -105,6 +105,17 @@
     "restrict3": "Don't use the reserved font name for modified versions",
     "viewLicense": "Read the full license"
   },
+  "FAQ": {
+    "badge": "FAQ",
+    "title": "Frequently asked questions",
+    "description": "Common questions about using Sunghyun Sans.",
+    "q1": "Is it safe to use in client projects?",
+    "a1": "Yes. Sunghyun Sans is licensed under the SIL Open Font License 1.1, which permits use in any project — personal, commercial, print, or digital — at no cost.",
+    "q2": "How did you build it?",
+    "a2": "Used Glyph 3 App and added rounded filters. Experimented with Claude to find the right radii.",
+    "q3": "Are you not concerned about copyright infringement from Apple?",
+    "a3": "No. Sunghyun Sans is built on top of open-source fonts (Inter, Pretendard, Source Han Sans, M PLUS 1p) and does not contain any proprietary Apple font data. The rounding is applied independently using Glyph 3."
+  },
   "CTA": {
     "heading": "Start designing with Sunghyun Sans",
     "description": "Start designing with beautiful multilingual typography.",
