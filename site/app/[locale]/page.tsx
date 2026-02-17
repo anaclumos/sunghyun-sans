@@ -4,6 +4,7 @@ import { PreviewSection } from "@/components/preview-section";
 import { OpenTypeSection } from "@/components/opentype-section";
 import { InfoSection } from "@/components/info-section";
 import { LicensePricingSection } from "@/components/license-pricing-section";
+import { FAQSection } from "@/components/faq-section";
 import { CTASection } from "@/components/cta-section";
 import dynamic from "next/dynamic";
 import { GlyphLabsLoading } from "@/components/glyph-labs/glyph-labs-loading";
@@ -31,6 +32,7 @@ export default function Home() {
       <OpenTypeSection />
       <InfoSection />
       <LicensePricingSection />
+      <FAQSection />
       <CTASection />
     </main>
   );
