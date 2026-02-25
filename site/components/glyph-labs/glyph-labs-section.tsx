@@ -202,7 +202,7 @@ function GlyphLabsControls({
       </div>
 
       <div className="bg-surface border border-line rounded-2xl p-6 space-y-6">
-        <h3 className="text-base font-medium text-ink">{t("settings")}</h3>
+        <h3 className="text-base font-semibold text-ink">{t("settings")}</h3>
 
         <div className="space-y-2">
           <div className="flex justify-between items-center">
@@ -258,7 +258,7 @@ function GlyphLabsControls({
       </div>
 
       <div className="bg-surface border border-line rounded-2xl p-6 space-y-6">
-        <h3 className="text-base font-medium text-ink">{t("legend")}</h3>
+        <h3 className="text-base font-semibold text-ink">{t("legend")}</h3>
         <div className="space-y-4">
           {FONT_CONFIGS.map((f) => {
             const disabled = isNonLatin && f.latinOnly;
@@ -472,7 +472,7 @@ export function GlyphLabsSection() {
   }, [requiredFontKeys, fonts]);
 
   return (
-    <SectionWrapper id="labs" bg="paper-2">
+    <SectionWrapper id="labs">
       <SectionHeader label={t("badge")} title={t("title")} description={t("description")} />
 
       <div className="flex flex-col lg:flex-row gap-8">

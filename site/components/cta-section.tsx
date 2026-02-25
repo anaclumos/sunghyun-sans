@@ -19,7 +19,7 @@ export function CTASection() {
         className="section-container text-center"
       >
         <div className="max-w-3xl mx-auto flex flex-col items-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight leading-tight text-balance">
+          <h2 className="type-section font-semibold text-white mb-6 text-balance">
             {t("heading")}
           </h2>
           

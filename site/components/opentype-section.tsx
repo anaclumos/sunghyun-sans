@@ -22,7 +22,7 @@ export function OpenTypeSection() {
   const referencePanelId = "ot-reference-panel";
 
   return (
-    <SectionWrapper id="features">
+    <SectionWrapper id="features" bg="paper-2">
       <SectionHeader
         label={t("badge")}
         title={t("title")}

@@ -60,7 +60,7 @@ export function LicensePricingSection() {
         <div className="lg:col-span-2 bg-surface border border-line-strong rounded-3xl p-8">
           <div className="grid md:grid-cols-2 gap-8">
             <div>
-              <h3 className="type-section font-semibold text-ink mb-6">
+              <h3 className="text-lg md:text-xl font-semibold text-ink mb-6">
                 {t("permissionsTitle")}
               </h3>
               <ul className="space-y-4">
@@ -76,7 +76,7 @@ export function LicensePricingSection() {
             </div>
 
             <div>
-              <h3 className="type-section font-semibold text-ink mb-6">
+              <h3 className="text-lg md:text-xl font-semibold text-ink mb-6">
                 {t("restrictionsTitle")}
               </h3>
               <ul className="space-y-4">

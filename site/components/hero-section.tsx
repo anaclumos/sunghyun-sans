@@ -18,7 +18,7 @@ export function HeroSection() {
             variants={weightCascade}
             initial="hidden"
             animate="visible"
-            className="font-normal type-hero text-ink whitespace-pre-line text-balance"
+            className="font-semibold type-hero text-ink whitespace-pre-line text-balance"
           >
             {t("title")}
           </motion.h1>
