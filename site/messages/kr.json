@@ -47,7 +47,7 @@
     "feature_tnum_name": "고정폭 숫자",
     "feature_tnum_example": "1,234,567\n8,901,234\n5,678,900",
     "feature_zero_name": "슬래시 0",
-    "feature_zero_example": "O0 Il1 Z2",
+    "feature_zero_example": "0O00 O0O0",
     "feature_frac_name": "분수",
     "feature_frac_example": "1/2 3/4 5/8 1/3",
     "feature_subs_name": "아래 첨자",

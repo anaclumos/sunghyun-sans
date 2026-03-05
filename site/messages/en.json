@@ -47,7 +47,7 @@
     "feature_tnum_name": "Tabular Numbers",
     "feature_tnum_example": "1,234,567\n8,901,234\n5,678,900",
     "feature_zero_name": "Slashed Zero",
-    "feature_zero_example": "O0 Il1 Z2",
+    "feature_zero_example": "0O00 O0O0",
     "feature_frac_name": "Fractions",
     "feature_frac_example": "1/2 3/4 5/8 1/3",
     "feature_sups_name": "Superscript",

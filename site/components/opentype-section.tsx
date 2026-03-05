@@ -53,8 +53,8 @@ export function OpenTypeSection() {
                 key={code}
                 value={code}
                 className={cn(
-                  "bg-transparent shadow-none border-none", // Reset base styles
-                  "focus-ring rounded-full px-4 py-2 text-sm transition-[color,background-color,border-color,box-shadow] h-auto min-w-0",
+                  "bg-transparent shadow-none border-none hover:bg-transparent hover:text-inherit",
+                  "focus-ring rounded-full! px-4 py-2 text-sm transition-[color,background-color,border-color,box-shadow] h-auto min-w-0",
                   "data-[state=on]:bg-ink data-[state=on]:text-paper data-[state=on]:border-transparent data-[state=on]:shadow-sm",
                   "data-[state=off]:bg-transparent data-[state=off]:text-warm-muted data-[state=off]:border data-[state=off]:border-line-strong data-[state=off]:hover:border-ink data-[state=off]:hover:text-ink"
                 )}
