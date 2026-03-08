@@ -2,7 +2,7 @@
 """Build web distribution: CSS + woff2 subsets for CDN delivery.
 
 Reads source fonts from fonts/woff2/, generates:
-  - dist/web/css/          16 CSS files (full + dynamic-subset, normal + minified)
+  - dist/web/css/          per-family CSS files (full + dynamic-subset, normal + minified)
   - dist/web/woff2/        36 full font files (copy)
   - dist/web/woff2-dynamic-subset/  ~3000+ subset chunks
 """
@@ -55,6 +55,15 @@ FAMILIES: dict[str, dict] = {
         "file_prefix": "SunghyunSansKR",
         "is_cjk": True,
         "unicode_range": "U+AC00-D7AF, U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF",
+    },
+    "sunghyun-sans-kr-hanja": {
+        "font_family": "Sunghyun Sans KR Hanja",
+        "file_prefix": "SunghyunSansKRHanja",
+        "is_cjk": True,
+        "unicode_range": (
+            "U+AC00-D7AF, U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF, "
+            "U+3400-4DBF, U+4E00-9FFF, U+F900-FAFF"
+        ),
     },
     "sunghyun-sans-jp": {
         "font_family": "Sunghyun Sans JP",
@@ -437,10 +446,17 @@ def main() -> None:
     print(f"  Empty woff2 files:              {len(empty_check)}")
     print()
 
-    if woff2_count != 36:
-        print(f"  WARNING: Expected 36 woff2 files, got {woff2_count}")
-    if css_file_count != 16:
-        print(f"  WARNING: Expected 16 CSS files, got {css_file_count}")
+    expected_woff2_count = len(FAMILIES) * len(WEIGHTS)
+    expected_css_file_count = len(FAMILIES) * 4
+
+    if woff2_count != expected_woff2_count:
+        print(
+            f"  WARNING: Expected {expected_woff2_count} woff2 files, got {woff2_count}"
+        )
+    if css_file_count != expected_css_file_count:
+        print(
+            f"  WARNING: Expected {expected_css_file_count} CSS files, got {css_file_count}"
+        )
     if empty_check:
         print(f"  WARNING: {len(empty_check)} empty woff2 files found!")
     if subset_count < 2500:
