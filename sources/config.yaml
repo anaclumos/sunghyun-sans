@@ -1,6 +1,7 @@
 sources:
   - SunghyunSans.glyphspackage
   - SunghyunSansKR.glyphspackage
+  - SunghyunSansKRHanja.glyphspackage
   - SunghyunSansJP.glyphspackage
   - SunghyunSansDisambiguated.glyphspackage
 axisOrder:

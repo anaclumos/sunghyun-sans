@@ -5104,7 +5104,7 @@ value = "Adobe-Identity-0";
 }
 );
 date = "2026-02-10 15:00:00 +0000";
-familyName = "Sunghyun Sans JP";
+familyName = "Sunghyun Sans KR Hanja";
 featurePrefixes = (
 {
 automatic = 1;
@@ -5116,7 +5116,7 @@ languagesystem latn MOL;
 languagesystem latn CAT;
 
 languagesystem hani dflt;
-languagesystem hani JAN;
+languagesystem hani KOR;
 ";
 name = Languagesystems;
 },
@@ -7033,14 +7033,14 @@ lookup locl_latn_1 {
 	sub  l' periodcentered' l by ldot;
 	sub  L' periodcentered' L by Ldot;
 } locl_latn_1;
-
-lookup locl_haniJAN {
-	script hani;
-	language JAN;
-	sub @LOCL_JAN_L by @LOCL_JAN_R;
-} locl_haniJAN;
 ";
 tag = locl;
+},
+{
+code = "lookup LOOKUP_SS05_1;
+lookup LOOKUP_SS05_2;
+";
+tag = rlig;
 },
 {
 code = "@figures = [
@@ -8616,7 +8616,7 @@ value = (
 "1254",
 "1257",
 "1258",
-"932",
+"949",
 "bit 29"
 );
 },
@@ -9262,13 +9262,6 @@ lookup locl_latn_1 {
 	sub  l' periodcentered' l by ldot;
 	sub  L' periodcentered' L by Ldot;
 } locl_latn_1;
-
-# Replace locl_haniJAN
-lookup locl_haniKOR {
-	script hani;
-	language KOR;
-	sub @LOCL_JAN_L by @LOCL_JAN_R;
-} locl_haniKOR;
 ";
 },
 {
@@ -9283,8 +9276,7 @@ ignore sub @NULL_SS05';
 lookup LOOKUP_SS05_1;
 lookup LOOKUP_SS05_2;
 
-# Replace LOOKUP_SS05_HAN
-lookup LOOKUP_SS05_JP;
+lookup LOOKUP_SS05_HAN;
 ";
 },
 {
@@ -9346,7 +9338,7 @@ value = (
 "1254",
 "1257",
 "1258",
-"932",
+"949",
 "bit 29"
 );
 },
@@ -9992,13 +9984,6 @@ lookup locl_latn_1 {
 	sub  l' periodcentered' l by ldot;
 	sub  L' periodcentered' L by Ldot;
 } locl_latn_1;
-
-# Replace locl_haniJAN
-lookup locl_haniKOR {
-	script hani;
-	language KOR;
-	sub @LOCL_JAN_L by @LOCL_JAN_R;
-} locl_haniKOR;
 ";
 },
 {
@@ -10013,8 +9998,7 @@ ignore sub @NULL_SS05';
 lookup LOOKUP_SS05_1;
 lookup LOOKUP_SS05_2;
 
-# Replace LOOKUP_SS05_HAN
-lookup LOOKUP_SS05_JP;
+lookup LOOKUP_SS05_HAN;
 ";
 },
 {
@@ -10076,7 +10060,7 @@ value = (
 "1254",
 "1257",
 "1258",
-"932",
+"949",
 "bit 29"
 );
 },
@@ -10722,13 +10706,6 @@ lookup locl_latn_1 {
 	sub  l' periodcentered' l by ldot;
 	sub  L' periodcentered' L by Ldot;
 } locl_latn_1;
-
-# Replace locl_haniJAN
-lookup locl_haniKOR {
-	script hani;
-	language KOR;
-	sub @LOCL_JAN_L by @LOCL_JAN_R;
-} locl_haniKOR;
 ";
 },
 {
@@ -10743,8 +10720,7 @@ ignore sub @NULL_SS05';
 lookup LOOKUP_SS05_1;
 lookup LOOKUP_SS05_2;
 
-# Replace LOOKUP_SS05_HAN
-lookup LOOKUP_SS05_JP;
+lookup LOOKUP_SS05_HAN;
 ";
 },
 {
@@ -10806,7 +10782,7 @@ value = (
 "1254",
 "1257",
 "1258",
-"932",
+"949",
 "bit 29"
 );
 },
@@ -11452,13 +11428,6 @@ lookup locl_latn_1 {
 	sub  l' periodcentered' l by ldot;
 	sub  L' periodcentered' L by Ldot;
 } locl_latn_1;
-
-# Replace locl_haniJAN
-lookup locl_haniKOR {
-	script hani;
-	language KOR;
-	sub @LOCL_JAN_L by @LOCL_JAN_R;
-} locl_haniKOR;
 ";
 },
 {
@@ -11473,8 +11442,7 @@ ignore sub @NULL_SS05';
 lookup LOOKUP_SS05_1;
 lookup LOOKUP_SS05_2;
 
-# Replace LOOKUP_SS05_HAN
-lookup LOOKUP_SS05_JP;
+lookup LOOKUP_SS05_HAN;
 ";
 },
 {
@@ -11534,7 +11502,7 @@ value = (
 "1254",
 "1257",
 "1258",
-"932",
+"949",
 "bit 29"
 );
 },
@@ -12180,13 +12148,6 @@ lookup locl_latn_1 {
 	sub  l' periodcentered' l by ldot;
 	sub  L' periodcentered' L by Ldot;
 } locl_latn_1;
-
-# Replace locl_haniJAN
-lookup locl_haniKOR {
-	script hani;
-	language KOR;
-	sub @LOCL_JAN_L by @LOCL_JAN_R;
-} locl_haniKOR;
 ";
 },
 {
@@ -12201,8 +12162,7 @@ ignore sub @NULL_SS05';
 lookup LOOKUP_SS05_1;
 lookup LOOKUP_SS05_2;
 
-# Replace LOOKUP_SS05_HAN
-lookup LOOKUP_SS05_JP;
+lookup LOOKUP_SS05_HAN;
 ";
 },
 {
@@ -12264,7 +12224,7 @@ value = (
 "1254",
 "1257",
 "1258",
-"932",
+"949",
 "bit 29"
 );
 },
@@ -12910,13 +12870,6 @@ lookup locl_latn_1 {
 	sub  l' periodcentered' l by ldot;
 	sub  L' periodcentered' L by Ldot;
 } locl_latn_1;
-
-# Replace locl_haniJAN
-lookup locl_haniKOR {
-	script hani;
-	language KOR;
-	sub @LOCL_JAN_L by @LOCL_JAN_R;
-} locl_haniKOR;
 ";
 },
 {
@@ -12931,8 +12884,7 @@ ignore sub @NULL_SS05';
 lookup LOOKUP_SS05_1;
 lookup LOOKUP_SS05_2;
 
-# Replace LOOKUP_SS05_HAN
-lookup LOOKUP_SS05_JP;
+lookup LOOKUP_SS05_HAN;
 ";
 },
 {
@@ -12994,7 +12946,7 @@ value = (
 "1254",
 "1257",
 "1258",
-"932",
+"949",
 "bit 29"
 );
 },
@@ -13640,13 +13592,6 @@ lookup locl_latn_1 {
 	sub  l' periodcentered' l by ldot;
 	sub  L' periodcentered' L by Ldot;
 } locl_latn_1;
-
-# Replace locl_haniJAN
-lookup locl_haniKOR {
-	script hani;
-	language KOR;
-	sub @LOCL_JAN_L by @LOCL_JAN_R;
-} locl_haniKOR;
 ";
 },
 {
@@ -13661,8 +13606,7 @@ ignore sub @NULL_SS05';
 lookup LOOKUP_SS05_1;
 lookup LOOKUP_SS05_2;
 
-# Replace LOOKUP_SS05_HAN
-lookup LOOKUP_SS05_JP;
+lookup LOOKUP_SS05_HAN;
 ";
 },
 {
@@ -13725,7 +13669,7 @@ value = (
 "1254",
 "1257",
 "1258",
-"932",
+"949",
 "bit 29"
 );
 },
@@ -14371,13 +14315,6 @@ lookup locl_latn_1 {
 	sub  l' periodcentered' l by ldot;
 	sub  L' periodcentered' L by Ldot;
 } locl_latn_1;
-
-# Replace locl_haniJAN
-lookup locl_haniKOR {
-	script hani;
-	language KOR;
-	sub @LOCL_JAN_L by @LOCL_JAN_R;
-} locl_haniKOR;
 ";
 },
 {
@@ -14392,8 +14329,7 @@ ignore sub @NULL_SS05';
 lookup LOOKUP_SS05_1;
 lookup LOOKUP_SS05_2;
 
-# Replace LOOKUP_SS05_HAN
-lookup LOOKUP_SS05_JP;
+lookup LOOKUP_SS05_HAN;
 ";
 },
 {
@@ -14455,7 +14391,7 @@ value = (
 "1254",
 "1257",
 "1258",
-"932",
+"949",
 "bit 29"
 );
 },
@@ -15101,13 +15037,6 @@ lookup locl_latn_1 {
 	sub  l' periodcentered' l by ldot;
 	sub  L' periodcentered' L by Ldot;
 } locl_latn_1;
-
-# Replace locl_haniJAN
-lookup locl_haniKOR {
-	script hani;
-	language KOR;
-	sub @LOCL_JAN_L by @LOCL_JAN_R;
-} locl_haniKOR;
 ";
 },
 {
@@ -15122,8 +15051,7 @@ ignore sub @NULL_SS05';
 lookup LOOKUP_SS05_1;
 lookup LOOKUP_SS05_2;
 
-# Replace LOOKUP_SS05_HAN
-lookup LOOKUP_SS05_JP;
+lookup LOOKUP_SS05_HAN;
 ";
 },
 {
@@ -15584,7 +15512,7 @@ value = (
 "1254",
 "1257",
 "1258",
-"932",
+"949",
 "bit 29"
 );
 },
@@ -16166,13 +16094,6 @@ lookup locl_latn_1 {
 	sub  l' periodcentered' l by ldot;
 	sub  L' periodcentered' L by Ldot;
 } locl_latn_1;
-
-# Replace locl_haniJAN
-lookup locl_haniKOR {
-	script hani;
-	language KOR;
-	sub @LOCL_JAN_L by @LOCL_JAN_R;
-} locl_haniKOR;
 ";
 },
 {
@@ -16187,8 +16108,7 @@ ignore sub @NULL_SS05';
 lookup LOOKUP_SS05_1;
 lookup LOOKUP_SS05_2;
 
-# Replace LOOKUP_SS05_HAN
-lookup LOOKUP_SS05_JP;
+lookup LOOKUP_SS05_HAN;
 ";
 },
 {
