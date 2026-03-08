@@ -118,8 +118,8 @@
   },
   "Labs": {
     "badge": "Glyph Labs",
-    "title": "서체 간 글리프 구조를 비교해 보세요",
-    "description": "폰트 파일에서 벡터 패스, 제어점, 라운딩 알고리즘을 바로 확인할 수 있어요.",
+    "title": "성현 산스와 SF Pro Rounded를 비교해 보세요",
+    "description": "벡터 패스, 제어점, 라운딩 결정을 나란히 살펴볼 수 있어요. 기본으로 성현 산스와 SF Pro Rounded가 켜져 있고, 필요하면 다른 기준 서체도 함께 볼 수 있어요.",
     "character": "글자",
     "settings": "설정",
     "zoomSize": "확대 / 크기",

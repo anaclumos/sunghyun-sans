@@ -17,6 +17,7 @@ import {
 
 const FONT_CONFIGS = [
   { name: "Sunghyun Sans", url: "/fonts/SunghyunSans-Regular.otf", color: "#10b981", dotClass: "bg-emerald-500", latinOnly: false, hasWeights: true },
+  { name: "SF Pro Rounded", url: "/fonts/SF-Pro-Rounded-Regular.otf", color: "#f97316", dotClass: "bg-orange-500", latinOnly: true, hasWeights: true },
   { name: "Open Runde", url: "/fonts/OpenRunde-Regular.otf", color: "#f59e0b", dotClass: "bg-amber-500", latinOnly: true, hasWeights: true },
   { name: "Inter", url: "/fonts/Inter-Regular.otf", color: "#8b5cf6", dotClass: "bg-violet-500", latinOnly: true, hasWeights: true },
   { name: "Pretendard", url: "/fonts/PretendardStd-Regular.otf", color: "#3b82f6", dotClass: "bg-blue-500", latinOnly: false, hasWeights: true },
@@ -42,15 +43,48 @@ type WeightValue = (typeof WEIGHT_ENTRIES)[number]["value"];
 
 const WEIGHT_MAP = new Map(WEIGHT_ENTRIES.map((w) => [w.value, w]));
 
-const WEIGHTED_FAMILIES: Record<string, string> = {
-  "Sunghyun Sans": "/fonts/SunghyunSans",
-  "Sunghyun Sans KR": "/fonts/SunghyunSansKR",
-  "Sunghyun Sans JP": "/fonts/SunghyunSansJP",
-  "Open Runde": "/fonts/OpenRunde",
-  "Inter": "/fonts/Inter",
-  "Pretendard": "/fonts/PretendardStd",
-  "Pretendard KR": "/fonts/Pretendard",
-  "Pretendard JP": "/fonts/PretendardJP",
+const DEFAULT_VISIBLE_FONTS = ["Sunghyun Sans", "SF Pro Rounded"] as const;
+
+const DEFAULT_WEIGHT_SUFFIXES: Record<WeightValue, string> = {
+  100: "Thin",
+  200: "ExtraLight",
+  300: "Light",
+  400: "Regular",
+  500: "Medium",
+  600: "SemiBold",
+  700: "Bold",
+  800: "ExtraBold",
+  900: "Black",
+};
+
+const SF_PRO_ROUNDED_WEIGHT_SUFFIXES: Record<WeightValue, string> = {
+  100: "Thin",
+  200: "Ultralight",
+  300: "Light",
+  400: "Regular",
+  500: "Medium",
+  600: "Semibold",
+  700: "Bold",
+  800: "Heavy",
+  900: "Black",
+};
+
+const WEIGHTED_FAMILIES: Record<
+  string,
+  { prefix: string; suffixes?: Partial<Record<WeightValue, string>> }
+> = {
+  "Sunghyun Sans": { prefix: "/fonts/SunghyunSans" },
+  "Sunghyun Sans KR": { prefix: "/fonts/SunghyunSansKR" },
+  "Sunghyun Sans JP": { prefix: "/fonts/SunghyunSansJP" },
+  "SF Pro Rounded": {
+    prefix: "/fonts/SF-Pro-Rounded",
+    suffixes: SF_PRO_ROUNDED_WEIGHT_SUFFIXES,
+  },
+  "Open Runde": { prefix: "/fonts/OpenRunde" },
+  "Inter": { prefix: "/fonts/Inter" },
+  "Pretendard": { prefix: "/fonts/PretendardStd" },
+  "Pretendard KR": { prefix: "/fonts/Pretendard" },
+  "Pretendard JP": { prefix: "/fonts/PretendardJP" },
 };
 
 const FONT_AVAILABLE_WEIGHTS: Record<string, readonly WeightValue[]> = {
@@ -102,10 +136,10 @@ function fontCacheKey(name: string, weight: WeightValue): string {
 }
 
 function fontUrl(name: string, weight: WeightValue): string {
-  const prefix = WEIGHTED_FAMILIES[name];
-  if (prefix) {
-    const entry = WEIGHT_MAP.get(weight);
-    return `${prefix}-${entry?.suffix ?? "Regular"}.otf`;
+  const family = WEIGHTED_FAMILIES[name];
+  if (family) {
+    const suffix = family.suffixes?.[weight] ?? DEFAULT_WEIGHT_SUFFIXES[weight];
+    return `${family.prefix}-${suffix}.otf`;
   }
   return FONT_URL_BY_NAME.get(name) ?? "";
 }
@@ -379,7 +413,7 @@ export function GlyphLabsSection() {
   const [showPoints, setShowPoints] = useState(true);
   const [overlay, setOverlay] = useState(false);
   const [visibleFonts, setVisibleFonts] = useState<Set<string>>(() =>
-    new Set(FONT_CONFIGS.map((f) => f.name))
+    new Set<string>(DEFAULT_VISIBLE_FONTS)
   );
   const commitChar = (raw: string) => {
     const char = raw.slice(-1);

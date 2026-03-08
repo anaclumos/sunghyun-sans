@@ -124,8 +124,8 @@
   },
   "Labs": {
     "badge": "Glyph Labs",
-    "title": "Compare glyph structures across typefaces",
-    "description": "Visualize raw vector paths, control points, and rounding algorithms directly from font files.",
+    "title": "Compare Sunghyun Sans with SF Pro Rounded",
+    "description": "Inspect raw vector paths, control points, and rounding decisions side by side. Sunghyun Sans and SF Pro Rounded are enabled by default, with extra references available when needed.",
     "character": "Character",
     "settings": "Settings",
     "zoomSize": "Zoom / Size",
