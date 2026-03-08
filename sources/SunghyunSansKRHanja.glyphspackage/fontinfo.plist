@@ -7033,12 +7033,19 @@ lookup locl_latn_1 {
 	sub  l' periodcentered' l by ldot;
 	sub  L' periodcentered' L by Ldot;
 } locl_latn_1;
+
+lookup locl_hani_KOR {
+	script hani;
+	language KOR;
+	sub @LOCL_JAN_R by @LOCL_JAN_L;
+} locl_hani_KOR;
 ";
 tag = locl;
 },
 {
 code = "lookup LOOKUP_SS05_1;
 lookup LOOKUP_SS05_2;
+lookup LOOKUP_SS05_HAN;
 ";
 tag = rlig;
 },
@@ -9262,6 +9269,12 @@ lookup locl_latn_1 {
 	sub  l' periodcentered' l by ldot;
 	sub  L' periodcentered' L by Ldot;
 } locl_latn_1;
+
+lookup locl_hani_KOR {
+	script hani;
+	language KOR;
+	sub @LOCL_JAN_R by @LOCL_JAN_L;
+} locl_hani_KOR;
 ";
 },
 {
@@ -9984,6 +9997,12 @@ lookup locl_latn_1 {
 	sub  l' periodcentered' l by ldot;
 	sub  L' periodcentered' L by Ldot;
 } locl_latn_1;
+
+lookup locl_hani_KOR {
+	script hani;
+	language KOR;
+	sub @LOCL_JAN_R by @LOCL_JAN_L;
+} locl_hani_KOR;
 ";
 },
 {
@@ -10706,6 +10725,12 @@ lookup locl_latn_1 {
 	sub  l' periodcentered' l by ldot;
 	sub  L' periodcentered' L by Ldot;
 } locl_latn_1;
+
+lookup locl_hani_KOR {
+	script hani;
+	language KOR;
+	sub @LOCL_JAN_R by @LOCL_JAN_L;
+} locl_hani_KOR;
 ";
 },
 {
@@ -11428,6 +11453,12 @@ lookup locl_latn_1 {
 	sub  l' periodcentered' l by ldot;
 	sub  L' periodcentered' L by Ldot;
 } locl_latn_1;
+
+lookup locl_hani_KOR {
+	script hani;
+	language KOR;
+	sub @LOCL_JAN_R by @LOCL_JAN_L;
+} locl_hani_KOR;
 ";
 },
 {
@@ -12148,6 +12179,12 @@ lookup locl_latn_1 {
 	sub  l' periodcentered' l by ldot;
 	sub  L' periodcentered' L by Ldot;
 } locl_latn_1;
+
+lookup locl_hani_KOR {
+	script hani;
+	language KOR;
+	sub @LOCL_JAN_R by @LOCL_JAN_L;
+} locl_hani_KOR;
 ";
 },
 {
@@ -12870,6 +12907,12 @@ lookup locl_latn_1 {
 	sub  l' periodcentered' l by ldot;
 	sub  L' periodcentered' L by Ldot;
 } locl_latn_1;
+
+lookup locl_hani_KOR {
+	script hani;
+	language KOR;
+	sub @LOCL_JAN_R by @LOCL_JAN_L;
+} locl_hani_KOR;
 ";
 },
 {
@@ -13592,6 +13635,12 @@ lookup locl_latn_1 {
 	sub  l' periodcentered' l by ldot;
 	sub  L' periodcentered' L by Ldot;
 } locl_latn_1;
+
+lookup locl_hani_KOR {
+	script hani;
+	language KOR;
+	sub @LOCL_JAN_R by @LOCL_JAN_L;
+} locl_hani_KOR;
 ";
 },
 {
@@ -14315,6 +14364,12 @@ lookup locl_latn_1 {
 	sub  l' periodcentered' l by ldot;
 	sub  L' periodcentered' L by Ldot;
 } locl_latn_1;
+
+lookup locl_hani_KOR {
+	script hani;
+	language KOR;
+	sub @LOCL_JAN_R by @LOCL_JAN_L;
+} locl_hani_KOR;
 ";
 },
 {
@@ -15037,6 +15092,12 @@ lookup locl_latn_1 {
 	sub  l' periodcentered' l by ldot;
 	sub  L' periodcentered' L by Ldot;
 } locl_latn_1;
+
+lookup locl_hani_KOR {
+	script hani;
+	language KOR;
+	sub @LOCL_JAN_R by @LOCL_JAN_L;
+} locl_hani_KOR;
 ";
 },
 {
@@ -16094,6 +16155,12 @@ lookup locl_latn_1 {
 	sub  l' periodcentered' l by ldot;
 	sub  L' periodcentered' L by Ldot;
 } locl_latn_1;
+
+lookup locl_hani_KOR {
+	script hani;
+	language KOR;
+	sub @LOCL_JAN_R by @LOCL_JAN_L;
+} locl_hani_KOR;
 ";
 },
 {
