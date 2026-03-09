@@ -4181,7 +4181,7 @@ value = (
 },
 {
 name = Filter;
-value = "RoundCorner; 135; 1;";
+value = "RoundCorner; 120; 1;";
 }
 );
 instanceInterpolations = {
@@ -4214,7 +4214,7 @@ value = (
 },
 {
 name = Filter;
-value = "RoundCorner; 150; 1;";
+value = "RoundCorner; 120; 1;";
 }
 );
 instanceInterpolations = {
@@ -4246,7 +4246,7 @@ value = (
 },
 {
 name = Filter;
-value = "RoundCorner; 165; 1;";
+value = "RoundCorner; 120; 1;";
 }
 );
 instanceInterpolations = {
