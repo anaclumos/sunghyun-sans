@@ -11387,7 +11387,7 @@ Squared_Fill_Medium
 },
 {
 name = Filter;
-value = "RoundCorner; 35; 1;";
+value = "RoundCorner; 30; 1;";
 }
 );
 instanceInterpolations = {
@@ -13465,7 +13465,7 @@ Squared_Fill_Medium
 },
 {
 name = Filter;
-value = "RoundCorner; 53; 1;";
+value = "RoundCorner; 35; 1;";
 }
 );
 instanceInterpolations = {
@@ -15543,7 +15543,7 @@ Squared_Fill_Medium
 },
 {
 name = Filter;
-value = "RoundCorner; 70; 1;";
+value = "RoundCorner; 40; 1;";
 }
 );
 instanceInterpolations = {
@@ -17621,7 +17621,7 @@ Squared_Fill_Medium
 },
 {
 name = Filter;
-value = "RoundCorner; 90; 1;";
+value = "RoundCorner; 45; 1;";
 }
 );
 instanceInterpolations = {
@@ -19697,7 +19697,7 @@ Squared_Fill_Medium
 },
 {
 name = Filter;
-value = "RoundCorner; 104; 1;";
+value = "RoundCorner; 50; 1;";
 }
 );
 instanceInterpolations = {
@@ -21775,7 +21775,7 @@ Squared_Fill_Medium
 },
 {
 name = Filter;
-value = "RoundCorner; 120; 1;";
+value = "RoundCorner; 55; 1;";
 }
 );
 instanceInterpolations = {
@@ -23853,7 +23853,7 @@ Squared_Fill_Medium
 },
 {
 name = Filter;
-value = "RoundCorner; 136; 1;";
+value = "RoundCorner; 60; 1;";
 }
 );
 instanceInterpolations = {
@@ -25932,7 +25932,7 @@ Squared_Fill_Medium
 },
 {
 name = Filter;
-value = "RoundCorner; 152; 1;";
+value = "RoundCorner; 65; 1;";
 }
 );
 instanceInterpolations = {
@@ -28010,7 +28010,7 @@ Squared_Fill_Medium
 },
 {
 name = Filter;
-value = "RoundCorner; 168; 1;";
+value = "RoundCorner; 70; 1;";
 }
 );
 instanceInterpolations = {
@@ -30423,7 +30423,7 @@ Squared_Fill_Medium
 },
 {
 name = Filter;
-value = "RoundCorner; 90; 1;";
+value = "RoundCorner; 45; 1;";
 }
 );
 name = Regular;

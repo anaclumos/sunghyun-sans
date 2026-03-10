@@ -1,34 +1,37 @@
--- Run with:
---   osascript scripts/export-glyphs.applescript
---
--- Requires Accessibility permission for the host running osascript
--- so System Events can drive Glyphs 3.
+#!/bin/bash
+set -euo pipefail
 
-property glyphsAppName : "Glyphs 3"
-property glyphsProcessName : "Glyphs 3"
-property projectRoot : "/Users/cho/Developer/sunghyun-sans"
+ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$ROOT_DIR"
 
+echo "=== Exporting TTF from Glyphs ==="
+PROJECT_ROOT="$ROOT_DIR" osascript <<'APPLESCRIPT'
+set projectRoot to system attribute "PROJECT_ROOT"
+set glyphsAppName to "Glyphs 3"
+set glyphsProcessName to "Glyphs 3"
 set sourcePaths to {¬
-    "/Users/cho/Developer/sunghyun-sans/sources/SunghyunSans.glyphspackage", ¬
-    "/Users/cho/Developer/sunghyun-sans/sources/SunghyunSansDisambiguated.glyphspackage", ¬
-    "/Users/cho/Developer/sunghyun-sans/sources/SunghyunSansJP.glyphspackage", ¬
-    "/Users/cho/Developer/sunghyun-sans/sources/SunghyunSansKRHanja.glyphspackage", ¬
-    "/Users/cho/Developer/sunghyun-sans/sources/SunghyunSansKR.glyphspackage"}
+    projectRoot & "/sources/SunghyunSans.glyphspackage", ¬
+    projectRoot & "/sources/SunghyunSansDisambiguated.glyphspackage", ¬
+    projectRoot & "/sources/SunghyunSansJP.glyphspackage", ¬
+    projectRoot & "/sources/SunghyunSansKRHanja.glyphspackage", ¬
+    projectRoot & "/sources/SunghyunSansKR.glyphspackage"}
 
-on documentForPath(targetPath)
-    tell application glyphsAppName
-        repeat with d in documents
-            try
-                if POSIX path of ((file of d) as alias) is targetPath then return d
-            end try
-        end repeat
-    end tell
+on documentForPath(targetPath, glyphsAppName)
+    with timeout of 7200 seconds
+        tell application glyphsAppName
+            repeat with d in documents
+                try
+                    if POSIX path of ((file of d) as alias) is targetPath then return d
+                end try
+            end repeat
+        end tell
+    end timeout
     return missing value
 end documentForPath
 
-on waitForDocument(targetPath)
+on waitForDocument(targetPath, glyphsAppName)
     repeat 120 times
-        set docRef to my documentForPath(targetPath)
+        set docRef to my documentForPath(targetPath, glyphsAppName)
         if docRef is not missing value then return docRef
         delay 0.5
     end repeat
@@ -39,37 +42,45 @@ on outputPrefixForSourcePath(sourcePath)
     return do shell script "basename -s .glyphspackage " & quoted form of sourcePath
 end outputPrefixForSourcePath
 
-on exportedFileCount(outputPrefix, extensionName)
+on exportedFileCount(projectRoot, outputPrefix, extensionName)
     set shellCommand to "find " & quoted form of projectRoot & " -maxdepth 1 -name " & quoted form of (outputPrefix & "-*." & extensionName) & " | wc -l | tr -d ' '"
     return (do shell script shellCommand) as integer
 end exportedFileCount
 
-on hasCompletedPostScriptExport(outputPrefix)
-    return (my exportedFileCount(outputPrefix, "otf") is 9) and ¬
-        (my exportedFileCount(outputPrefix, "woff") is 9) and ¬
-        (my exportedFileCount(outputPrefix, "woff2") is 9)
-end hasCompletedPostScriptExport
-
-on hasCompletedTrueTypeExport(outputPrefix)
-    return my exportedFileCount(outputPrefix, "ttf") is 9
+on hasCompletedTrueTypeExport(projectRoot, outputPrefix)
+    return my exportedFileCount(projectRoot, outputPrefix, "ttf") is 9
 end hasCompletedTrueTypeExport
 
-on waitForExportSheet()
+on frontWindowSheetCount(glyphsProcessName)
+    tell application "System Events"
+        tell process glyphsProcessName
+            try
+                return count of sheets of front window
+            end try
+        end tell
+    end tell
+    return 0
+end frontWindowSheetCount
+
+on waitForFrontWindowExportSheet(glyphsProcessName)
     repeat 120 times
-        if my totalSheetCount() > 0 then return
+        if my frontWindowSheetCount(glyphsProcessName) > 0 then return
         delay 0.25
     end repeat
-    error "Export sheet did not appear."
-end waitForExportSheet
+    error "Export sheet did not appear on front window."
+end waitForFrontWindowExportSheet
 
-on waitForExportMenuEnabled()
+on waitForExportMenuEnabled(glyphsAppName, glyphsProcessName)
     repeat 120 times
-        tell application glyphsAppName to activate
+        with timeout of 30 seconds
+            tell application glyphsAppName to activate
+        end timeout
         tell application "System Events"
             tell process glyphsProcessName
                 try
                     set frontmost to true
-                    if frontmost and (enabled of menu item "Export…" of menu 1 of menu bar item "File" of menu bar 1) then return
+                    perform action "AXRaise" of window 1
+                    if enabled of menu item "Export…" of menu 1 of menu bar item "File" of menu bar 1 then return
                 end try
             end tell
         end tell
@@ -78,7 +89,7 @@ on waitForExportMenuEnabled()
     error "Glyphs Export menu did not become available."
 end waitForExportMenuEnabled
 
-on totalSheetCount()
+on totalSheetCount(glyphsProcessName)
     tell application "System Events"
         tell process glyphsProcessName
             set sheetCount to 0
@@ -92,7 +103,7 @@ on totalSheetCount()
     end tell
 end totalSheetCount
 
-on exportProgressSheetIsVisible()
+on exportProgressSheetIsVisible(glyphsProcessName)
     tell application "System Events"
         tell process glyphsProcessName
             repeat with w in windows
@@ -109,15 +120,15 @@ on exportProgressSheetIsVisible()
     return false
 end exportProgressSheetIsVisible
 
-on waitForNoSheets()
+on waitForFrontWindowNoSheets(glyphsProcessName)
     repeat 7200 times
-        if my totalSheetCount() is 0 then return
+        if my frontWindowSheetCount(glyphsProcessName) is 0 then return
         delay 0.5
     end repeat
-    error "A Glyphs sheet did not close before timeout."
-end waitForNoSheets
+    error "Front window sheet did not close before timeout."
+end waitForFrontWindowNoSheets
 
-on waitForPhaseOnePane()
+on waitForPhaseOnePane(glyphsProcessName)
     tell application "System Events"
         tell process glyphsProcessName
             repeat 120 times
@@ -132,7 +143,7 @@ on waitForPhaseOnePane()
     error "Export options pane did not appear."
 end waitForPhaseOnePane
 
-on waitForPrimaryFormatCheckbox(primaryFormatTitle)
+on waitForPrimaryFormatCheckbox(primaryFormatTitle, glyphsProcessName)
     tell application "System Events"
         tell process glyphsProcessName
             repeat 120 times
@@ -146,7 +157,7 @@ on waitForPrimaryFormatCheckbox(primaryFormatTitle)
     error "Missing primary format checkbox: " & primaryFormatTitle
 end waitForPrimaryFormatCheckbox
 
-on waitForPhaseTwoPane()
+on waitForPhaseTwoPane(glyphsProcessName)
     tell application "System Events"
         tell process glyphsProcessName
             repeat 120 times
@@ -160,14 +171,14 @@ on waitForPhaseTwoPane()
     error "Export destination pane did not appear."
 end waitForPhaseTwoPane
 
-on waitForExportToFinish()
+on waitForAllExportsToFinish(glyphsProcessName)
     set sawProgressSheet to false
     set consecutiveSheetlessChecks to 0
 
     repeat 7200 times
-        set currentSheetCount to my totalSheetCount()
+        set currentSheetCount to my totalSheetCount(glyphsProcessName)
 
-        if my exportProgressSheetIsVisible() then
+        if my exportProgressSheetIsVisible(glyphsProcessName) then
             set sawProgressSheet to true
             set consecutiveSheetlessChecks to 0
         else if currentSheetCount is 0 then
@@ -184,10 +195,10 @@ on waitForExportToFinish()
         delay 0.25
     end repeat
 
-    error "Export did not finish before timeout."
-end waitForExportToFinish
+    error "Exports did not finish before timeout."
+end waitForAllExportsToFinish
 
-on clickRadioButton(buttonTitle)
+on clickRadioButton(buttonTitle, glyphsProcessName)
     tell application "System Events"
         tell process glyphsProcessName
             set containerRef to group 1 of sheet 1 of front window
@@ -197,7 +208,7 @@ on clickRadioButton(buttonTitle)
     end tell
 end clickRadioButton
 
-on setCheckboxState(buttonTitle, desiredState)
+on setCheckboxState(buttonTitle, desiredState, glyphsProcessName)
     tell application "System Events"
         tell process glyphsProcessName
             set containerRef to group 1 of sheet 1 of front window
@@ -209,7 +220,7 @@ on setCheckboxState(buttonTitle, desiredState)
     end tell
 end setCheckboxState
 
-on clickFirstExistingButton(buttonTitles)
+on clickFirstExistingButton(buttonTitles, glyphsProcessName)
     tell application "System Events"
         tell process glyphsProcessName
             repeat 120 times
@@ -241,9 +252,21 @@ on clickFirstExistingButton(buttonTitles)
     error "Missing button: " & (buttonTitles as text)
 end clickFirstExistingButton
 
-on exportFrontDocument(fileFormatTitle, primaryFormatTitle, includeWOFF, includeWOFF2)
-    my waitForNoSheets()
-    my waitForExportMenuEnabled()
+on clickExportFontOnAllWindows(glyphsProcessName)
+    tell application "System Events"
+        tell process glyphsProcessName
+            repeat with w in windows
+                try
+                    click button "Export Font" of splitter group 1 of sheet 1 of w
+                end try
+            end repeat
+        end tell
+    end tell
+end clickExportFontOnAllWindows
+
+on prepareExportOnFrontDocument(fileFormatTitle, primaryFormatTitle, includePrimary, includeWOFF, includeWOFF2, glyphsAppName, glyphsProcessName)
+    my waitForFrontWindowNoSheets(glyphsProcessName)
+    my waitForExportMenuEnabled(glyphsAppName, glyphsProcessName)
 
     tell application "System Events"
         tell process glyphsProcessName
@@ -251,68 +274,90 @@ on exportFrontDocument(fileFormatTitle, primaryFormatTitle, includeWOFF, include
         end tell
     end tell
 
-    my waitForExportSheet()
-    my waitForPhaseOnePane()
-    my clickRadioButton(fileFormatTitle)
-    my waitForPrimaryFormatCheckbox(primaryFormatTitle)
-    my setCheckboxState(primaryFormatTitle, true)
-    my setCheckboxState(".woff", includeWOFF)
-    my setCheckboxState(".woff2", includeWOFF2)
-    my clickFirstExistingButton({"Next…", "Next..."})
-    my waitForPhaseTwoPane()
-    my clickFirstExistingButton({"Export Font"})
-    my waitForExportToFinish()
-end exportFrontDocument
+    my waitForFrontWindowExportSheet(glyphsProcessName)
+    my waitForPhaseOnePane(glyphsProcessName)
+    my clickRadioButton(fileFormatTitle, glyphsProcessName)
+    my waitForPrimaryFormatCheckbox(primaryFormatTitle, glyphsProcessName)
+    my setCheckboxState(primaryFormatTitle, includePrimary, glyphsProcessName)
+    my setCheckboxState(".woff", includeWOFF, glyphsProcessName)
+    my setCheckboxState(".woff2", includeWOFF2, glyphsProcessName)
+    my clickFirstExistingButton({"Next…", "Next..."}, glyphsProcessName)
+    my waitForPhaseTwoPane(glyphsProcessName)
+    -- Stop here: "Export Font" button is ready but not clicked
+end prepareExportOnFrontDocument
 
-on quitGlyphsIfRunning()
-    if application glyphsAppName is running then
-        tell application glyphsAppName to quit saving no
-        repeat 120 times
-            if not (application glyphsAppName is running) then return
-            delay 0.25
-        end repeat
-        error "Glyphs did not quit before timeout."
-    end if
-end quitGlyphsIfRunning
+with timeout of 7200 seconds
+    tell application glyphsAppName
+        activate
+    end tell
+end timeout
 
-tell application glyphsAppName
-    activate
-end tell
+-- Phase 1: Open all source files at once
+log "Opening all source files..."
+repeat with sourcePath in sourcePaths
+    set sourceAlias to POSIX file (contents of sourcePath) as alias
+    with timeout of 7200 seconds
+        tell application glyphsAppName
+            open sourceAlias
+        end tell
+    end timeout
+end repeat
 
+-- Phase 2: Wait for all documents to be loaded
+set docInfos to {}
 repeat with sourcePath in sourcePaths
     set sourceAlias to POSIX file (contents of sourcePath) as alias
     set normalizedSourcePath to POSIX path of sourceAlias
     set outputPrefix to my outputPrefixForSourcePath(normalizedSourcePath)
+    set docRef to my waitForDocument(normalizedSourcePath, glyphsAppName)
+    set end of docInfos to {sourceAlias, normalizedSourcePath, outputPrefix, docRef}
+end repeat
+log "All source files loaded."
 
-    if my hasCompletedPostScriptExport(outputPrefix) then
-        log ("Skipping OTF/WOFF/WOFF2 for " & normalizedSourcePath)
-    else
-        tell application glyphsAppName
-            open sourceAlias
-        end tell
-        set docRef to my waitForDocument(normalizedSourcePath)
-        delay 1
-        log ("Exporting OTF/WOFF/WOFF2 from " & normalizedSourcePath)
-        my exportFrontDocument("PostScript/CFF", ".otf", true, true)
-        tell application glyphsAppName
-            close docRef saving no
-        end tell
-    end if
+-- Phase 3: Prepare TrueType export dialogs on all documents
+log "Preparing TrueType exports..."
+repeat with info in docInfos
+    set sourceAlias to item 1 of info
+    set normalizedSourcePath to item 2 of info
+    set outputPrefix to item 3 of info
 
-    if my hasCompletedTrueTypeExport(outputPrefix) then
-        log ("Skipping TTF from " & normalizedSourcePath)
+    if not my hasCompletedTrueTypeExport(projectRoot, outputPrefix) then
+        with timeout of 7200 seconds
+            tell application glyphsAppName
+                open sourceAlias
+            end tell
+        end timeout
+        tell application "System Events"
+            tell process glyphsProcessName
+                try
+                    perform action "AXRaise" of window 1
+                end try
+            end tell
+        end tell
+        delay 0.5
+        log ("Preparing TTF export for " & normalizedSourcePath)
+        my prepareExportOnFrontDocument("TrueType", ".ttf", true, false, false, glyphsAppName, glyphsProcessName)
     else
-        tell application glyphsAppName
-            open sourceAlias
-        end tell
-        set docRef to my waitForDocument(normalizedSourcePath)
-        delay 1
-        log ("Exporting TTF from " & normalizedSourcePath)
-        my exportFrontDocument("TrueType", ".ttf", false, false)
-        tell application glyphsAppName
-            close docRef saving no
-        end tell
+        log ("Skipping TTF for " & normalizedSourcePath)
     end if
 end repeat
 
-my quitGlyphsIfRunning()
+-- Click "Export Font" on all prepared windows at once
+log "Clicking Export Font on all TrueType windows..."
+my clickExportFontOnAllWindows(glyphsProcessName)
+
+my waitForAllExportsToFinish(glyphsProcessName)
+log "TrueType exports complete."
+
+-- Phase 4: Close all documents
+repeat with info in docInfos
+    set docRef to item 4 of info
+    with timeout of 7200 seconds
+        tell application glyphsAppName
+            close docRef saving no
+        end tell
+    end timeout
+end repeat
+APPLESCRIPT
+
+echo "=== TTF export complete ==="
