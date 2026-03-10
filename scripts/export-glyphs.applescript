@@ -1,22 +1,21 @@
-#!/bin/bash
-set -euo pipefail
+-- Run with:
+--   osascript scripts/export-glyphs.applescript
+--
+-- Requires Accessibility permission for the host running osascript
+-- so System Events can drive Glyphs 3.
 
-ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
-cd "$ROOT_DIR"
+property glyphsAppName : "Glyphs 3"
+property glyphsProcessName : "Glyphs 3"
+property projectRoot : "/Users/cho/Developer/sunghyun-sans"
 
-export_from_glyphs() {
-  PROJECT_ROOT="$ROOT_DIR" osascript <<'APPLESCRIPT'
-set projectRoot to system attribute "PROJECT_ROOT"
-set glyphsAppName to "Glyphs 3"
-set glyphsProcessName to "Glyphs 3"
 set sourcePaths to {¬
-    projectRoot & "/sources/SunghyunSans.glyphspackage", ¬
-    projectRoot & "/sources/SunghyunSansDisambiguated.glyphspackage", ¬
-    projectRoot & "/sources/SunghyunSansJP.glyphspackage", ¬
-    projectRoot & "/sources/SunghyunSansKRHanja.glyphspackage", ¬
-    projectRoot & "/sources/SunghyunSansKR.glyphspackage"}
+    "/Users/cho/Developer/sunghyun-sans/sources/SunghyunSans.glyphspackage", ¬
+    "/Users/cho/Developer/sunghyun-sans/sources/SunghyunSansDisambiguated.glyphspackage", ¬
+    "/Users/cho/Developer/sunghyun-sans/sources/SunghyunSansJP.glyphspackage", ¬
+    "/Users/cho/Developer/sunghyun-sans/sources/SunghyunSansKRHanja.glyphspackage", ¬
+    "/Users/cho/Developer/sunghyun-sans/sources/SunghyunSansKR.glyphspackage"}
 
-on documentForPath(targetPath, glyphsAppName)
+on documentForPath(targetPath)
     tell application glyphsAppName
         repeat with d in documents
             try
@@ -27,9 +26,9 @@ on documentForPath(targetPath, glyphsAppName)
     return missing value
 end documentForPath
 
-on waitForDocument(targetPath, glyphsAppName)
+on waitForDocument(targetPath)
     repeat 120 times
-        set docRef to my documentForPath(targetPath, glyphsAppName)
+        set docRef to my documentForPath(targetPath)
         if docRef is not missing value then return docRef
         delay 0.5
     end repeat
@@ -40,30 +39,30 @@ on outputPrefixForSourcePath(sourcePath)
     return do shell script "basename -s .glyphspackage " & quoted form of sourcePath
 end outputPrefixForSourcePath
 
-on exportedFileCount(projectRoot, outputPrefix, extensionName)
+on exportedFileCount(outputPrefix, extensionName)
     set shellCommand to "find " & quoted form of projectRoot & " -maxdepth 1 -name " & quoted form of (outputPrefix & "-*." & extensionName) & " | wc -l | tr -d ' '"
     return (do shell script shellCommand) as integer
 end exportedFileCount
 
-on hasCompletedPostScriptExport(projectRoot, outputPrefix)
-    return (my exportedFileCount(projectRoot, outputPrefix, "otf") is 9) and ¬
-        (my exportedFileCount(projectRoot, outputPrefix, "woff") is 9) and ¬
-        (my exportedFileCount(projectRoot, outputPrefix, "woff2") is 9)
+on hasCompletedPostScriptExport(outputPrefix)
+    return (my exportedFileCount(outputPrefix, "otf") is 9) and ¬
+        (my exportedFileCount(outputPrefix, "woff") is 9) and ¬
+        (my exportedFileCount(outputPrefix, "woff2") is 9)
 end hasCompletedPostScriptExport
 
-on hasCompletedTrueTypeExport(projectRoot, outputPrefix)
-    return my exportedFileCount(projectRoot, outputPrefix, "ttf") is 9
+on hasCompletedTrueTypeExport(outputPrefix)
+    return my exportedFileCount(outputPrefix, "ttf") is 9
 end hasCompletedTrueTypeExport
 
-on waitForExportSheet(glyphsProcessName)
+on waitForExportSheet()
     repeat 120 times
-        if my totalSheetCount(glyphsProcessName) > 0 then return
+        if my totalSheetCount() > 0 then return
         delay 0.25
     end repeat
     error "Export sheet did not appear."
 end waitForExportSheet
 
-on waitForExportMenuEnabled(glyphsAppName, glyphsProcessName)
+on waitForExportMenuEnabled()
     repeat 120 times
         tell application glyphsAppName to activate
         tell application "System Events"
@@ -79,7 +78,7 @@ on waitForExportMenuEnabled(glyphsAppName, glyphsProcessName)
     error "Glyphs Export menu did not become available."
 end waitForExportMenuEnabled
 
-on totalSheetCount(glyphsProcessName)
+on totalSheetCount()
     tell application "System Events"
         tell process glyphsProcessName
             set sheetCount to 0
@@ -93,7 +92,7 @@ on totalSheetCount(glyphsProcessName)
     end tell
 end totalSheetCount
 
-on exportProgressSheetIsVisible(glyphsProcessName)
+on exportProgressSheetIsVisible()
     tell application "System Events"
         tell process glyphsProcessName
             repeat with w in windows
@@ -110,15 +109,15 @@ on exportProgressSheetIsVisible(glyphsProcessName)
     return false
 end exportProgressSheetIsVisible
 
-on waitForNoSheets(glyphsProcessName)
+on waitForNoSheets()
     repeat 7200 times
-        if my totalSheetCount(glyphsProcessName) is 0 then return
+        if my totalSheetCount() is 0 then return
         delay 0.5
     end repeat
     error "A Glyphs sheet did not close before timeout."
 end waitForNoSheets
 
-on waitForPhaseOnePane(glyphsProcessName)
+on waitForPhaseOnePane()
     tell application "System Events"
         tell process glyphsProcessName
             repeat 120 times
@@ -133,7 +132,7 @@ on waitForPhaseOnePane(glyphsProcessName)
     error "Export options pane did not appear."
 end waitForPhaseOnePane
 
-on waitForPrimaryFormatCheckbox(primaryFormatTitle, glyphsProcessName)
+on waitForPrimaryFormatCheckbox(primaryFormatTitle)
     tell application "System Events"
         tell process glyphsProcessName
             repeat 120 times
@@ -147,7 +146,7 @@ on waitForPrimaryFormatCheckbox(primaryFormatTitle, glyphsProcessName)
     error "Missing primary format checkbox: " & primaryFormatTitle
 end waitForPrimaryFormatCheckbox
 
-on waitForPhaseTwoPane(glyphsProcessName)
+on waitForPhaseTwoPane()
     tell application "System Events"
         tell process glyphsProcessName
             repeat 120 times
@@ -161,14 +160,14 @@ on waitForPhaseTwoPane(glyphsProcessName)
     error "Export destination pane did not appear."
 end waitForPhaseTwoPane
 
-on waitForExportToFinish(glyphsProcessName)
+on waitForExportToFinish()
     set sawProgressSheet to false
     set consecutiveSheetlessChecks to 0
 
     repeat 7200 times
-        set currentSheetCount to my totalSheetCount(glyphsProcessName)
+        set currentSheetCount to my totalSheetCount()
 
-        if my exportProgressSheetIsVisible(glyphsProcessName) then
+        if my exportProgressSheetIsVisible() then
             set sawProgressSheet to true
             set consecutiveSheetlessChecks to 0
         else if currentSheetCount is 0 then
@@ -188,7 +187,7 @@ on waitForExportToFinish(glyphsProcessName)
     error "Export did not finish before timeout."
 end waitForExportToFinish
 
-on clickRadioButton(buttonTitle, glyphsProcessName)
+on clickRadioButton(buttonTitle)
     tell application "System Events"
         tell process glyphsProcessName
             set containerRef to group 1 of sheet 1 of front window
@@ -198,7 +197,7 @@ on clickRadioButton(buttonTitle, glyphsProcessName)
     end tell
 end clickRadioButton
 
-on setCheckboxState(buttonTitle, desiredState, glyphsProcessName)
+on setCheckboxState(buttonTitle, desiredState)
     tell application "System Events"
         tell process glyphsProcessName
             set containerRef to group 1 of sheet 1 of front window
@@ -210,7 +209,7 @@ on setCheckboxState(buttonTitle, desiredState, glyphsProcessName)
     end tell
 end setCheckboxState
 
-on clickFirstExistingButton(buttonTitles, glyphsProcessName)
+on clickFirstExistingButton(buttonTitles)
     tell application "System Events"
         tell process glyphsProcessName
             repeat 120 times
@@ -242,9 +241,9 @@ on clickFirstExistingButton(buttonTitles, glyphsProcessName)
     error "Missing button: " & (buttonTitles as text)
 end clickFirstExistingButton
 
-on exportFrontDocument(fileFormatTitle, primaryFormatTitle, includeWOFF, includeWOFF2, glyphsAppName, glyphsProcessName)
-    my waitForNoSheets(glyphsProcessName)
-    my waitForExportMenuEnabled(glyphsAppName, glyphsProcessName)
+on exportFrontDocument(fileFormatTitle, primaryFormatTitle, includeWOFF, includeWOFF2)
+    my waitForNoSheets()
+    my waitForExportMenuEnabled()
 
     tell application "System Events"
         tell process glyphsProcessName
@@ -252,18 +251,29 @@ on exportFrontDocument(fileFormatTitle, primaryFormatTitle, includeWOFF, include
         end tell
     end tell
 
-    my waitForExportSheet(glyphsProcessName)
-    my waitForPhaseOnePane(glyphsProcessName)
-    my clickRadioButton(fileFormatTitle, glyphsProcessName)
-    my waitForPrimaryFormatCheckbox(primaryFormatTitle, glyphsProcessName)
-    my setCheckboxState(primaryFormatTitle, true, glyphsProcessName)
-    my setCheckboxState(".woff", includeWOFF, glyphsProcessName)
-    my setCheckboxState(".woff2", includeWOFF2, glyphsProcessName)
-    my clickFirstExistingButton({"Next…", "Next..."}, glyphsProcessName)
-    my waitForPhaseTwoPane(glyphsProcessName)
-    my clickFirstExistingButton({"Export Font"}, glyphsProcessName)
-    my waitForExportToFinish(glyphsProcessName)
+    my waitForExportSheet()
+    my waitForPhaseOnePane()
+    my clickRadioButton(fileFormatTitle)
+    my waitForPrimaryFormatCheckbox(primaryFormatTitle)
+    my setCheckboxState(primaryFormatTitle, true)
+    my setCheckboxState(".woff", includeWOFF)
+    my setCheckboxState(".woff2", includeWOFF2)
+    my clickFirstExistingButton({"Next…", "Next..."})
+    my waitForPhaseTwoPane()
+    my clickFirstExistingButton({"Export Font"})
+    my waitForExportToFinish()
 end exportFrontDocument
+
+on quitGlyphsIfRunning()
+    if application glyphsAppName is running then
+        tell application glyphsAppName to quit saving no
+        repeat 120 times
+            if not (application glyphsAppName is running) then return
+            delay 0.25
+        end repeat
+        error "Glyphs did not quit before timeout."
+    end if
+end quitGlyphsIfRunning
 
 tell application glyphsAppName
     activate
@@ -274,85 +284,35 @@ repeat with sourcePath in sourcePaths
     set normalizedSourcePath to POSIX path of sourceAlias
     set outputPrefix to my outputPrefixForSourcePath(normalizedSourcePath)
 
-    if my hasCompletedPostScriptExport(projectRoot, outputPrefix) then
+    if my hasCompletedPostScriptExport(outputPrefix) then
         log ("Skipping OTF/WOFF/WOFF2 for " & normalizedSourcePath)
     else
         tell application glyphsAppName
             open sourceAlias
         end tell
-        set docRef to my waitForDocument(normalizedSourcePath, glyphsAppName)
+        set docRef to my waitForDocument(normalizedSourcePath)
         delay 1
         log ("Exporting OTF/WOFF/WOFF2 from " & normalizedSourcePath)
-        my exportFrontDocument("PostScript/CFF", ".otf", true, true, glyphsAppName, glyphsProcessName)
+        my exportFrontDocument("PostScript/CFF", ".otf", true, true)
         tell application glyphsAppName
             close docRef saving no
         end tell
     end if
 
-    if my hasCompletedTrueTypeExport(projectRoot, outputPrefix) then
+    if my hasCompletedTrueTypeExport(outputPrefix) then
         log ("Skipping TTF from " & normalizedSourcePath)
     else
         tell application glyphsAppName
             open sourceAlias
         end tell
-        set docRef to my waitForDocument(normalizedSourcePath, glyphsAppName)
+        set docRef to my waitForDocument(normalizedSourcePath)
         delay 1
         log ("Exporting TTF from " & normalizedSourcePath)
-        my exportFrontDocument("TrueType", ".ttf", false, false, glyphsAppName, glyphsProcessName)
+        my exportFrontDocument("TrueType", ".ttf", false, false)
         tell application glyphsAppName
             close docRef saving no
         end tell
     end if
 end repeat
-APPLESCRIPT
-}
 
-sync_glyphs_temp_exports() {
-  local temp_dir="$HOME/Library/Application Support/Glyphs 3/Temp"
-  find "$temp_dir" -maxdepth 1 -type f \
-    \( -name 'SunghyunSans-*' -o -name 'SunghyunSansDisambiguated-*' -o -name 'SunghyunSansJP-*' -o -name 'SunghyunSansKRHanja-*' -o -name 'SunghyunSansKR-*' \) \
-    \( -name '*.otf' -o -name '*.ttf' -o -name '*.woff' -o -name '*.woff2' \) \
-    ! -name '*_unhinted.ttf' \
-    -exec cp -f {} "$ROOT_DIR" \;
-}
-
-verify_exports() {
-  local family
-  local ext
-  local count
-  for family in SunghyunSans SunghyunSansDisambiguated SunghyunSansJP SunghyunSansKRHanja SunghyunSansKR; do
-    for ext in otf ttf woff woff2; do
-      count="$(find "$ROOT_DIR" -maxdepth 1 -name "$family-*.$ext" ! -name '*_unhinted.ttf' | wc -l | tr -d ' ')"
-      if [ "$count" -ne 9 ]; then
-        echo "Missing exports for $family ($ext=$count, expected 9)" >&2
-        return 1
-      fi
-    done
-  done
-}
-
-echo "=== Exporting fonts from Glyphs ==="
-if ! export_from_glyphs; then
-  echo "=== Glyphs export exited non-zero; attempting recovery from Glyphs temp ==="
-fi
-
-echo "=== Syncing completed exports from Glyphs temp ==="
-sync_glyphs_temp_exports
-
-echo "=== Verifying exported files ==="
-verify_exports
-
-echo "=== Moving font files to fonts/ ==="
-mv *.otf fonts/otf/
-mv *.ttf fonts/ttf/
-mv *.woff fonts/woff/
-mv *.woff2 fonts/woff2/
-
-echo "=== Rebuilding web dist ==="
-uv run scripts/build-web-dist.py
-
-echo "=== Updating site copy ==="
-rm -rf site/public/dist
-cp -R dist/web site/public/dist
-
-echo "=== Done ==="
+my quitGlyphsIfRunning()
