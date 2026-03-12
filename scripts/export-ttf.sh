@@ -346,18 +346,7 @@ end repeat
 log "Clicking Export Font on all TrueType windows..."
 my clickExportFontOnAllWindows(glyphsProcessName)
 
-my waitForAllExportsToFinish(glyphsProcessName)
-log "TrueType exports complete."
-
--- Phase 4: Close all documents
-repeat with info in docInfos
-    set docRef to item 4 of info
-    with timeout of 7200 seconds
-        tell application glyphsAppName
-            close docRef saving no
-        end tell
-    end timeout
-end repeat
+log "TrueType exports kicked off."
 APPLESCRIPT
 
-echo "=== TTF export complete ==="
+echo "=== TTF export kicked off ==="

@@ -348,18 +348,7 @@ end repeat
 log "Clicking Export Font on all OTF/WOFF/WOFF2 windows..."
 my clickExportFontOnAllWindows(glyphsProcessName)
 
-my waitForAllExportsToFinish(glyphsProcessName)
-log "OTF/WOFF/WOFF2 exports complete."
-
--- Phase 4: Close all documents
-repeat with info in docInfos
-    set docRef to item 4 of info
-    with timeout of 7200 seconds
-        tell application glyphsAppName
-            close docRef saving no
-        end tell
-    end timeout
-end repeat
+log "OTF/WOFF/WOFF2 exports kicked off."
 APPLESCRIPT
 
-echo "=== OTF/WOFF/WOFF2 export complete ==="
+echo "=== OTF/WOFF/WOFF2 export kicked off ==="

@@ -9302,7 +9302,7 @@ languagesystem hani KOR;
 },
 {
 name = Filter;
-value = "RoundCorner; 40; 1;";
+value = "RoundCorner; 75; 1;";
 }
 );
 instanceInterpolations = {
@@ -10032,7 +10032,7 @@ languagesystem hani KOR;
 },
 {
 name = Filter;
-value = "RoundCorner; 44; 1;";
+value = "RoundCorner; 78; 1;";
 }
 );
 instanceInterpolations = {
@@ -10762,7 +10762,7 @@ languagesystem hani KOR;
 },
 {
 name = Filter;
-value = "RoundCorner; 48; 1;";
+value = "RoundCorner; 81; 1;";
 }
 );
 instanceInterpolations = {
@@ -11492,7 +11492,7 @@ languagesystem hani KOR;
 },
 {
 name = Filter;
-value = "RoundCorner; 52; 1;";
+value = "RoundCorner; 84; 1;";
 }
 );
 instanceInterpolations = {
@@ -12220,7 +12220,7 @@ languagesystem hani KOR;
 },
 {
 name = Filter;
-value = "RoundCorner; 56; 1;";
+value = "RoundCorner; 87; 1;";
 }
 );
 instanceInterpolations = {
@@ -12950,7 +12950,7 @@ languagesystem hani KOR;
 },
 {
 name = Filter;
-value = "RoundCorner; 60; 1;";
+value = "RoundCorner; 90; 1;";
 }
 );
 instanceInterpolations = {
@@ -13680,7 +13680,7 @@ languagesystem hani KOR;
 },
 {
 name = Filter;
-value = "RoundCorner; 64; 1;";
+value = "RoundCorner; 93; 1;";
 }
 );
 instanceInterpolations = {
@@ -14411,7 +14411,7 @@ languagesystem hani KOR;
 },
 {
 name = Filter;
-value = "RoundCorner; 68; 1;";
+value = "RoundCorner; 96; 1;";
 }
 );
 instanceInterpolations = {
@@ -15141,7 +15141,7 @@ languagesystem hani KOR;
 },
 {
 name = Filter;
-value = "RoundCorner; 72; 1;";
+value = "RoundCorner; 99; 1;";
 }
 );
 instanceInterpolations = {
@@ -16206,7 +16206,7 @@ languagesystem hani KOR;
 },
 {
 name = Filter;
-value = "RoundCorner; 52; 1;";
+value = "RoundCorner; 84; 1;";
 }
 );
 name = Regular;
