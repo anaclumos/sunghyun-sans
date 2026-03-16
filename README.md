@@ -77,7 +77,7 @@ The easiest way to use Sunghyun Sans on the web is via the jsDelivr CDN.
 Add the stylesheet to your HTML `<head>`:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/anaclumos/sunghyun-sans@v1.0.0/dist/web/css/sunghyun-sans-kr-dynamic-subset.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/anaclumos/sunghyun-sans@latest/dist/web/css/sunghyun-sans-kr-dynamic-subset.min.css" />
 ```
 
 Then use the font in your CSS:
@@ -93,7 +93,7 @@ body {
 All CSS files are served from:
 
 ```
-https://cdn.jsdelivr.net/gh/anaclumos/sunghyun-sans@v1.0.0/dist/web/css/
+https://cdn.jsdelivr.net/gh/anaclumos/sunghyun-sans@latest/dist/web/css/
 ```
 
 | Family | Full | Dynamic Subset (Recommended) |
@@ -111,8 +111,8 @@ https://cdn.jsdelivr.net/gh/anaclumos/sunghyun-sans@v1.0.0/dist/web/css/
 ### Using Multiple Families
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/anaclumos/sunghyun-sans@v1.0.0/dist/web/css/sunghyun-sans-dynamic-subset.min.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/anaclumos/sunghyun-sans@v1.0.0/dist/web/css/sunghyun-sans-kr-dynamic-subset.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/anaclumos/sunghyun-sans@latest/dist/web/css/sunghyun-sans-dynamic-subset.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/anaclumos/sunghyun-sans@latest/dist/web/css/sunghyun-sans-kr-dynamic-subset.min.css" />
 ```
 
 ```css
