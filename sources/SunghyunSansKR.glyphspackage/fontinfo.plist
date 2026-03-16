@@ -4767,7 +4767,11 @@ value = 2048;
 },
 {
 name = Filter;
-value = "RoundCorner; 45; 1;";
+value = "RoundCorner; 45; 1; exclude: name=*-ko";
+},
+{
+name = Filter;
+value = "RoundCorner; 60; 1; include: name=*-ko";
 }
 );
 instanceInterpolations = {
@@ -4803,7 +4807,11 @@ value = 2048;
 },
 {
 name = Filter;
-value = "RoundCorner; 60; 1;";
+value = "RoundCorner; 60; 1; exclude: name=*-ko";
+},
+{
+name = Filter;
+value = "RoundCorner; 60; 1; include: name=*-ko";
 }
 );
 instanceInterpolations = {
@@ -4839,7 +4847,11 @@ value = 2048;
 },
 {
 name = Filter;
-value = "RoundCorner; 75; 1;";
+value = "RoundCorner; 75; 1; exclude: name=*-ko";
+},
+{
+name = Filter;
+value = "RoundCorner; 60; 1; include: name=*-ko";
 }
 );
 instanceInterpolations = {
@@ -4875,7 +4887,11 @@ value = 2048;
 },
 {
 name = Filter;
-value = "RoundCorner; 90; 1;";
+value = "RoundCorner; 90; 1; exclude: name=*-ko";
+},
+{
+name = Filter;
+value = "RoundCorner; 60; 1; include: name=*-ko";
 }
 );
 instanceInterpolations = {
@@ -4909,7 +4925,11 @@ value = 2048;
 },
 {
 name = Filter;
-value = "RoundCorner; 105; 1;";
+value = "RoundCorner; 105; 1; exclude: name=*-ko";
+},
+{
+name = Filter;
+value = "RoundCorner; 60; 1; include: name=*-ko";
 }
 );
 instanceInterpolations = {
@@ -4945,7 +4965,11 @@ value = 2048;
 },
 {
 name = Filter;
-value = "RoundCorner; 120; 1;";
+value = "RoundCorner; 120; 1; exclude: name=*-ko";
+},
+{
+name = Filter;
+value = "RoundCorner; 60; 1; include: name=*-ko";
 }
 );
 instanceInterpolations = {
@@ -4981,7 +5005,11 @@ value = 2048;
 },
 {
 name = Filter;
-value = "RoundCorner; 135; 1;";
+value = "RoundCorner; 135; 1; exclude: name=*-ko";
+},
+{
+name = Filter;
+value = "RoundCorner; 60; 1; include: name=*-ko";
 }
 );
 instanceInterpolations = {
@@ -5018,7 +5046,11 @@ value = 2048;
 },
 {
 name = Filter;
-value = "RoundCorner; 150; 1;";
+value = "RoundCorner; 150; 1; exclude: name=*-ko";
+},
+{
+name = Filter;
+value = "RoundCorner; 60; 1; include: name=*-ko";
 }
 );
 instanceInterpolations = {
@@ -5054,7 +5086,11 @@ value = 2048;
 },
 {
 name = Filter;
-value = "RoundCorner; 165; 1;";
+value = "RoundCorner; 165; 1; exclude: name=*-ko";
+},
+{
+name = Filter;
+value = "RoundCorner; 60; 1; include: name=*-ko";
 }
 );
 instanceInterpolations = {
@@ -5430,7 +5466,11 @@ upChevron.roundBlackBox.medium
 },
 {
 name = Filter;
-value = "RoundCorner; 90; 1;";
+value = "RoundCorner; 90; 1; exclude: name=*-ko";
+},
+{
+name = Filter;
+value = "RoundCorner; 60; 1; include: name=*-ko";
 }
 );
 name = Regular;
