@@ -3,8 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prepare:font-dist": "node scripts/sync-font-dist.mjs",
+    "predev": "npm run prepare:font-dist",
     "dev": "next dev",
+    "prebuild": "npm run prepare:font-dist",
     "build": "next build",
+    "prestart": "npm run prepare:font-dist",
     "start": "next start",
     "lint": "eslint"
   },
