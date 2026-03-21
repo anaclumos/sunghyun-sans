@@ -74,11 +74,11 @@ export default async function LocaleLayout({children, params}: Props) {
   return (
     <html lang={locale} className="scroll-smooth" suppressHydrationWarning>
       <head>
-        <link rel="stylesheet" href="/dist/css/sunghyun-sans-dynamic-subset.min.css" />
-        <link rel="stylesheet" href="/dist/css/sunghyun-sans-kr-dynamic-subset.min.css" />
-        <link rel="stylesheet" href="/dist/css/sunghyun-sans-jp-dynamic-subset.min.css" />
-        <link rel="stylesheet" href="/dist/css/sunghyun-sans-kr-hanja-dynamic-subset.min.css" />
-        <link rel="stylesheet" href="/dist/css/sunghyun-sans-disambiguated-dynamic-subset.min.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/anaclumos/sunghyun-sans@latest/dist/web/css/sunghyun-sans-dynamic-subset.min.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/anaclumos/sunghyun-sans@latest/dist/web/css/sunghyun-sans-kr-dynamic-subset.min.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/anaclumos/sunghyun-sans@latest/dist/web/css/sunghyun-sans-jp-dynamic-subset.min.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/anaclumos/sunghyun-sans@latest/dist/web/css/sunghyun-sans-kr-hanja-dynamic-subset.min.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/anaclumos/sunghyun-sans@latest/dist/web/css/sunghyun-sans-disambiguated-dynamic-subset.min.css" />
       </head>
       <body className="font-sans antialiased bg-paper text-ink overflow-x-hidden">
         <NextIntlClientProvider>
