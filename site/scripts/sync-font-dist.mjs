@@ -16,9 +16,10 @@ const requiredCssFiles = [
 ];
 
 if (!existsSync(sourceDir)) {
-  throw new Error(
-    `Missing web release assets at ${sourceDir}. Run \`uv run python scripts/build-web-dist.py\` from the repo root first.`
+  console.warn(
+    `Skipping font sync: ${sourceDir} not found. Fonts will be loaded from CDN.`
   );
+  process.exit(0);
 }
 
 for (const entry of requiredEntries) {
