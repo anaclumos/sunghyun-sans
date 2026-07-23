@@ -11387,6 +11387,10 @@ Squared_Fill_Medium
 },
 {
 name = Filter;
+value = "RemoveOverlap; include: hardsigncyrillic, afii10044, ljecyrillic, afii10058, djecyrillic, afii10051, Kabashkircyrillic, kabashkircyrillic, Cheabkhasiancyrillic, cheabkhasiancyrillic, shchacyrillic, afii10043, afii10145, emcyrillic, eiotifiedcyrillic, otcyrillic, Koppacyrillic, koppacyrillic, Yusbigiotifiedcyrillic, OE, ae, four, paragraph, paragraphreversed, Bhook, btopbar, Dhook, dtopbar, khook, ccurl, ghook, hhook, henghook, lrthook, mturndescend, mhook, nlfthook, nrthook, zrthook, qhook, uni0221, uni023F, qrthook, uni024C, ncurl, Epsilon1, babygamma, Digamma, digamma, epsilon, koppa, epsilon1rev, epsilon1revclosed, epsilonclosed, eurocurrency, peseta, guarani, lowerHalfWhiteSquare, whitecornerbracketleft, whitecornerbracketright, whitecornerbracketleft.full, whitecornerbracketright.full, whitelenticularbracketleft, whitelenticularbracketright, whitelenticularbracketleft.full, whitelenticularbracketright.full, whitesquarebracketleft, whitesquarebracketright, whitesquarebracketleft.full, whitesquarebracketright.full, interrobang, bridgesubnosp, yogonek, lbelt.ss02, rrthook, rrthook.1, rdescend, rdescend.1, tortoiseshellbracketleft, tortoiseshellbracketright, tortoiseshellbracketleft.full, tortoiseshellbracketright.full, whitetortoiseshellbracketleft, whitetortoiseshellbracketright, whitetortoiseshellbracketleft.full, whitetortoiseshellbracketright.full, aeacute, aemacron, aiecyrillic, epsilon1, epsilon1revhook, epsilontonos, uni1F10, uni1F11, uni1F12, uni1F13, uni1F14, uni1F15, uni1F72, uni1F73, uni04CE, Chedescenderabkhasiancyrillic, chedescenderabkhasiancyrillic, four.full, four.pnum, four.ss01, four.ss01.full, four.ss01.pnum, four.tf, four.tf.ss01, guarani.full, invertedinterrobang, tortoiseshellbracketleft.hang, tortoiseshellbracketright.hang, whitecornerbracketleft.hang, whitecornerbracketright.hang, whitelenticularbracketleft.hang, whitelenticularbracketright.hang, whitesquarebracketleft.hang, whitesquarebracketright.hang, whitetortoiseshellbracketleft.hang, whitetortoiseshellbracketright.hang;";
+},
+{
+name = Filter;
 value = "RoundCorner; 45; 1; exclude: name=*-ko";
 },
 {
@@ -13466,6 +13470,10 @@ Circled_Fill_Medium,
 Squared_Medium,
 Squared_Fill_Medium
 );
+},
+{
+name = Filter;
+value = "RemoveOverlap; include: hardsigncyrillic, afii10044, ljecyrillic, afii10058, djecyrillic, afii10051, Kabashkircyrillic, kabashkircyrillic, Cheabkhasiancyrillic, cheabkhasiancyrillic, shchacyrillic, afii10043, afii10145, emcyrillic, eiotifiedcyrillic, otcyrillic, Koppacyrillic, koppacyrillic, Yusbigiotifiedcyrillic, OE, ae, four, paragraph, paragraphreversed, Bhook, btopbar, Dhook, dtopbar, khook, ccurl, ghook, hhook, henghook, lrthook, mturndescend, mhook, nlfthook, nrthook, zrthook, qhook, uni0221, uni023F, qrthook, uni024C, ncurl, Epsilon1, babygamma, Digamma, digamma, epsilon, koppa, epsilon1rev, epsilon1revclosed, epsilonclosed, eurocurrency, peseta, guarani, lowerHalfWhiteSquare, whitecornerbracketleft, whitecornerbracketright, whitecornerbracketleft.full, whitecornerbracketright.full, whitelenticularbracketleft, whitelenticularbracketright, whitelenticularbracketleft.full, whitelenticularbracketright.full, whitesquarebracketleft, whitesquarebracketright, whitesquarebracketleft.full, whitesquarebracketright.full, interrobang, bridgesubnosp, yogonek, lbelt.ss02, rrthook, rrthook.1, rdescend, rdescend.1, tortoiseshellbracketleft, tortoiseshellbracketright, tortoiseshellbracketleft.full, tortoiseshellbracketright.full, whitetortoiseshellbracketleft, whitetortoiseshellbracketright, whitetortoiseshellbracketleft.full, whitetortoiseshellbracketright.full, aeacute, aemacron, aiecyrillic, epsilon1, epsilon1revhook, epsilontonos, uni1F10, uni1F11, uni1F12, uni1F13, uni1F14, uni1F15, uni1F72, uni1F73, uni04CE, Chedescenderabkhasiancyrillic, chedescenderabkhasiancyrillic, four.full, four.pnum, four.ss01, four.ss01.full, four.ss01.pnum, four.tf, four.tf.ss01, guarani.full, invertedinterrobang, tortoiseshellbracketleft.hang, tortoiseshellbracketright.hang, whitecornerbracketleft.hang, whitecornerbracketright.hang, whitelenticularbracketleft.hang, whitelenticularbracketright.hang, whitesquarebracketleft.hang, whitesquarebracketright.hang, whitetortoiseshellbracketleft.hang, whitetortoiseshellbracketright.hang;";
 },
 {
 name = Filter;
@@ -15551,6 +15559,10 @@ Squared_Fill_Medium
 },
 {
 name = Filter;
+value = "RemoveOverlap; include: hardsigncyrillic, afii10044, ljecyrillic, afii10058, djecyrillic, afii10051, Kabashkircyrillic, kabashkircyrillic, Cheabkhasiancyrillic, cheabkhasiancyrillic, shchacyrillic, afii10043, afii10145, emcyrillic, eiotifiedcyrillic, otcyrillic, Koppacyrillic, koppacyrillic, Yusbigiotifiedcyrillic, OE, ae, four, paragraph, paragraphreversed, Bhook, btopbar, Dhook, dtopbar, khook, ccurl, ghook, hhook, henghook, lrthook, mturndescend, mhook, nlfthook, nrthook, zrthook, qhook, uni0221, uni023F, qrthook, uni024C, ncurl, Epsilon1, babygamma, Digamma, digamma, epsilon, koppa, epsilon1rev, epsilon1revclosed, epsilonclosed, eurocurrency, peseta, guarani, lowerHalfWhiteSquare, whitecornerbracketleft, whitecornerbracketright, whitecornerbracketleft.full, whitecornerbracketright.full, whitelenticularbracketleft, whitelenticularbracketright, whitelenticularbracketleft.full, whitelenticularbracketright.full, whitesquarebracketleft, whitesquarebracketright, whitesquarebracketleft.full, whitesquarebracketright.full, interrobang, bridgesubnosp, yogonek, lbelt.ss02, rrthook, rrthook.1, rdescend, rdescend.1, tortoiseshellbracketleft, tortoiseshellbracketright, tortoiseshellbracketleft.full, tortoiseshellbracketright.full, whitetortoiseshellbracketleft, whitetortoiseshellbracketright, whitetortoiseshellbracketleft.full, whitetortoiseshellbracketright.full, aeacute, aemacron, aiecyrillic, epsilon1, epsilon1revhook, epsilontonos, uni1F10, uni1F11, uni1F12, uni1F13, uni1F14, uni1F15, uni1F72, uni1F73, uni04CE, Chedescenderabkhasiancyrillic, chedescenderabkhasiancyrillic, four.full, four.pnum, four.ss01, four.ss01.full, four.ss01.pnum, four.tf, four.tf.ss01, guarani.full, invertedinterrobang, tortoiseshellbracketleft.hang, tortoiseshellbracketright.hang, whitecornerbracketleft.hang, whitecornerbracketright.hang, whitelenticularbracketleft.hang, whitelenticularbracketright.hang, whitesquarebracketleft.hang, whitesquarebracketright.hang, whitetortoiseshellbracketleft.hang, whitetortoiseshellbracketright.hang;";
+},
+{
+name = Filter;
 value = "RoundCorner; 75; 1; exclude: name=*-ko";
 },
 {
@@ -17633,6 +17645,10 @@ Squared_Fill_Medium
 },
 {
 name = Filter;
+value = "RemoveOverlap; include: hardsigncyrillic, afii10044, ljecyrillic, afii10058, djecyrillic, afii10051, Kabashkircyrillic, kabashkircyrillic, Cheabkhasiancyrillic, cheabkhasiancyrillic, shchacyrillic, afii10043, afii10145, emcyrillic, eiotifiedcyrillic, otcyrillic, Koppacyrillic, koppacyrillic, Yusbigiotifiedcyrillic, OE, ae, four, paragraph, paragraphreversed, Bhook, btopbar, Dhook, dtopbar, khook, ccurl, ghook, hhook, henghook, lrthook, mturndescend, mhook, nlfthook, nrthook, zrthook, qhook, uni0221, uni023F, qrthook, uni024C, ncurl, Epsilon1, babygamma, Digamma, digamma, epsilon, koppa, epsilon1rev, epsilon1revclosed, epsilonclosed, eurocurrency, peseta, guarani, lowerHalfWhiteSquare, whitecornerbracketleft, whitecornerbracketright, whitecornerbracketleft.full, whitecornerbracketright.full, whitelenticularbracketleft, whitelenticularbracketright, whitelenticularbracketleft.full, whitelenticularbracketright.full, whitesquarebracketleft, whitesquarebracketright, whitesquarebracketleft.full, whitesquarebracketright.full, interrobang, bridgesubnosp, yogonek, lbelt.ss02, rrthook, rrthook.1, rdescend, rdescend.1, tortoiseshellbracketleft, tortoiseshellbracketright, tortoiseshellbracketleft.full, tortoiseshellbracketright.full, whitetortoiseshellbracketleft, whitetortoiseshellbracketright, whitetortoiseshellbracketleft.full, whitetortoiseshellbracketright.full, aeacute, aemacron, aiecyrillic, epsilon1, epsilon1revhook, epsilontonos, uni1F10, uni1F11, uni1F12, uni1F13, uni1F14, uni1F15, uni1F72, uni1F73, uni04CE, Chedescenderabkhasiancyrillic, chedescenderabkhasiancyrillic, four.full, four.pnum, four.ss01, four.ss01.full, four.ss01.pnum, four.tf, four.tf.ss01, guarani.full, invertedinterrobang, tortoiseshellbracketleft.hang, tortoiseshellbracketright.hang, whitecornerbracketleft.hang, whitecornerbracketright.hang, whitelenticularbracketleft.hang, whitelenticularbracketright.hang, whitesquarebracketleft.hang, whitesquarebracketright.hang, whitetortoiseshellbracketleft.hang, whitetortoiseshellbracketright.hang;";
+},
+{
+name = Filter;
 value = "RoundCorner; 90; 1; exclude: name=*-ko";
 },
 {
@@ -19710,6 +19726,10 @@ Circled_Fill_Medium,
 Squared_Medium,
 Squared_Fill_Medium
 );
+},
+{
+name = Filter;
+value = "RemoveOverlap; include: hardsigncyrillic, afii10044, ljecyrillic, afii10058, djecyrillic, afii10051, Kabashkircyrillic, kabashkircyrillic, Cheabkhasiancyrillic, cheabkhasiancyrillic, shchacyrillic, afii10043, afii10145, emcyrillic, eiotifiedcyrillic, otcyrillic, Koppacyrillic, koppacyrillic, Yusbigiotifiedcyrillic, OE, ae, four, paragraph, paragraphreversed, Bhook, btopbar, Dhook, dtopbar, khook, ccurl, ghook, hhook, henghook, lrthook, mturndescend, mhook, nlfthook, nrthook, zrthook, qhook, uni0221, uni023F, qrthook, uni024C, ncurl, Epsilon1, babygamma, Digamma, digamma, epsilon, koppa, epsilon1rev, epsilon1revclosed, epsilonclosed, eurocurrency, peseta, guarani, lowerHalfWhiteSquare, whitecornerbracketleft, whitecornerbracketright, whitecornerbracketleft.full, whitecornerbracketright.full, whitelenticularbracketleft, whitelenticularbracketright, whitelenticularbracketleft.full, whitelenticularbracketright.full, whitesquarebracketleft, whitesquarebracketright, whitesquarebracketleft.full, whitesquarebracketright.full, interrobang, bridgesubnosp, yogonek, lbelt.ss02, rrthook, rrthook.1, rdescend, rdescend.1, tortoiseshellbracketleft, tortoiseshellbracketright, tortoiseshellbracketleft.full, tortoiseshellbracketright.full, whitetortoiseshellbracketleft, whitetortoiseshellbracketright, whitetortoiseshellbracketleft.full, whitetortoiseshellbracketright.full, aeacute, aemacron, aiecyrillic, epsilon1, epsilon1revhook, epsilontonos, uni1F10, uni1F11, uni1F12, uni1F13, uni1F14, uni1F15, uni1F72, uni1F73, uni04CE, Chedescenderabkhasiancyrillic, chedescenderabkhasiancyrillic, four.full, four.pnum, four.ss01, four.ss01.full, four.ss01.pnum, four.tf, four.tf.ss01, guarani.full, invertedinterrobang, tortoiseshellbracketleft.hang, tortoiseshellbracketright.hang, whitecornerbracketleft.hang, whitecornerbracketright.hang, whitelenticularbracketleft.hang, whitelenticularbracketright.hang, whitesquarebracketleft.hang, whitesquarebracketright.hang, whitetortoiseshellbracketleft.hang, whitetortoiseshellbracketright.hang;";
 },
 {
 name = Filter;
@@ -21795,6 +21815,10 @@ Squared_Fill_Medium
 },
 {
 name = Filter;
+value = "RemoveOverlap; include: hardsigncyrillic, afii10044, ljecyrillic, afii10058, djecyrillic, afii10051, Kabashkircyrillic, kabashkircyrillic, Cheabkhasiancyrillic, cheabkhasiancyrillic, shchacyrillic, afii10043, afii10145, emcyrillic, eiotifiedcyrillic, otcyrillic, Koppacyrillic, koppacyrillic, Yusbigiotifiedcyrillic, OE, ae, four, paragraph, paragraphreversed, Bhook, btopbar, Dhook, dtopbar, khook, ccurl, ghook, hhook, henghook, lrthook, mturndescend, mhook, nlfthook, nrthook, zrthook, qhook, uni0221, uni023F, qrthook, uni024C, ncurl, Epsilon1, babygamma, Digamma, digamma, epsilon, koppa, epsilon1rev, epsilon1revclosed, epsilonclosed, eurocurrency, peseta, guarani, lowerHalfWhiteSquare, whitecornerbracketleft, whitecornerbracketright, whitecornerbracketleft.full, whitecornerbracketright.full, whitelenticularbracketleft, whitelenticularbracketright, whitelenticularbracketleft.full, whitelenticularbracketright.full, whitesquarebracketleft, whitesquarebracketright, whitesquarebracketleft.full, whitesquarebracketright.full, interrobang, bridgesubnosp, yogonek, lbelt.ss02, rrthook, rrthook.1, rdescend, rdescend.1, tortoiseshellbracketleft, tortoiseshellbracketright, tortoiseshellbracketleft.full, tortoiseshellbracketright.full, whitetortoiseshellbracketleft, whitetortoiseshellbracketright, whitetortoiseshellbracketleft.full, whitetortoiseshellbracketright.full, aeacute, aemacron, aiecyrillic, epsilon1, epsilon1revhook, epsilontonos, uni1F10, uni1F11, uni1F12, uni1F13, uni1F14, uni1F15, uni1F72, uni1F73, uni04CE, Chedescenderabkhasiancyrillic, chedescenderabkhasiancyrillic, four.full, four.pnum, four.ss01, four.ss01.full, four.ss01.pnum, four.tf, four.tf.ss01, guarani.full, invertedinterrobang, tortoiseshellbracketleft.hang, tortoiseshellbracketright.hang, whitecornerbracketleft.hang, whitecornerbracketright.hang, whitelenticularbracketleft.hang, whitelenticularbracketright.hang, whitesquarebracketleft.hang, whitesquarebracketright.hang, whitetortoiseshellbracketleft.hang, whitetortoiseshellbracketright.hang;";
+},
+{
+name = Filter;
 value = "RoundCorner; 120; 1; exclude: name=*-ko";
 },
 {
@@ -23874,6 +23898,10 @@ Circled_Fill_Medium,
 Squared_Medium,
 Squared_Fill_Medium
 );
+},
+{
+name = Filter;
+value = "RemoveOverlap; include: hardsigncyrillic, afii10044, ljecyrillic, afii10058, djecyrillic, afii10051, Kabashkircyrillic, kabashkircyrillic, Cheabkhasiancyrillic, cheabkhasiancyrillic, shchacyrillic, afii10043, afii10145, emcyrillic, eiotifiedcyrillic, otcyrillic, Koppacyrillic, koppacyrillic, Yusbigiotifiedcyrillic, OE, ae, four, paragraph, paragraphreversed, Bhook, btopbar, Dhook, dtopbar, khook, ccurl, ghook, hhook, henghook, lrthook, mturndescend, mhook, nlfthook, nrthook, zrthook, qhook, uni0221, uni023F, qrthook, uni024C, ncurl, Epsilon1, babygamma, Digamma, digamma, epsilon, koppa, epsilon1rev, epsilon1revclosed, epsilonclosed, eurocurrency, peseta, guarani, lowerHalfWhiteSquare, whitecornerbracketleft, whitecornerbracketright, whitecornerbracketleft.full, whitecornerbracketright.full, whitelenticularbracketleft, whitelenticularbracketright, whitelenticularbracketleft.full, whitelenticularbracketright.full, whitesquarebracketleft, whitesquarebracketright, whitesquarebracketleft.full, whitesquarebracketright.full, interrobang, bridgesubnosp, yogonek, lbelt.ss02, rrthook, rrthook.1, rdescend, rdescend.1, tortoiseshellbracketleft, tortoiseshellbracketright, tortoiseshellbracketleft.full, tortoiseshellbracketright.full, whitetortoiseshellbracketleft, whitetortoiseshellbracketright, whitetortoiseshellbracketleft.full, whitetortoiseshellbracketright.full, aeacute, aemacron, aiecyrillic, epsilon1, epsilon1revhook, epsilontonos, uni1F10, uni1F11, uni1F12, uni1F13, uni1F14, uni1F15, uni1F72, uni1F73, uni04CE, Chedescenderabkhasiancyrillic, chedescenderabkhasiancyrillic, four.full, four.pnum, four.ss01, four.ss01.full, four.ss01.pnum, four.tf, four.tf.ss01, guarani.full, invertedinterrobang, tortoiseshellbracketleft.hang, tortoiseshellbracketright.hang, whitecornerbracketleft.hang, whitecornerbracketright.hang, whitelenticularbracketleft.hang, whitelenticularbracketright.hang, whitesquarebracketleft.hang, whitesquarebracketright.hang, whitetortoiseshellbracketleft.hang, whitetortoiseshellbracketright.hang;";
 },
 {
 name = Filter;
@@ -25960,6 +25988,10 @@ Squared_Fill_Medium
 },
 {
 name = Filter;
+value = "RemoveOverlap; include: hardsigncyrillic, afii10044, ljecyrillic, afii10058, djecyrillic, afii10051, Kabashkircyrillic, kabashkircyrillic, Cheabkhasiancyrillic, cheabkhasiancyrillic, shchacyrillic, afii10043, afii10145, emcyrillic, eiotifiedcyrillic, otcyrillic, Koppacyrillic, koppacyrillic, Yusbigiotifiedcyrillic, OE, ae, four, paragraph, paragraphreversed, Bhook, btopbar, Dhook, dtopbar, khook, ccurl, ghook, hhook, henghook, lrthook, mturndescend, mhook, nlfthook, nrthook, zrthook, qhook, uni0221, uni023F, qrthook, uni024C, ncurl, Epsilon1, babygamma, Digamma, digamma, epsilon, koppa, epsilon1rev, epsilon1revclosed, epsilonclosed, eurocurrency, peseta, guarani, lowerHalfWhiteSquare, whitecornerbracketleft, whitecornerbracketright, whitecornerbracketleft.full, whitecornerbracketright.full, whitelenticularbracketleft, whitelenticularbracketright, whitelenticularbracketleft.full, whitelenticularbracketright.full, whitesquarebracketleft, whitesquarebracketright, whitesquarebracketleft.full, whitesquarebracketright.full, interrobang, bridgesubnosp, yogonek, lbelt.ss02, rrthook, rrthook.1, rdescend, rdescend.1, tortoiseshellbracketleft, tortoiseshellbracketright, tortoiseshellbracketleft.full, tortoiseshellbracketright.full, whitetortoiseshellbracketleft, whitetortoiseshellbracketright, whitetortoiseshellbracketleft.full, whitetortoiseshellbracketright.full, aeacute, aemacron, aiecyrillic, epsilon1, epsilon1revhook, epsilontonos, uni1F10, uni1F11, uni1F12, uni1F13, uni1F14, uni1F15, uni1F72, uni1F73, uni04CE, Chedescenderabkhasiancyrillic, chedescenderabkhasiancyrillic, four.full, four.pnum, four.ss01, four.ss01.full, four.ss01.pnum, four.tf, four.tf.ss01, guarani.full, invertedinterrobang, tortoiseshellbracketleft.hang, tortoiseshellbracketright.hang, whitecornerbracketleft.hang, whitecornerbracketright.hang, whitelenticularbracketleft.hang, whitelenticularbracketright.hang, whitesquarebracketleft.hang, whitesquarebracketright.hang, whitetortoiseshellbracketleft.hang, whitetortoiseshellbracketright.hang;";
+},
+{
+name = Filter;
 value = "RoundCorner; 150; 1; exclude: name=*-ko";
 },
 {
@@ -28039,6 +28071,10 @@ Circled_Fill_Medium,
 Squared_Medium,
 Squared_Fill_Medium
 );
+},
+{
+name = Filter;
+value = "RemoveOverlap; include: hardsigncyrillic, afii10044, ljecyrillic, afii10058, djecyrillic, afii10051, Kabashkircyrillic, kabashkircyrillic, Cheabkhasiancyrillic, cheabkhasiancyrillic, shchacyrillic, afii10043, afii10145, emcyrillic, eiotifiedcyrillic, otcyrillic, Koppacyrillic, koppacyrillic, Yusbigiotifiedcyrillic, OE, ae, four, paragraph, paragraphreversed, Bhook, btopbar, Dhook, dtopbar, khook, ccurl, ghook, hhook, henghook, lrthook, mturndescend, mhook, nlfthook, nrthook, zrthook, qhook, uni0221, uni023F, qrthook, uni024C, ncurl, Epsilon1, babygamma, Digamma, digamma, epsilon, koppa, epsilon1rev, epsilon1revclosed, epsilonclosed, eurocurrency, peseta, guarani, lowerHalfWhiteSquare, whitecornerbracketleft, whitecornerbracketright, whitecornerbracketleft.full, whitecornerbracketright.full, whitelenticularbracketleft, whitelenticularbracketright, whitelenticularbracketleft.full, whitelenticularbracketright.full, whitesquarebracketleft, whitesquarebracketright, whitesquarebracketleft.full, whitesquarebracketright.full, interrobang, bridgesubnosp, yogonek, lbelt.ss02, rrthook, rrthook.1, rdescend, rdescend.1, tortoiseshellbracketleft, tortoiseshellbracketright, tortoiseshellbracketleft.full, tortoiseshellbracketright.full, whitetortoiseshellbracketleft, whitetortoiseshellbracketright, whitetortoiseshellbracketleft.full, whitetortoiseshellbracketright.full, aeacute, aemacron, aiecyrillic, epsilon1, epsilon1revhook, epsilontonos, uni1F10, uni1F11, uni1F12, uni1F13, uni1F14, uni1F15, uni1F72, uni1F73, uni04CE, Chedescenderabkhasiancyrillic, chedescenderabkhasiancyrillic, four.full, four.pnum, four.ss01, four.ss01.full, four.ss01.pnum, four.tf, four.tf.ss01, guarani.full, invertedinterrobang, tortoiseshellbracketleft.hang, tortoiseshellbracketright.hang, whitecornerbracketleft.hang, whitecornerbracketright.hang, whitelenticularbracketleft.hang, whitelenticularbracketright.hang, whitesquarebracketleft.hang, whitesquarebracketright.hang, whitetortoiseshellbracketleft.hang, whitetortoiseshellbracketright.hang;";
 },
 {
 name = Filter;
