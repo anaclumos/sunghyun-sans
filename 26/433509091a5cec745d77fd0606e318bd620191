@@ -1,0 +1,19 @@
+scripts/regression-test.py
+  s_f32ebd99d306a8::t_e8236fded52005 1-163
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "26433509091a5cec745d77fd0606e318bd620191",
+  "prompts": {},
+  "sessions": {
+    "s_f32ebd99d306a8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8956948b-3b61-4bf6-9d6d-88dd20f9ad62",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Sunghyun Cho <hey@cho.sh>"
+    }
+  }
+}
