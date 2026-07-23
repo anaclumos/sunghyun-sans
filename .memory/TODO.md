@@ -21,7 +21,7 @@
 - [x] 13b. Round-2 verified; outline inspection then exposed that the RemoveOverlap FILTER cannot merge zero-overlap abutments: ъ љ ɭ stayed detached in several masters/families. Round-3 fix: extended the abutting arm/bar/hook 40 units into its neighbor in all masters of all 5 packages (38 node edits), full pipeline re-run
 - [x] 14. Final verify green: OTF pixel-compare exit 0 (45/45), TTF exit 0 (45/45, after healing a truncated Disambiguated-Black.ttf that a mid-write Temp sync produced; size audit + stable-size gate added to memory), abutment scan 0/90 binaries, visual proof ъ љ ɭ continuous in shipped OTF+TTF matching SF Pro
 - [x] 15. HTML report at issue5-report/report.html (untracked): live-text table of all affected chars x (Before | Fixed | SF Pro Rounded) in 3 weights + verification statement
-- [ ] 16. Commit the staged fix (message in pending-commit-issue5.md) and push
+- [x] 16. Committed (583007bd4) and pushed
 
 # Release 1.1.0 (owner order 2026-07-23)
 
@@ -29,7 +29,7 @@
 - [x] R2. scripts/regression-test.py added and run twice (64 and 256 ppem, exit 0 both)
 - [x] R3. Suite verdict: exactly 47 encoded chars changed, 0 added, 0 removed, identical sets at both sizes; 44 merge-listed chars are geometric no-ops (crossing junctions), spot-checked clean at 320 ppem
 - [x] R4. Vision verification done: 4 agents, 47 chars x 3 weights, 141 PASS / 0 FAIL / 0 UNCLEAR; hard-sign and lje defect removal explicitly observed
-- [ ] R5. Commit fix + suite FIRST, then rebuild all 15 release/ archives fresh from the committed tree, verify counts/layout, commit them (the pre-commit archive builds currently in release/ are a dry run and get rebuilt)
-- [ ] R6. Annotated tag v1.1.0, push commits + tag
-- [ ] R7. gh release create v1.1.0: 15 assets, "## Changes" bullets, a <details> dropdown listing ALL affected character changes, Full Changelog link
-- [ ] R8. Cleanup: delete refs/wip/issue5-fix and pending-commit-issue5.md, commit memory updates
+- [x] R5. Fix commit 583007bd4, suite commit 264335090; all 15 archives rebuilt fresh from the committed tree into an empty directory, counts/layout verified, committed as b5dbcdd4d
+- [x] R6. Annotated tag v1.1.0 created and pushed with main
+- [x] R7. Release live at https://github.com/anaclumos/sunghyun-sans/releases/tag/v1.1.0 with 15 assets, "## Changes" bullets, affected-characters details dropdown (47 changed, 0 added, 0 removed), Full Changelog link
+- [x] R8. Cleanup done: both wip refs deleted, pending-commit note removed, TODO closed out
