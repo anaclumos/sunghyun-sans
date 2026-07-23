@@ -1,0 +1,20 @@
+.memory/TODO.md
+  s_f32ebd99d306a8::t_928c09c6963d3e 32-35
+  s_f32ebd99d306a8::t_f247a362a3e34b 24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "3f25a4a39dbe3d23b20a76e69b84b0da3896f352",
+  "prompts": {},
+  "sessions": {
+    "s_f32ebd99d306a8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8956948b-3b61-4bf6-9d6d-88dd20f9ad62",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Sunghyun Cho <hey@cho.sh>"
+    }
+  }
+}
