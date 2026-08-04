@@ -59,6 +59,13 @@
           description = "Sunghyun Sans KR — Korean and Latin script font, an open-source alternative to SF Pro Rounded";
         };
 
+        sunghyun-sans-kr-hanja = mkFontPackage {
+          inherit pkgs;
+          pname = "sunghyun-sans-kr-hanja";
+          filePrefix = "SunghyunSansKRHanja";
+          description = "Sunghyun Sans KR Hanja — Korean, Hanja, and Latin script font, an open-source alternative to SF Pro Rounded";
+        };
+
         sunghyun-sans-jp = mkFontPackage {
           inherit pkgs;
           pname = "sunghyun-sans-jp";
@@ -78,6 +85,7 @@
           paths = with self.packages.${pkgs.system}; [
             sunghyun-sans
             sunghyun-sans-kr
+            sunghyun-sans-kr-hanja
             sunghyun-sans-jp
             sunghyun-sans-disambiguated
           ];
@@ -87,6 +95,7 @@
       overlays.default = final: prev: {
         sunghyun-sans = self.packages.${prev.system}.sunghyun-sans;
         sunghyun-sans-kr = self.packages.${prev.system}.sunghyun-sans-kr;
+        sunghyun-sans-kr-hanja = self.packages.${prev.system}.sunghyun-sans-kr-hanja;
         sunghyun-sans-jp = self.packages.${prev.system}.sunghyun-sans-jp;
         sunghyun-sans-disambiguated = self.packages.${prev.system}.sunghyun-sans-disambiguated;
         sunghyun-sans-all = self.packages.${prev.system}.default;

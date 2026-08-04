@@ -19,6 +19,7 @@
 |--------|---------------|--------|-----------|
 | Sunghyun Sans | Latin, Cyrillic, Greek, Vietnamese | ~3,190 | `Sunghyun Sans` |
 | Sunghyun Sans KR | Korean + Latin | ~14,716 | `Sunghyun Sans KR` |
+| Sunghyun Sans KR Hanja | Korean + Hanja + Latin | ~22,926 | `Sunghyun Sans KR Hanja` |
 | Sunghyun Sans JP | Japanese + Latin | ~22,926 | `Sunghyun Sans JP` |
 | Sunghyun Sans Disambiguated | Korean + Japanese + Latin | ~23,400 | `Sunghyun Sans Disambiguated` |
 
@@ -42,9 +43,10 @@ All families support 9 weights:
 
 - **OTF** — `fonts/otf/`
 - **TTF** — `fonts/ttf/`
-- **WOFF2** — `dist/web/` (for web embedding)
+- **WOFF / WOFF2** — `fonts/woff/`, `fonts/woff2/`
+- **Web (WOFF2 + CSS)** — `dist/web/` (full and dynamic-subset CSS)
 
-Pre-built archives are available in the [`release/`](release/) directory.
+Pre-built archives are available in the [`release/`](release/) directory (OTF, TTF, and Web per family).
 
 ## OpenType Features
 
@@ -100,6 +102,7 @@ https://cdn.jsdelivr.net/gh/anaclumos/sunghyun-sans@latest/dist/web/css/
 |--------|------|---------------------------|
 | Sans | `sunghyun-sans.min.css` | `sunghyun-sans-dynamic-subset.min.css` |
 | KR | `sunghyun-sans-kr.min.css` | `sunghyun-sans-kr-dynamic-subset.min.css` |
+| KR Hanja | `sunghyun-sans-kr-hanja.min.css` | `sunghyun-sans-kr-hanja-dynamic-subset.min.css` |
 | JP | `sunghyun-sans-jp.min.css` | `sunghyun-sans-jp-dynamic-subset.min.css` |
 | Disambiguated | `sunghyun-sans-disambiguated.min.css` | `sunghyun-sans-disambiguated-dynamic-subset.min.css` |
 
@@ -137,7 +140,7 @@ Sunghyun Sans is packaged as a Nix flake:
 }
 ```
 
-Available packages: `sunghyun-sans`, `sunghyun-sans-kr`, `sunghyun-sans-jp`, `sunghyun-sans-disambiguated`, and `default` (all families).
+Available packages: `sunghyun-sans`, `sunghyun-sans-kr`, `sunghyun-sans-kr-hanja`, `sunghyun-sans-jp`, `sunghyun-sans-disambiguated`, and `default` (all families).
 
 ### Self-Hosting
 
@@ -157,15 +160,19 @@ uv run python scripts/build-web-dist.py
 
 ```
 fonts/
-  otf/          # OpenType font files
-  ttf/          # TrueType font files
+  otf/                    # OpenType font files
+  ttf/                    # TrueType font files
+  woff/                   # Web Open Font Format
+  woff2/                  # WOFF2 desktop/web builds
 dist/
   web/
-    css/        # Web CSS (full + dynamic subset, minified + unminified)
-    woff2/      # Web font files
-release/        # Pre-built archives (OTF, TTF, Web per family)
-scripts/        # Build scripts
-site/           # Showcase website (sans.cho.sh)
+    css/                  # Web CSS (full + dynamic subset, minified + unminified)
+    woff2/                # Full web font files
+    woff2-dynamic-subset/ # unicode-range subset chunks
+release/                  # Pre-built archives (OTF, TTF, Web per family)
+scripts/                  # Build and export scripts
+sources/                  # Glyphs source packages (5 families)
+site/                     # Showcase website (sans.cho.sh)
 ```
 
 ## License
