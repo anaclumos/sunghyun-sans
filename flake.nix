@@ -15,7 +15,8 @@
         "aarch64-darwin"
       ];
       forAllSystems = f: nixpkgs.lib.genAttrs systems (system: f { pkgs = nixpkgs.legacyPackages.${system}; });
-      version = "1.0.0";
+      # Track the GitHub release tag (font internal version is separate, e.g. 1.309).
+      version = "1.1.0";
 
       mkFontPackage =
         {
@@ -26,13 +27,19 @@
         }:
         pkgs.stdenvNoCC.mkDerivation {
           inherit pname version;
-          src = self;
 
-          installPhase = ''
-            runHook preInstall
-            install -Dm644 -t $out/share/fonts/opentype fonts/otf/${filePrefix}-*.otf
-            install -Dm644 -t $out/share/fonts/truetype fonts/ttf/${filePrefix}-*.ttf
-            runHook postInstall
+          # Only the desktop font tree — keeps installFonts away from dist/web subsets.
+          src = self + "/fonts";
+
+          nativeBuildInputs = [ pkgs.installFonts ];
+
+          # Nix packages target fontconfig; CDN/web assets stay in dist/web.
+          dontInstallWebfonts = true;
+
+          preInstall = ''
+            # Keep a single family so sibling prefixes are not installed together.
+            # filePrefix includes the trailing family boundary (e.g. SunghyunSans-).
+            find otf ttf -type f ! -name '${filePrefix}-*' -delete
           '';
 
           meta = {
@@ -44,53 +51,56 @@
         };
     in
     {
-      packages = forAllSystems ({ pkgs }: {
-        sunghyun-sans = mkFontPackage {
-          inherit pkgs;
-          pname = "sunghyun-sans";
-          filePrefix = "SunghyunSans";
-          description = "Sunghyun Sans — Latin script font, an open-source alternative to SF Pro Rounded";
-        };
+      packages = forAllSystems (
+        { pkgs }:
+        {
+          sunghyun-sans = mkFontPackage {
+            inherit pkgs;
+            pname = "sunghyun-sans";
+            filePrefix = "SunghyunSans";
+            description = "Sunghyun Sans — Latin script font, an open-source alternative to SF Pro Rounded";
+          };
 
-        sunghyun-sans-kr = mkFontPackage {
-          inherit pkgs;
-          pname = "sunghyun-sans-kr";
-          filePrefix = "SunghyunSansKR";
-          description = "Sunghyun Sans KR — Korean and Latin script font, an open-source alternative to SF Pro Rounded";
-        };
+          sunghyun-sans-kr = mkFontPackage {
+            inherit pkgs;
+            pname = "sunghyun-sans-kr";
+            filePrefix = "SunghyunSansKR";
+            description = "Sunghyun Sans KR — Korean and Latin script font, an open-source alternative to SF Pro Rounded";
+          };
 
-        sunghyun-sans-kr-hanja = mkFontPackage {
-          inherit pkgs;
-          pname = "sunghyun-sans-kr-hanja";
-          filePrefix = "SunghyunSansKRHanja";
-          description = "Sunghyun Sans KR Hanja — Korean, Hanja, and Latin script font, an open-source alternative to SF Pro Rounded";
-        };
+          sunghyun-sans-kr-hanja = mkFontPackage {
+            inherit pkgs;
+            pname = "sunghyun-sans-kr-hanja";
+            filePrefix = "SunghyunSansKRHanja";
+            description = "Sunghyun Sans KR Hanja — Korean, Hanja, and Latin script font, an open-source alternative to SF Pro Rounded";
+          };
 
-        sunghyun-sans-jp = mkFontPackage {
-          inherit pkgs;
-          pname = "sunghyun-sans-jp";
-          filePrefix = "SunghyunSansJP";
-          description = "Sunghyun Sans JP — Japanese and Latin script font, an open-source alternative to SF Pro Rounded";
-        };
+          sunghyun-sans-jp = mkFontPackage {
+            inherit pkgs;
+            pname = "sunghyun-sans-jp";
+            filePrefix = "SunghyunSansJP";
+            description = "Sunghyun Sans JP — Japanese and Latin script font, an open-source alternative to SF Pro Rounded";
+          };
 
-        sunghyun-sans-disambiguated = mkFontPackage {
-          inherit pkgs;
-          pname = "sunghyun-sans-disambiguated";
-          filePrefix = "SunghyunSansDisambiguated";
-          description = "Sunghyun Sans Disambiguated — Korean, Japanese, and Latin script font with disambiguated glyphs";
-        };
+          sunghyun-sans-disambiguated = mkFontPackage {
+            inherit pkgs;
+            pname = "sunghyun-sans-disambiguated";
+            filePrefix = "SunghyunSansDisambiguated";
+            description = "Sunghyun Sans Disambiguated — Korean, Japanese, and Latin script font with disambiguated glyphs";
+          };
 
-        default = pkgs.symlinkJoin {
-          name = "sunghyun-sans-all-${version}";
-          paths = with self.packages.${pkgs.system}; [
-            sunghyun-sans
-            sunghyun-sans-kr
-            sunghyun-sans-kr-hanja
-            sunghyun-sans-jp
-            sunghyun-sans-disambiguated
-          ];
-        };
-      });
+          default = pkgs.symlinkJoin {
+            name = "sunghyun-sans-all-${version}";
+            paths = with self.packages.${pkgs.system}; [
+              sunghyun-sans
+              sunghyun-sans-kr
+              sunghyun-sans-kr-hanja
+              sunghyun-sans-jp
+              sunghyun-sans-disambiguated
+            ];
+          };
+        }
+      );
 
       overlays.default = final: prev: {
         sunghyun-sans = self.packages.${prev.system}.sunghyun-sans;
