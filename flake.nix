@@ -40,7 +40,6 @@
             # Keep a single family so sibling prefixes are not installed together.
             # filePrefix includes the trailing family boundary (e.g. SunghyunSans-).
             find otf ttf -type f ! -name '${filePrefix}-*' -delete
-            rm -rf woff woff2
           '';
 
           meta = {
