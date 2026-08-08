@@ -91,7 +91,7 @@
 
           default = pkgs.symlinkJoin {
             name = "sunghyun-sans-all-${version}";
-            paths = with self.packages.${pkgs.system}; [
+            paths = with self.packages.${pkgs.stdenv.hostPlatform.system}; [
               sunghyun-sans
               sunghyun-sans-kr
               sunghyun-sans-kr-hanja
