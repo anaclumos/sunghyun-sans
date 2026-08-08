@@ -10,3 +10,5 @@ site/public/globe.svg
 site/public/window.svg
 .sisyphus
 .claude
+result
+result-*
