@@ -11889,7 +11889,7 @@ key = copyrights;
 values = (
 {
 language = dflt;
-value = "Copyright 2026 The Sunghyun Sans Project Authors (https://github.com/anaclumos/sunghyun-sans)";
+value = "Copyright 2026 The Sunghyun Sans Project Authors (https://github.com/anaclumos/sunghyun-sans). Copyright (c) 2021, Kil Hyung-jin (https://github.com/orioncactus/pretendard). Copyright (c) 2016 The Inter Project Authors (https://github.com/rsms/inter).";
 }
 );
 },
@@ -11931,6 +11931,15 @@ value = "Sunghyun Cho";
 {
 key = manufacturerURL;
 value = "https://cho.sh/";
+},
+{
+key = trademarks;
+values = (
+{
+language = dflt;
+value = "Pretendard is a trademark of Kil Hyung-jin; Inter UI and Inter is a trademark of rsms; Source is a trademark of Adobe in the United States and/or other countries.";
+}
+);
 },
 {
 key = vendorID;
