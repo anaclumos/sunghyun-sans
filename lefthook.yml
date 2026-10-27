@@ -18,3 +18,7 @@ pre-push:
             script: tracked-files.sh
             runner: sh
             args: '--'
+          - name: font-metadata
+            script: font-metadata.sh
+            runner: sh
+            args: '--'
