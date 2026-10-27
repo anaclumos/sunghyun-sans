@@ -44,8 +44,4 @@ mv *.woff2 fonts/woff2/
 echo "=== Rebuilding web dist ==="
 uv run scripts/build-web-dist.py
 
-echo "=== Updating site copy ==="
-rm -rf site/public/dist
-cp -R dist/web site/public/dist
-
 echo "=== Done ==="
