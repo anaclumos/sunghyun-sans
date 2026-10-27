@@ -1,0 +1,17 @@
+assert_lefthook_installed: true
+
+pre-push:
+  parallel: true
+  jobs:
+    - name: host
+      script: host.sh
+      runner: sh
+      args: '--'
+    - name: python
+      script: python.sh
+      runner: sh
+      args: '--'
+    - name: tracked-files
+      script: tracked-files.sh
+      runner: sh
+      args: '--'
