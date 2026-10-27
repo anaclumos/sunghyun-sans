@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="site/public/og/en.png" alt="Sunghyun Sans — SF Pro Rounded for Everyone" width="720" />
+  <img src=".github/hero.png" alt="Sunghyun Sans — SF Pro Rounded for Everyone" width="720" />
 </p>
 
 <p align="center">
@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  <a href="https://sans.cho.sh">Website</a> &middot;
+  <a href="https://cho.sh/mini/sans">Website</a> &middot;
   <a href="https://github.com/anaclumos/sunghyun-sans/tree/main/release">Download</a> &middot;
   <a href="LICENSE">SIL Open Font License</a>
 </p>
@@ -172,7 +172,6 @@ dist/
 release/                  # Pre-built archives (OTF, TTF, Web per family)
 scripts/                  # Build and export scripts
 sources/                  # Glyphs source packages (5 families)
-site/                     # Showcase website (sans.cho.sh)
 ```
 
 ## License
