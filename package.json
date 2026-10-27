@@ -10,6 +10,7 @@
     "fonts:sunghyun-sans-disambiguated": "uv run scripts/export-fonts.py SunghyunSansDisambiguated",
     "web": "uv run scripts/build-web-dist.py",
     "archives": "uv run scripts/build-archives.py",
+    "packages": "uv run scripts/build-packages.py",
     "regression": "uv run scripts/regression-test.py"
   },
   "devDependencies": {
