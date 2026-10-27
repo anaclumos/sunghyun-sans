@@ -52,18 +52,51 @@ Pre-built archives are available in the [`release/`](release/) directory (OTF, T
 
 Sunghyun Sans includes built-in OpenType features:
 
-| Feature | Description |
-|---------|-------------|
-| `tnum` | Tabular numbers |
-| `zero` | Slashed zero |
-| `frac` | Fractions |
-| `subs` | Subscript |
-| `case` | Case-sensitive forms |
-| `salt` | Stylistic alternates |
-| `ordn` | Ordinals |
-| `calt` | Contextual alternates |
-| `ss01`–`ss16` | Stylistic sets (straight 6/9, open 4, centered colon, Korean localization, etc.) |
-| `cv01`–`cv13` | Character variants |
+| Feature | Description | Families |
+|---------|-------------|----------|
+| `tnum` | Tabular numbers | All except Disambiguated |
+| `zero` | Slashed zero | All |
+| `frac` | Fractions | All |
+| `sups`, `subs` | Superscript and subscript | All |
+| `case` | Case-sensitive forms | All except Disambiguated |
+| `salt` | Stylistic alternates | All |
+| `ordn` | Ordinals | All |
+| `calt` | Contextual alternates | All |
+| `jp78`, `jp83`, `jp90`, `nlck` | Japanese glyph standards | KR Hanja, JP, Disambiguated |
+
+Stylistic sets and character variants are listed by the name each font gives them. Sunghyun Sans Disambiguated uses the disambiguated forms by default, so its sets switch to the other form.
+
+| Feature | Sunghyun Sans, KR, KR Hanja, JP | Disambiguated |
+|---------|---------------------------------|---------------|
+| `ss01` | Straight-sided six and nine | Circular six and nine |
+| `ss02` | Open four | Closed four |
+| `ss03` | Vertically centered colon | Vertically centered colon |
+| `ss05` | Korean localization (not in Sunghyun Sans) | Global localization |
+| `ss06` | High legibility | Normal legibility |
+| `ss07` | One-storey a | One-storey a |
+| `ss08` | Flat-top three | Circular three |
+| `ss10` | Medium symbols | Medium symbols |
+| `ss11` | Outlined symbols | Outlined symbols |
+| `ss12` | Circle symbols | Circle symbols |
+| `ss13` | Square symbols | Square symbols |
+| `ss14` | Filled symbols | Filled symbols |
+| `ss15` | Small symbols | Small symbols |
+| `ss16` | Large symbols | Large symbols |
+| `ss20` | — | Original forms |
+| `cv01` | Alternate one | Alternate one |
+| `cv02` | Open four | Closed four |
+| `cv03` | Open six | Closed six |
+| `cv04` | Open nine | Closed nine |
+| `cv05` | Lowercase l with tail | Lowercase l without tail |
+| `cv07` | Alternate German double s | Alternate German double s |
+| `cv08` | Uppercase I with serif | Uppercase I without serif |
+| `cv09` | Flat-top three | Circular three |
+| `cv10` | Capital G with spur | Capital G with spur |
+| `cv11` | Single-storey a | Single-storey a |
+| `cv12` | Vertically centered ellipsis (not in Sunghyun Sans) | Baseline-aligned ellipsis |
+| `cv13` | High-legibility one | Normal-legibility one |
+
+No family has `ss04`, `ss09`, or `cv06`.
 
 ```css
 /* Example: enable tabular numbers and slashed zero */
