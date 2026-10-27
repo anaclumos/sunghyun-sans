@@ -117,7 +117,7 @@ def codepoints_to_unicode_range(codepoints: list[int]) -> str:
 
 def subset_font_worker(
     source_path: Path, output_path: Path, codepoints: list[int]
-) -> bool:
+) -> None:
     with TTFont(source_path) as font:
         options = ft_subset.Options()
         options.flavor = "woff2"
@@ -131,10 +131,9 @@ def subset_font_worker(
 
         # Check if any real glyphs remain (besides .notdef)
         if len(font.getGlyphOrder()) <= 1:
-            return False
+            raise ValueError("no glyph besides .notdef remains")
 
         font.save(output_path)
-        return True
 
 
 # ---------------------------------------------------------------------------
@@ -183,6 +182,8 @@ def main() -> None:
             # Get codepoints from Regular weight (same glyph set across weights)
             with TTFont(FONTS_DIR / f"{file_prefix}-Regular.woff2") as regular:
                 codepoints = sorted(regular.getBestCmap())
+            if not codepoints:
+                raise ValueError(f"{file_prefix}-Regular.woff2 maps no codepoints")
             slices = [
                 codepoints[i : i + SLICE_SIZE]
                 for i in range(0, len(codepoints), SLICE_SIZE)
@@ -190,7 +191,7 @@ def main() -> None:
 
             full_rules: list[tuple[str, int, str, str | None]] = []
             subset_jobs: list[tuple[Path, Path, list[int]]] = []
-            slice_rules: list[tuple[str, int, str, str | None]] = []
+            subset_rules: list[tuple[str, int, str, str | None]] = []
             for weight_name, weight_value in WEIGHTS:
                 source = FONTS_DIR / f"{file_prefix}-{weight_name}.woff2"
                 shutil.copy2(source, WOFF2_DIR)
@@ -205,7 +206,7 @@ def main() -> None:
                 for idx, slice_cps in enumerate(slices):
                     subset = SUBSET_DIR / f"{source.stem}.subset.{idx}.woff2"
                     subset_jobs.append((source, subset, slice_cps))
-                    slice_rules.append(
+                    subset_rules.append(
                         (
                             font_family,
                             weight_value,
@@ -215,17 +216,12 @@ def main() -> None:
                     )
 
             futures = [executor.submit(subset_font_worker, *job) for job in subset_jobs]
-            subset_rules: list[tuple[str, int, str, str | None]] = []
-            for (source, subset, _), future, rule in zip(
-                subset_jobs, futures, slice_rules, strict=True
-            ):
+            for (source, subset, _), future in zip(subset_jobs, futures, strict=True):
                 if error := future.exception():
                     executor.shutdown(cancel_futures=True)
                     raise RuntimeError(
                         f"Cannot subset {source.name} into {subset.name}"
                     ) from error
-                if future.result():
-                    subset_rules.append(rule)
 
             for name, rules in (
                 (slug, full_rules),
@@ -238,7 +234,7 @@ def main() -> None:
 
             print(
                 f"  {slug}: {len(codepoints)} codepoints -> {len(slices)} slices, "
-                f"{len(subset_rules)} subsets"
+                f"{len(subset_jobs)} subsets"
             )
 
     print(f"Built dist/web in {time.time() - start_time:.1f}s")
