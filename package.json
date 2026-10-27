@@ -1,0 +1,18 @@
+{
+  "name": "sunghyun-sans",
+  "private": true,
+  "packageManager": "bun@1.4.4",
+  "scripts": {
+    "fonts:sunghyun-sans": "uv run scripts/export-fonts.py SunghyunSans",
+    "fonts:sunghyun-sans-kr": "uv run scripts/export-fonts.py SunghyunSansKR",
+    "fonts:sunghyun-sans-kr-hanja": "uv run scripts/export-fonts.py SunghyunSansKRHanja",
+    "fonts:sunghyun-sans-jp": "uv run scripts/export-fonts.py SunghyunSansJP",
+    "fonts:sunghyun-sans-disambiguated": "uv run scripts/export-fonts.py SunghyunSansDisambiguated",
+    "web": "uv run scripts/build-web-dist.py",
+    "archives": "uv run scripts/build-archives.py",
+    "regression": "uv run scripts/regression-test.py"
+  },
+  "devDependencies": {
+    "turbo": "^2.11.10"
+  }
+}

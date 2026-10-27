@@ -1,0 +1,86 @@
+{
+  "$schema": "https://turborepo.com/schema.json",
+  "tasks": {
+    "fonts:sunghyun-sans": {
+      "inputs": ["sources/SunghyunSans.glyphspackage/**", "scripts/export-fonts.py"],
+      "outputs": [
+        "fonts/otf/SunghyunSans-*.otf",
+        "fonts/ttf/SunghyunSans-*.ttf",
+        "fonts/woff/SunghyunSans-*.woff",
+        "fonts/woff2/SunghyunSans-*.woff2"
+      ]
+    },
+    "fonts:sunghyun-sans-kr": {
+      "inputs": ["sources/SunghyunSansKR.glyphspackage/**", "scripts/export-fonts.py"],
+      "outputs": [
+        "fonts/otf/SunghyunSansKR-*.otf",
+        "fonts/ttf/SunghyunSansKR-*.ttf",
+        "fonts/woff/SunghyunSansKR-*.woff",
+        "fonts/woff2/SunghyunSansKR-*.woff2"
+      ]
+    },
+    "fonts:sunghyun-sans-kr-hanja": {
+      "inputs": ["sources/SunghyunSansKRHanja.glyphspackage/**", "scripts/export-fonts.py"],
+      "outputs": [
+        "fonts/otf/SunghyunSansKRHanja-*.otf",
+        "fonts/ttf/SunghyunSansKRHanja-*.ttf",
+        "fonts/woff/SunghyunSansKRHanja-*.woff",
+        "fonts/woff2/SunghyunSansKRHanja-*.woff2"
+      ]
+    },
+    "fonts:sunghyun-sans-jp": {
+      "inputs": ["sources/SunghyunSansJP.glyphspackage/**", "scripts/export-fonts.py"],
+      "outputs": [
+        "fonts/otf/SunghyunSansJP-*.otf",
+        "fonts/ttf/SunghyunSansJP-*.ttf",
+        "fonts/woff/SunghyunSansJP-*.woff",
+        "fonts/woff2/SunghyunSansJP-*.woff2"
+      ]
+    },
+    "fonts:sunghyun-sans-disambiguated": {
+      "inputs": ["sources/SunghyunSansDisambiguated.glyphspackage/**", "scripts/export-fonts.py"],
+      "outputs": [
+        "fonts/otf/SunghyunSansDisambiguated-*.otf",
+        "fonts/ttf/SunghyunSansDisambiguated-*.ttf",
+        "fonts/woff/SunghyunSansDisambiguated-*.woff",
+        "fonts/woff2/SunghyunSansDisambiguated-*.woff2"
+      ]
+    },
+    "web": {
+      "dependsOn": [
+        "fonts:sunghyun-sans",
+        "fonts:sunghyun-sans-kr",
+        "fonts:sunghyun-sans-kr-hanja",
+        "fonts:sunghyun-sans-jp",
+        "fonts:sunghyun-sans-disambiguated"
+      ],
+      "inputs": ["scripts/build-web-dist.py", "pyproject.toml", "uv.lock", ".python-version"],
+      "outputs": ["dist/web/**"]
+    },
+    "archives": {
+      "dependsOn": [
+        "fonts:sunghyun-sans",
+        "fonts:sunghyun-sans-kr",
+        "fonts:sunghyun-sans-kr-hanja",
+        "fonts:sunghyun-sans-jp",
+        "fonts:sunghyun-sans-disambiguated"
+      ],
+      "inputs": ["scripts/build-archives.py"],
+      "outputs": ["release/**"]
+    },
+    "build": {
+      "dependsOn": ["web", "archives"],
+      "inputs": []
+    },
+    "regression": {
+      "dependsOn": [
+        "fonts:sunghyun-sans",
+        "fonts:sunghyun-sans-kr",
+        "fonts:sunghyun-sans-kr-hanja",
+        "fonts:sunghyun-sans-jp",
+        "fonts:sunghyun-sans-disambiguated"
+      ],
+      "cache": false
+    }
+  }
+}
