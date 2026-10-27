@@ -68,21 +68,6 @@ def make_license(path, text="Fake license for tests\nSIL Open Font License 1.1\n
     return text.encode()
 
 
-def snapshot(directory):
-    directory = Path(directory)
-    if not directory.exists():
-        return None
-    return {
-        str(p.relative_to(directory)): p.read_bytes()
-        for p in sorted(directory.rglob("*"))
-        if p.is_file() or p.is_symlink()
-    } | {
-        str(p.relative_to(directory)) + "/": b""
-        for p in sorted(directory.rglob("*"))
-        if p.is_dir()
-    }
-
-
 def _normalize(name):
     if name.startswith("./"):
         name = name[1:]
@@ -248,15 +233,6 @@ def read_arch(path):
     return {"info": info, "files": payload, "all_files": files}
 
 
-def font_files(files, directory):
-    prefix = directory.rstrip("/") + "/"
-    return {
-        name[len(prefix) :]: content
-        for name, content in files.items()
-        if name.startswith(prefix) and name.endswith(".otf")
-    }
-
-
 def otf_files(files):
     return {name: content for name, content in files.items() if name.endswith(".otf")}
 
@@ -266,9 +242,3 @@ def listing(directory):
     if not directory.exists():
         return None
     return {p.name for p in directory.iterdir()}
-
-
-def package_files_under(root):
-    root = Path(root)
-    suffixes = (".deb", ".rpm", ".pkg.tar.zst")
-    return [p for p in root.rglob("*") if p.name.endswith(suffixes)]
