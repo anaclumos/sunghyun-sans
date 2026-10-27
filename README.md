@@ -126,6 +126,22 @@ body {
 
 ## Installation
 
+### Homebrew
+
+Each family is a cask in the [anaclumos/tap](https://github.com/anaclumos/homebrew-tap) tap, which installs the family's static OTF files from its GitHub release:
+
+```sh
+brew tap anaclumos/tap
+brew trust --tap anaclumos/tap
+brew install --cask anaclumos/tap/font-sunghyun-sans
+```
+
+Casks: `font-sunghyun-sans`, `font-sunghyun-sans-kr`, `font-sunghyun-sans-kr-hanja`, `font-sunghyun-sans-jp`, and `font-sunghyun-sans-disambiguated`.
+
+### Linux
+
+No Linux distribution packages Sunghyun Sans yet. Use the Nix flake below, or copy the OTF files from a [release](https://github.com/anaclumos/sunghyun-sans/releases/latest) archive into `~/.local/share/fonts` and run `fc-cache -f`.
+
 ### Nix
 
 Sunghyun Sans is packaged as a Nix flake:
