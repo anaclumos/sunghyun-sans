@@ -14,15 +14,26 @@ Run before tagging a release. The default baseline is the latest v* tag;
 pass --baseline explicitly when the previous release's binaries live at a
 different ref. --markdown writes a <details> block ready for release notes.
 
+The run exits 1 when a baseline binary is missing from the tree, when a tree
+binary is absent at the baseline and not named with --new, or when a
+character is changed, added, or removed without being on the expected-change
+list. The list holds codepoints (U+044A) or glyph names as the binaries name
+them (uni044A, A), given with --expect or in --expect-file files, separated
+by whitespace or commas; in a file, # starts a comment. With no list, the run
+passes only when nothing changed.
+
 Usage:
   uv run scripts/regression-test.py
   uv run scripts/regression-test.py --baseline v1.0.2 --markdown notes.md
+  uv run scripts/regression-test.py --expect U+044A uni0459 --expect-file expected.txt
+  uv run scripts/regression-test.py --new fonts/otf/NewFamily-Regular.otf
 """
 
 from __future__ import annotations
 
 import argparse
 import io
+import re
 import subprocess
 import sys
 import tarfile
@@ -36,6 +47,32 @@ from fontTools.ttLib import TTFont
 
 ROOT = Path(__file__).resolve().parent.parent
 FONT_DIRS = ("fonts/otf", "fonts/ttf")
+FONT_SUFFIXES = (".otf", ".ttf")
+CODEPOINT = re.compile(r"U\+([0-9A-F]{4,6})", re.IGNORECASE)
+
+
+def list_binaries(root: Path) -> set[str]:
+    return {
+        f"{font_dir}/{path.name}"
+        for font_dir in FONT_DIRS
+        for path in (root / font_dir).glob("*")
+        if path.suffix in FONT_SUFFIXES
+    }
+
+
+def read_expected(entries: list[str], files: list[str]) -> tuple[set[int], set[str]]:
+    lines = [
+        *entries,
+        *(line.split("#", 1)[0] for file in files for line in Path(file).read_text(encoding="utf-8").splitlines()),
+    ]
+    codepoints: set[int] = set()
+    names: set[str] = set()
+    for token in re.findall(r"[^\s,]+", "\n".join(lines)):
+        if match := CODEPOINT.fullmatch(token):
+            codepoints.add(int(match[1], 16))
+        else:
+            names.add(token)
+    return codepoints, names
 
 
 def render_signature(face: freetype.Face, cp: int) -> tuple:
@@ -51,12 +88,20 @@ def render_signature(face: freetype.Face, cp: int) -> tuple:
     )
 
 
-def compare_pair(job: tuple[str, str, str, int]) -> tuple[str, int, list[int], list[int], list[int]]:
-    rel, baseline_path, current_path, ppem = job
-    cmap_baseline = set(TTFont(baseline_path, lazy=True).getBestCmap())
-    cmap_current = set(TTFont(current_path, lazy=True).getBestCmap())
-    added = sorted(cmap_current - cmap_baseline)
-    removed = sorted(cmap_baseline - cmap_current)
+def compare_pair(
+    job: tuple[str, str, str, int, frozenset[str]],
+) -> tuple[str, int, list[int], list[int], list[int], set[tuple[int, str]]]:
+    rel, baseline_path, current_path, ppem, expected_names = job
+    cmap_baseline = TTFont(baseline_path, lazy=True).getBestCmap()
+    cmap_current = TTFont(current_path, lazy=True).getBestCmap()
+    named = {
+        (cp, name)
+        for cmap in (cmap_baseline, cmap_current)
+        for cp, name in cmap.items()
+        if name in expected_names
+    }
+    added = sorted(cmap_current.keys() - cmap_baseline.keys())
+    removed = sorted(cmap_baseline.keys() - cmap_current.keys())
 
     face_b = freetype.Face(baseline_path)
     face_c = freetype.Face(current_path)
@@ -64,11 +109,11 @@ def compare_pair(job: tuple[str, str, str, int]) -> tuple[str, int, list[int], l
     face_c.set_pixel_sizes(0, ppem)
 
     diffs: list[int] = []
-    common = sorted(cmap_baseline & cmap_current)
+    common = sorted(cmap_baseline.keys() & cmap_current.keys())
     for cp in common:
         if render_signature(face_b, cp) != render_signature(face_c, cp):
             diffs.append(cp)
-    return (rel, len(common), diffs, added, removed)
+    return (rel, len(common), diffs, added, removed, named)
 
 
 def main() -> None:
@@ -76,7 +121,15 @@ def main() -> None:
     ap.add_argument("--baseline", default="", help="git ref holding the previous release's fonts/ (default: latest v* tag)")
     ap.add_argument("--ppem", type=int, default=64)
     ap.add_argument("--markdown", default="", help="write a release-notes <details> block to this path")
+    ap.add_argument("--expect", action="extend", nargs="+", default=[], metavar="ENTRY", help="codepoint (U+044A) or glyph name expected to change")
+    ap.add_argument("--expect-file", action="append", default=[], metavar="PATH", help="file of expected-change entries")
+    ap.add_argument("--new", action="extend", nargs="+", default=[], metavar="BINARY", help="tree binary absent at the baseline on purpose, as fonts/otf/Name.otf")
     args = ap.parse_args()
+
+    try:
+        expected_codepoints, expected_names = read_expected(args.expect, args.expect_file)
+    except OSError as err:
+        ap.error(f"--expect-file: {err}")
 
     baseline = args.baseline or subprocess.run(
         ["git", "-C", str(ROOT), "describe", "--tags", "--abbrev=0", "--match", "v*"],
@@ -91,39 +144,45 @@ def main() -> None:
         with tarfile.open(fileobj=io.BytesIO(archive.stdout)) as tar:
             tar.extractall(tmp, filter="data")
 
-        jobs: list[tuple[str, str, str, int]] = []
-        missing: list[str] = []
-        for font_dir in FONT_DIRS:
-            for baseline_file in sorted((Path(tmp) / font_dir).iterdir()):
-                rel = f"{font_dir}/{baseline_file.name}"
-                current_file = ROOT / rel
-                if current_file.exists():
-                    jobs.append((rel, str(baseline_file), str(current_file), args.ppem))
-                else:
-                    missing.append(rel)
+        baseline_binaries = list_binaries(Path(tmp))
+        tree_binaries = list_binaries(ROOT)
+        missing = sorted(baseline_binaries - tree_binaries)
+        new = sorted(tree_binaries - baseline_binaries)
+        jobs = [
+            (rel, str(Path(tmp) / rel), str(ROOT / rel), args.ppem, frozenset(expected_names))
+            for rel in sorted(baseline_binaries & tree_binaries)
+        ]
 
         print(f"baseline={baseline} ppem={args.ppem} binaries={len(jobs)}")
         if missing:
             print(f"MISSING IN CURRENT TREE: {missing}")
+        if new:
+            print(f"NEW IN CURRENT TREE: {new}")
+        if stray := sorted(set(args.new) - set(new)):
+            ap.error(f"--new names no tree binary absent at {baseline}: {', '.join(stray)}")
+        unannounced = [rel for rel in new if rel not in args.new]
 
-        per_binary: list[tuple[str, int, list[int], list[int], list[int]]] = []
+        per_binary: list[tuple[str, int, list[int], list[int], list[int], set[tuple[int, str]]]] = []
         with ProcessPoolExecutor() as pool:
             for result in pool.map(compare_pair, jobs):
                 per_binary.append(result)
-                rel, total, diffs, added, removed = result
+                rel, total, diffs, added, removed, _named = result
                 extras = f" added={len(added)} removed={len(removed)}" if added or removed else ""
                 print(f"{rel}: {total} chars compared, {len(diffs)} changed{extras}")
 
     changed_in: dict[int, set[str]] = {}
     added_in: dict[int, set[str]] = {}
     removed_in: dict[int, set[str]] = {}
-    for rel, _total, diffs, added, removed in per_binary:
+    named: set[tuple[int, str]] = set()
+    for rel, _total, diffs, added, removed, binary_named in per_binary:
         for cp in diffs:
             changed_in.setdefault(cp, set()).add(rel)
         for cp in added:
             added_in.setdefault(cp, set()).add(rel)
         for cp in removed:
             removed_in.setdefault(cp, set()).add(rel)
+        named |= binary_named
+    expected = expected_codepoints | {cp for cp, _name in named}
 
     print(f"\nchanged codepoints: {len(changed_in)}  added: {len(added_in)}  removed: {len(removed_in)}")
     rows: list[tuple[str, int, set[str]]] = [
@@ -134,7 +193,11 @@ def main() -> None:
     for kind, cp, rels in sorted(rows, key=lambda r: (r[0], r[1])):
         name = unicodedata.name(chr(cp), "(unnamed)")
         families = sorted({Path(rel).stem.split("-")[0] for rel in rels})
-        print(f"  {kind} U+{cp:04X} {chr(cp)} {name}: {len(rels)} binaries ({', '.join(families)})")
+        mark = "" if cp in expected else " UNEXPECTED"
+        print(f"  {kind} U+{cp:04X} {chr(cp)} {name}: {len(rels)} binaries ({', '.join(families)}){mark}")
+    unexpected = {cp for _kind, cp, _rels in rows} - expected
+    if unresolved := sorted(expected_names - {name for _cp, name in named}):
+        print(f"\nexpected glyph names in no compared cmap: {unresolved}")
 
     if args.markdown:
         lines = [
@@ -156,7 +219,19 @@ def main() -> None:
         Path(args.markdown).write_text("\n".join(lines), encoding="utf-8")
         print(f"\nmarkdown written to {args.markdown}")
 
-    sys.exit(0)
+    failures: list[str] = []
+    if missing:
+        failures.append(f"{len(missing)} baseline binaries missing from the tree: {missing}")
+    if unannounced:
+        failures.append(f"{len(unannounced)} tree binaries absent at {baseline} and not named with --new: {unannounced}")
+    if unexpected:
+        failures.append(f"{len(unexpected)} characters changed, added, or removed outside the expected list (marked UNEXPECTED)")
+    print()
+    for failure in failures:
+        print(f"FAIL: {failure}")
+    if failures:
+        sys.exit(1)
+    print("PASS: no binary missing or unannounced, and no change outside the expected list")
 
 
 if __name__ == "__main__":
