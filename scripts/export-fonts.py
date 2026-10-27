@@ -113,6 +113,20 @@ def verify(family: str, staging: Path) -> dict[Path, Path]:
     return expected
 
 
+def place(moves: dict[Path, Path]) -> None:
+    partial = {target: target.with_name(f".{target.name}.partial") for target in moves.values()}
+    try:
+        for staged, target in moves.items():
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(staged, partial[target])
+    except BaseException:
+        for path in partial.values():
+            path.unlink(missing_ok=True)
+        raise
+    for target, path in partial.items():
+        path.replace(target)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Export one family's static fonts into fonts/ with the Glyphs CLI.")
     parser.add_argument("family", choices=sorted(source.stem for source in (ROOT / "sources").glob("*.glyphspackage")))
@@ -130,9 +144,7 @@ def main() -> None:
             for future in [pool.submit(export, glyphs, source, outline, staging) for outline in OUTLINES]:
                 future.result()
         moves = verify(family, staging)
-        for staged, target in moves.items():
-            target.parent.mkdir(parents=True, exist_ok=True)
-            shutil.move(staged, target)
+        place(moves)
     print(f"{family}: exported {len(moves)} files with Glyphs build {GLYPHS_BUILD}")
 
 

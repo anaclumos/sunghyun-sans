@@ -5,6 +5,8 @@ __pycache__/
 node_modules/
 .turbo/
 release/
+.release-*/
+.*.partial
 .DS_Store
 .sisyphus
 .claude

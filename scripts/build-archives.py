@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import shutil
 import sys
+import tempfile
 import zipfile
 from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
@@ -36,17 +37,23 @@ def write(archive: Path, files: list[Path]) -> str:
 
 def main() -> None:
     families = sorted(source.stem for source in (ROOT / "sources").glob("*.glyphspackage"))
+    staging = Path(tempfile.mkdtemp(prefix=".release-", dir=ROOT))
     jobs = [
-        (RELEASE / f"{family}-{kind}.zip", members(family, extensions))
+        (staging / f"{family}-{kind}.zip", members(family, extensions))
         for family in families
         for kind, extensions in ARCHIVES.items()
     ]
+    try:
+        with ProcessPoolExecutor() as pool:
+            for line in pool.map(write, *zip(*jobs, strict=True)):
+                print(line)
+    except BaseException:
+        shutil.rmtree(staging)
+        raise
+    staging.chmod(0o755)
     if RELEASE.exists():
         shutil.rmtree(RELEASE)
-    RELEASE.mkdir()
-    with ProcessPoolExecutor() as pool:
-        for line in pool.map(write, *zip(*jobs)):
-            print(line)
+    staging.rename(RELEASE)
 
 
 if __name__ == "__main__":
