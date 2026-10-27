@@ -1,15 +1,10 @@
 [project]
 name = "sunghyun-sans"
 version = "0.1.0"
-description = "Add your description here"
+description = "An open-source rounded typeface — SF Pro Rounded for everyone."
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.15"
 dependencies = [
-    "brotli>=1.2.0",
-    "fontbakery>=1.1.0",
-    "fontmake>=3.11.1",
-    "fonttools>=4.57",
-    "gftools>=0.9.99",
-    "glyphslib>=6.12.7",
-    "shaperglot>=1.2.0",
+    "brotli>=1.2.1",
+    "fonttools>=4.67.0",
 ]
