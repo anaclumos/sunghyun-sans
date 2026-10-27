@@ -5,6 +5,7 @@
 
 from __future__ import annotations
 
+import re
 import sys
 from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
@@ -17,8 +18,9 @@ PRETENDARD = "Copyright (c) 2021, Kil Hyung-jin (https://github.com/orioncactus/
 ADOBE = "Copyright 2014-2021 Adobe (http://www.adobe.com/)."
 INTER = "Copyright (c) 2016 The Inter Project Authors (https://github.com/rsms/inter)."
 MPLUS = "Copyright 2021 The M+ FONTS Project Authors (https://github.com/coz-m/MPLUS_FONTS)."
-LATIN = " ".join((SUNGHYUN, PRETENDARD, INTER))
-CJK = " ".join((SUNGHYUN, PRETENDARD, ADOBE, INTER, MPLUS))
+LATIN = (SUNGHYUN, PRETENDARD, INTER)
+CJK = (SUNGHYUN, PRETENDARD, ADOBE, INTER, MPLUS)
+GOOGLE_FONTS = re.compile(r"copyright \d{4}(-\d{4})?(,\s*\d{4}(-\d{4})?)*,? (the .* project authors \([^@]*\)|google llc. all rights reserved)")
 TRADEMARK = (
     "Pretendard is a trademark of Kil Hyung-jin; Inter UI and Inter is a trademark of rsms; "
     "Source is a trademark of Adobe in the United States and/or other countries."
@@ -35,15 +37,17 @@ LICENSE_LINES = (
 
 def problems(path: Path) -> list[str]:
     family = path.name.rsplit("-", 1)[0]
-    expected = LATIN if family == "SunghyunSans" else CJK
+    required = LATIN if family == "SunghyunSans" else CJK
     font = TTFont(path, lazy=True)
     records = {nameID: [record.toUnicode() for record in font["name"].names if record.nameID == nameID] for nameID in (0, 7)}
     font.close()
-    found = []
-    if not records[0] or any(record != expected for record in records[0]):
-        found.append(f"{path.relative_to(ROOT)}: name ID 0 is {records[0]!r}, expected only {expected!r}")
-    if not records[7] or any(record != TRADEMARK for record in records[7]):
-        found.append(f"{path.relative_to(ROOT)}: name ID 7 is {records[7]!r}, expected only {TRADEMARK!r}")
+    name = path.relative_to(ROOT)
+    found = [f"{name}: no name ID {nameID} record" for nameID, values in records.items() if not values]
+    for record in records[0]:
+        found += [f"{name}: name ID 0 {record!r} lacks {statement!r}" for statement in required if statement not in record]
+        if len(record) > 500 or "\n" in record or not GOOGLE_FONTS.search(record.lower()):
+            found.append(f"{name}: name ID 0 {record!r} fails Google Fonts' copyright format (one line, at most 500 characters)")
+    found += [f"{name}: name ID 7 {record!r} lacks {TRADEMARK!r}" for record in records[7] if TRADEMARK not in record]
     return found
 
 
