@@ -2,6 +2,9 @@ __pycache__/
 *.pyc
 .venv/
 .uv/
+node_modules/
+.turbo/
+release/
 .DS_Store
 .sisyphus
 .claude

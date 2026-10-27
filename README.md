@@ -9,7 +9,7 @@
 
 <p align="center">
   <a href="https://cho.sh/mini/sans">Website</a> &middot;
-  <a href="https://github.com/anaclumos/sunghyun-sans/tree/main/release">Download</a> &middot;
+  <a href="https://github.com/anaclumos/sunghyun-sans/releases/latest">Download</a> &middot;
   <a href="LICENSE">SIL Open Font License</a>
 </p>
 
@@ -46,7 +46,7 @@ All families support 9 weights:
 - **WOFF / WOFF2** — `fonts/woff/`, `fonts/woff2/`
 - **Web (WOFF2 + CSS)** — `dist/web/` (full and dynamic-subset CSS)
 
-Pre-built archives are available in the [`release/`](release/) directory (OTF, TTF, and Web per family).
+Pre-built archives (OTF, TTF, and Web per family) are attached to each [release](https://github.com/anaclumos/sunghyun-sans/releases/latest).
 
 ## OpenType Features
 
@@ -164,13 +164,19 @@ Download the `dist/web/` directory from this repository and serve it from your o
 
 ## Building from Source
 
-```bash
-# Install dependencies
-uv sync
+The build runs on macOS with [bun](https://bun.sh) and [uv](https://docs.astral.sh/uv/). Each family is exported headlessly by the [Glyphs command-line tool](https://pypi.org/project/glyphs-cli/) with Glyphs 3.4.1 (build 3436), the build that exported the current release, which the tool downloads on first use.
 
-# Build web distribution (CSS + woff2 + dynamic subsets)
-uv run python scripts/build-web-dist.py
+```bash
+bun install
+
+# Every family, weight, and format, the web distribution, and the release archives
+bunx turbo run build
+
+# Render every character and compare it with the previous release
+bunx turbo run regression
 ```
+
+Turborepo restores a task from its cache when its inputs did not change, so editing one family's source re-exports only that family.
 
 ## Project Structure
 
@@ -185,7 +191,7 @@ dist/
     css/                  # Web CSS (full + dynamic subset, minified + unminified)
     woff2/                # Full web font files
     woff2-dynamic-subset/ # unicode-range subset chunks
-release/                  # Pre-built archives (OTF, TTF, Web per family)
+release/                  # Release archives built by turbo (not committed)
 scripts/                  # Build and export scripts
 sources/                  # Glyphs source packages (5 families)
 ```
