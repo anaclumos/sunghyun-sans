@@ -49,66 +49,50 @@
             platforms = pkgs.lib.platforms.all;
           };
         };
+
+      families = {
+        sunghyun-sans = {
+          filePrefix = "SunghyunSans";
+          description = "Sunghyun Sans — Latin script font, an open-source alternative to SF Pro Rounded";
+        };
+        sunghyun-sans-kr = {
+          filePrefix = "SunghyunSansKR";
+          description = "Sunghyun Sans KR — Korean and Latin script font, an open-source alternative to SF Pro Rounded";
+        };
+        sunghyun-sans-kr-hanja = {
+          filePrefix = "SunghyunSansKRHanja";
+          description = "Sunghyun Sans KR Hanja — Korean, Hanja, and Latin script font, an open-source alternative to SF Pro Rounded";
+        };
+        sunghyun-sans-jp = {
+          filePrefix = "SunghyunSansJP";
+          description = "Sunghyun Sans JP — Japanese and Latin script font, an open-source alternative to SF Pro Rounded";
+        };
+        sunghyun-sans-disambiguated = {
+          filePrefix = "SunghyunSansDisambiguated";
+          description = "Sunghyun Sans Disambiguated — Korean, Japanese, and Latin script font with disambiguated glyphs";
+        };
+      };
     in
     {
       packages = forAllSystems (
         { pkgs }:
-        {
-          sunghyun-sans = mkFontPackage {
-            inherit pkgs;
-            pname = "sunghyun-sans";
-            filePrefix = "SunghyunSans";
-            description = "Sunghyun Sans — Latin script font, an open-source alternative to SF Pro Rounded";
-          };
-
-          sunghyun-sans-kr = mkFontPackage {
-            inherit pkgs;
-            pname = "sunghyun-sans-kr";
-            filePrefix = "SunghyunSansKR";
-            description = "Sunghyun Sans KR — Korean and Latin script font, an open-source alternative to SF Pro Rounded";
-          };
-
-          sunghyun-sans-kr-hanja = mkFontPackage {
-            inherit pkgs;
-            pname = "sunghyun-sans-kr-hanja";
-            filePrefix = "SunghyunSansKRHanja";
-            description = "Sunghyun Sans KR Hanja — Korean, Hanja, and Latin script font, an open-source alternative to SF Pro Rounded";
-          };
-
-          sunghyun-sans-jp = mkFontPackage {
-            inherit pkgs;
-            pname = "sunghyun-sans-jp";
-            filePrefix = "SunghyunSansJP";
-            description = "Sunghyun Sans JP — Japanese and Latin script font, an open-source alternative to SF Pro Rounded";
-          };
-
-          sunghyun-sans-disambiguated = mkFontPackage {
-            inherit pkgs;
-            pname = "sunghyun-sans-disambiguated";
-            filePrefix = "SunghyunSansDisambiguated";
-            description = "Sunghyun Sans Disambiguated — Korean, Japanese, and Latin script font with disambiguated glyphs";
-          };
-
+        let
+          fonts = builtins.mapAttrs (pname: family: mkFontPackage (family // { inherit pkgs pname; })) families;
+        in
+        fonts
+        // {
           default = pkgs.symlinkJoin {
             name = "sunghyun-sans-all-${version}";
-            paths = with self.packages.${pkgs.stdenv.hostPlatform.system}; [
-              sunghyun-sans
-              sunghyun-sans-kr
-              sunghyun-sans-kr-hanja
-              sunghyun-sans-jp
-              sunghyun-sans-disambiguated
-            ];
+            paths = builtins.attrValues fonts;
           };
         }
       );
 
-      overlays.default = final: prev: {
-        sunghyun-sans = self.packages.${prev.system}.sunghyun-sans;
-        sunghyun-sans-kr = self.packages.${prev.system}.sunghyun-sans-kr;
-        sunghyun-sans-kr-hanja = self.packages.${prev.system}.sunghyun-sans-kr-hanja;
-        sunghyun-sans-jp = self.packages.${prev.system}.sunghyun-sans-jp;
-        sunghyun-sans-disambiguated = self.packages.${prev.system}.sunghyun-sans-disambiguated;
-        sunghyun-sans-all = self.packages.${prev.system}.default;
-      };
+      overlays.default =
+        final: prev:
+        let
+          packages = self.packages.${prev.stdenv.hostPlatform.system};
+        in
+        builtins.removeAttrs packages [ "default" ] // { sunghyun-sans-all = packages.default; };
     };
 }
