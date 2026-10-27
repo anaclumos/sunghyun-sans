@@ -68,6 +68,12 @@
       "inputs": ["scripts/build-archives.py"],
       "outputs": ["release/**"]
     },
+    "packages": {
+      "dependsOn": ["archives"],
+      "env": ["SUNGHYUN_SANS_VERSION"],
+      "inputs": ["scripts/build-packages.py", "LICENSE"],
+      "outputs": ["release/*.deb", "release/*.rpm", "release/*.pkg.tar.zst"]
+    },
     "build": {
       "dependsOn": ["web", "archives"],
       "inputs": []

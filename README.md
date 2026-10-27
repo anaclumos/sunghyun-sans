@@ -173,7 +173,30 @@ Casks: `font-sunghyun-sans`, `font-sunghyun-sans-kr`, `font-sunghyun-sans-kr-han
 
 ### Linux
 
-No Linux distribution packages Sunghyun Sans yet. Use the Nix flake below, or copy the OTF files from a [release](https://github.com/anaclumos/sunghyun-sans/releases/latest) archive into `~/.local/share/fonts` and run `fc-cache -f`.
+Each [release](https://github.com/anaclumos/sunghyun-sans/releases/latest) carries a package of each family for Debian and Ubuntu, Fedora, and Arch Linux. Each one installs the family's static OTF files and its license, and the package manager refreshes the font cache.
+
+```sh
+# Debian and Ubuntu
+curl -LO https://github.com/anaclumos/sunghyun-sans/releases/latest/download/fonts-sunghyun-sans_all.deb
+sudo apt install ./fonts-sunghyun-sans_all.deb
+
+# Fedora
+sudo dnf install https://github.com/anaclumos/sunghyun-sans/releases/latest/download/sunghyun-sans-fonts.noarch.rpm
+
+# Arch Linux
+curl -LO https://github.com/anaclumos/sunghyun-sans/releases/latest/download/otf-sunghyun-sans-any.pkg.tar.zst
+sudo pacman -U ./otf-sunghyun-sans-any.pkg.tar.zst
+```
+
+| Family | Debian and Ubuntu | Fedora | Arch Linux |
+| --- | --- | --- | --- |
+| Sunghyun Sans | `fonts-sunghyun-sans_all.deb` | `sunghyun-sans-fonts.noarch.rpm` | `otf-sunghyun-sans-any.pkg.tar.zst` |
+| Sunghyun Sans KR | `fonts-sunghyun-sans-kr_all.deb` | `sunghyun-sans-kr-fonts.noarch.rpm` | `otf-sunghyun-sans-kr-any.pkg.tar.zst` |
+| Sunghyun Sans KR Hanja | `fonts-sunghyun-sans-kr-hanja_all.deb` | `sunghyun-sans-kr-hanja-fonts.noarch.rpm` | `otf-sunghyun-sans-kr-hanja-any.pkg.tar.zst` |
+| Sunghyun Sans JP | `fonts-sunghyun-sans-jp_all.deb` | `sunghyun-sans-jp-fonts.noarch.rpm` | `otf-sunghyun-sans-jp-any.pkg.tar.zst` |
+| Sunghyun Sans Disambiguated | `fonts-sunghyun-sans-disambiguated_all.deb` | `sunghyun-sans-disambiguated-fonts.noarch.rpm` | `otf-sunghyun-sans-disambiguated-any.pkg.tar.zst` |
+
+The packages come straight from the release rather than a distribution repository, so a new release reaches you when you run the same commands again.
 
 ### Nix
 
@@ -207,7 +230,12 @@ bunx turbo run build
 
 # Render every character and compare it with the previous release
 bunx turbo run regression
+
+# The Debian, RPM, and Arch Linux packages of every family, for the version being released
+SUNGHYUN_SANS_VERSION=1.2.0 bunx turbo run packages
 ```
+
+The packages are built with [nFPM](https://nfpm.goreleaser.com), which the build runs through [mise](https://mise.jdx.dev).
 
 Turborepo restores a task from its cache when its inputs did not change, so editing one family's source re-exports only that family.
 
@@ -224,7 +252,7 @@ dist/
     css/                  # Web CSS (full + dynamic subset, minified + unminified)
     woff2/                # Full web font files
     woff2-dynamic-subset/ # unicode-range subset chunks
-release/                  # Release archives built by turbo (not committed)
+release/                  # Release archives and Linux packages built by turbo (not committed)
 scripts/                  # Build and export scripts
 sources/                  # Glyphs source packages (5 families)
 ```

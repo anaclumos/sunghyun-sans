@@ -22,3 +22,7 @@ pre-push:
             script: font-metadata.sh
             runner: sh
             args: '--'
+          - name: tests
+            script: tests.sh
+            runner: sh
+            args: '--'
